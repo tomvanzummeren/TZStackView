@@ -14,14 +14,14 @@ This implementation is meant for iOS developers who, like me, want to use the `U
 ## Setup
 You basically have two options to include the `TZStackView` in your *Xcode* project:
 
-1) use [Cocoapods](http://cocoapods.org/)
+### Use [Cocoapods](http://cocoapods.org/)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "7.0"
 
 pod "TZStackView", "1.0.0"
 ```
-2) drag in the following files into your project
+### Alternatively drag in the following files into your project
   * `TZStackView`
   * `TZSpacerView`
   * `TZStackViewAlignment`
