@@ -53,7 +53,7 @@ UIView.animateWithDuration(0.5, animations: {
 ```
 
 ## Migrating to UIStackView
-If at a later point you decide to make iOS 9 the minimum requirement of your app (it will happen sooner or later), you will want to migrate to the real `UIStackView` instead of using this implementation. Because the `TZStackView` is a drop-in replacement for `UIStackView`, you simply replace:
+If at a later point you decide to make *iOS 9* the minimum requirement of your app (it will happen sooner or later), you will want to migrate to the real `UIStackView` instead of using this implementation. Because the `TZStackView` is a drop-in replacement for `UIStackView`, you simply replace:
 
 ```swift
 let stackView = TZStackView(arrangedSubviews: views)
