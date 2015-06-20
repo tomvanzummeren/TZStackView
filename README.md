@@ -19,6 +19,7 @@ Example `Podfile`:
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.0"
+use_frameworks!
 
 pod "TZStackView", "1.0.0"
 ```
