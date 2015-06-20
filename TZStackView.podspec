@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors     = { "tomvanzummeren" => "tom.van.zummeren@gmail.com" }
 
   s.requires_arc = true
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.0"
   s.source   = { :git => "https://github.com/tomvanzummeren/TZStackView.git", :tag => "1.0.0"}
   s.source_files = "Example/TZStackView-Example/TZStackView/*.swift"
 end
