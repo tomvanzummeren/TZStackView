@@ -15,6 +15,7 @@ This implementation is meant for iOS developers who, like me, want to use the `U
 You basically have two options to include the `TZStackView` in your *Xcode* project:
 
 ### Use [Cocoapods](http://cocoapods.org/)
+Example `Podfile`:
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.0"
