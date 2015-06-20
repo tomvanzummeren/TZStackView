@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F50E0A0BBF86FBF2E864CB5 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */; };
+		5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */; };
+		5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */; };
+		5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50ECF2FC09D64EB02F1309 /* ViewController.swift */; };
+		5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */; };
+		5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
+		5F50ED38F3688AF700798A96 /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E601B292CC10024E8AD /* TZStackView.swift */; };
+		5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */; };
+		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
+		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
+		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
+		DB614E5E1B292B630024E8AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB614E5D1B292B630024E8AD /* LaunchScreen.xib */; };
+		DB614E611B292CC10024E8AD /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E601B292CC10024E8AD /* TZStackView.swift */; };
+		DB614E631B292FDA0024E8AD /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */; };
+		DB72EB4C1B2F252200A06CE5 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */; };
+		DB72EB4D1B2F25A200A06CE5 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */; };
+		DB72EB4F1B2F7A8900A06CE5 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */; };
+		DB72EB501B2F7B0100A06CE5 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F50E2D085856B752DDB3B93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F50E8956739A06BEE120598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F50E36345E94CFC65ED7270;
+			remoteInfo = TZStackView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F50E1340FBDFB7D123C9204 /* TZStackView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZStackView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplicitIntrinsicContentSizeView.swift; sourceTree = "<group>"; };
+		5F50E9955790F6814D494857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		5F50ECE89FF2DA8F6B16DB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		5F50ECF2FC09D64EB02F1309 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZStackViewTests.swift; sourceTree = "<group>"; };
+		5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TZStackViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
+		DB5B70841B2A1963006043BD /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewTestCase.swift; sourceTree = "<group>"; };
+		DB614E5D1B292B630024E8AD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		DB614E601B292CC10024E8AD /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
+		DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
+		DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSpacerView.swift; sourceTree = "<group>"; };
+		DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F50E714DA218369BD219AE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F50EFCE1AB77614030E1791 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F50E05A91CC731E5AFD4E94 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F50E9955790F6814D494857 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F50E6B23A7FD45BDBD44C86 = {
+			isa = PBXGroup;
+			children = (
+				5F50EB61965EE1FD3F76FB91 /* Products */,
+				5F50EC0CBAE86A71ABF0B3BA /* TZStackView */,
+				5F50E7526ADB7151E0540D2D /* TZStackViewTests */,
+			);
+			sourceTree = "<group>";
+		};
+		5F50E7526ADB7151E0540D2D /* TZStackViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F50E05A91CC731E5AFD4E94 /* Supporting Files */,
+				5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */,
+				DB5B70841B2A1963006043BD /* TestView.swift */,
+				DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */,
+			);
+			path = TZStackViewTests;
+			sourceTree = "<group>";
+		};
+		5F50EB61965EE1FD3F76FB91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F50E1340FBDFB7D123C9204 /* TZStackView.app */,
+				5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F50EC0CBAE86A71ABF0B3BA /* TZStackView */ = {
+			isa = PBXGroup;
+			children = (
+				DB614E5F1B292C9E0024E8AD /* Framework */,
+				DB614E5D1B292B630024E8AD /* LaunchScreen.xib */,
+				5F50ECF4A13687970498D9A7 /* Supporting Files */,
+				5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */,
+				5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */,
+				5F50ECF2FC09D64EB02F1309 /* ViewController.swift */,
+				5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */,
+				DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */,
+			);
+			path = TZStackView;
+			sourceTree = "<group>";
+		};
+		5F50ECF4A13687970498D9A7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F50ECE89FF2DA8F6B16DB3E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB614E5F1B292C9E0024E8AD /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				DB614E601B292CC10024E8AD /* TZStackView.swift */,
+				DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */,
+				DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */,
+				DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F50E36345E94CFC65ED7270 /* TZStackView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackView" */;
+			buildPhases = (
+				5F50EACD0CA47C3C2D5ECE2D /* Sources */,
+				5F50EFCE1AB77614030E1791 /* Frameworks */,
+				5F50EB90676857A21F608692 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TZStackView;
+			productName = TZStackView;
+			productReference = 5F50E1340FBDFB7D123C9204 /* TZStackView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5F50EF63134E65D95D5312EE /* TZStackViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F50E4200B3FF23FD89C2CE5 /* Build configuration list for PBXNativeTarget "TZStackViewTests" */;
+			buildPhases = (
+				5F50E06BB91A5156164D83ED /* Sources */,
+				5F50E714DA218369BD219AE0 /* Frameworks */,
+				5F50EBBEBB53C6116897915E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F50E9A4787A8017DFBA09FB /* PBXTargetDependency */,
+			);
+			name = TZStackViewTests;
+			productName = TZStackViewTests;
+			productReference = 5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F50E8956739A06BEE120598 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Tom van Zummeren";
+			};
+			buildConfigurationList = 5F50EBF385F683E8C65E5F50 /* Build configuration list for PBXProject "TZStackView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5F50E6B23A7FD45BDBD44C86;
+			productRefGroup = 5F50EB61965EE1FD3F76FB91 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F50E36345E94CFC65ED7270 /* TZStackView */,
+				5F50EF63134E65D95D5312EE /* TZStackViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F50EB90676857A21F608692 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB614E5E1B292B630024E8AD /* LaunchScreen.xib in Resources */,
+				5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F50EBBEBB53C6116897915E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F50E06BB91A5156164D83ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */,
+				DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */,
+				DB72EB501B2F7B0100A06CE5 /* TZStackViewAlignment.swift in Sources */,
+				DB5B70851B2A1963006043BD /* TestView.swift in Sources */,
+				5F50E0A0BBF86FBF2E864CB5 /* TZStackViewDistribution.swift in Sources */,
+				5F50ED38F3688AF700798A96 /* TZStackView.swift in Sources */,
+				DB72EB4D1B2F25A200A06CE5 /* TZSpacerView.swift in Sources */,
+				5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F50EACD0CA47C3C2D5ECE2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */,
+				DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */,
+				5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */,
+				DB72EB4F1B2F7A8900A06CE5 /* TZStackViewAlignment.swift in Sources */,
+				DB614E631B292FDA0024E8AD /* TZStackViewDistribution.swift in Sources */,
+				5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */,
+				DB72EB4C1B2F252200A06CE5 /* TZSpacerView.swift in Sources */,
+				DB614E611B292CC10024E8AD /* TZStackView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F50E9A4787A8017DFBA09FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F50E36345E94CFC65ED7270 /* TZStackView */;
+			targetProxy = 5F50E2D085856B752DDB3B93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5F50E2A2200A464705C478D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5F50E2B435DD50B517F66006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F50E2E44E5144E17840C724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TZStackView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.tomvanzummeren.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5F50E86DCFE460998B6EFE66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TZStackView.app/TZStackView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TZStackViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.tomvanzummeren.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+		5F50E984DD96284DF06BEF30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TZStackView.app/TZStackView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TZStackViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.tomvanzummeren.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		5F50ECFE01A29CC56EA94F02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TZStackView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.tomvanzummeren.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F50E4200B3FF23FD89C2CE5 /* Build configuration list for PBXNativeTarget "TZStackViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F50E984DD96284DF06BEF30 /* Debug */,
+				5F50E86DCFE460998B6EFE66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F50E2E44E5144E17840C724 /* Debug */,
+				5F50ECFE01A29CC56EA94F02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F50EBF385F683E8C65E5F50 /* Build configuration list for PBXProject "TZStackView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F50E2A2200A464705C478D7 /* Debug */,
+				5F50E2B435DD50B517F66006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F50E8956739A06BEE120598 /* Project object */;
+}
