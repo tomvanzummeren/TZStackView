@@ -26,7 +26,7 @@ pod "TZStackView", "1.0.0"
   * `TZStackViewDistribution`
 
 ## Example usage
-Given view1, view2 and view3 who have intrinsic content sizes set to 100x100, 80x80 and 60x60 respectively.
+Given `view1`, `view2` and `view3` who have intrinsic content sizes set to *100x100*, *80x80* and *60x60* respectively.
 
 ```swift
 let stackView = TZStackView(arrangedSubviews: [view1, view2, view3])
