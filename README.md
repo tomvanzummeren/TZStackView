@@ -12,21 +12,18 @@ This implementation is meant for iOS developers who, like me, want to use the UI
 ## Setup
 You basically have two options to include the `TZStackView` in your iOS project:
 
-1) use Cocoapods
+1) use [Cocoapods](http://cocoapods.org/)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "7.0"
-use_frameworks!
 
 pod "TZStackView", "1.0.0"
 ```
-
-
 2) drag in the following files into your project
-* `TZStackView`
-* `TZSpacerView`
-* `TZStackViewAlignment`
-* `TZStackViewDistribution`
+  * `TZStackView`
+  * `TZSpacerView`
+  * `TZStackViewAlignment`
+  * `TZStackViewDistribution`
 
 ## Example usage
 Given view1, view2 and view3 who have intrinsic content sizes set to 100x100, 80x80 and 60x60 respectively.
