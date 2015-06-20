@@ -17,11 +17,13 @@ You basically have two options to include the `TZStackView` in your *Xcode* proj
 ### Use [Cocoapods](http://cocoapods.org/)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, "7.0"
+platform :ios, "8.0"
 
 pod "TZStackView", "1.0.0"
 ```
-### Alternatively drag in the following files into your project
+Unfortunately, using Cocoapods with a Swift pod requires iOS 8.
+
+### Alternatively drag in the following classes directly into your project
   * `TZStackView`
   * `TZSpacerView`
   * `TZStackViewAlignment`
