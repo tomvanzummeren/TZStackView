@@ -2,10 +2,10 @@
 A wonderful layout component called the UIStackView was introduced with iOS 9. With this component it is really easy to layout components in a row both horizontally and vertically. Apple recommends using the UIStackView wherever possible and resort to explicit NSLayoutConstraints only when there is no way to do it with UIStackView. This saves you lots of boiler plate NSLayoutConstraint creation code. UIStackView requires iOS 9, but we're not ready to make our apps require iOS 9+ just yet. In the meanwhile, we developers are eager to try this component in our apps right now! This is why I created this replica of the UIStackView, called the TZStackView (TZ = Tom van Zummeren, my initials). I created this component very carefully, tested every single corner case and matched the results against the 'real' UIStackView with automated XCTestCases.
 
 ## Features
-[√] Compatible with iOS 7.x and iOS 8.x
-[√] Supports the complete API of UIStackView including all distribution and alignment options
-[√] Supports animating the 'hidden' property of the arranged subviews
-[x] Does not support Storyboard
+* Compatible with iOS 7.x and iOS 8.x
+* Supports the complete API of UIStackView including all distribution and alignment options
+* Supports animating the 'hidden' property of the arranged subviews
+* Does not support Storyboard
 
 This implementation is meant for iOS developers who, like me, want to use the UIStackView in our existing apps and like to layout their components in code as opposed to using Storyboard.
 
@@ -13,21 +13,31 @@ This implementation is meant for iOS developers who, like me, want to use the UI
 You basically have two options to include the TZStackView in your iOS project:
 
 1) use Cocoapods
-<<example cocoapods file>>
+```
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, "7.0"
+use_frameworks!
+
+pod "TZStackView", "1.0.0"
+```
+
 
 2) drag in the following files into your project
-- TZStackView
-- TZyyyyyy
-- TZxxxxxx
+* `TZStackView`
+* `TZSpacerView`
+* `TZStackViewAlignment`
+* `TZStackViewDistribution`
 
 ## Example usage
 Given view1, view2 and view3 who have intrinsic content sizes set to 100x100, 150x150 and 200x200 respectively.
 
+```
 let stackView = TZStackView(arrangedSubviews: [view1, view2, view3])
 stackView.distribution = .FillEqually
 stackView.alignment = .Center
 stackView.axis = .Vertical
 stackView.spacing = 25
+```
 
 This would produce the following layout:
 
