@@ -5,7 +5,7 @@ A wonderful layout component called the [`UIStackView` was introduced with *iOS 
 
 ## Features
 - ✅ Compatible with **iOS 7.x** and **iOS 8.x**
-- ✅ Supports the complete API of `UIStackView` including all *distribution* and *alignment* options
+- ✅ Supports the complete API of `UIStackView` including **all** *distribution* and *alignment* options
 - ✅ Supports animating the `hidden` property of the *arranged subviews*
 - ❌ Does not support *Storyboard*
 
