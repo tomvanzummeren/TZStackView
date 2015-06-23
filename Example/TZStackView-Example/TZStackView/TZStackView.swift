@@ -119,29 +119,30 @@ class TZStackView: UIView {
                 animationDidStopQueueEntries.insert(TZAnimationDidStopQueueEntry(view: view, hidden: hidden), atIndex: 0)
                 UIView.setAnimationDidStopSelector("hiddenAnimationStopped")
             } else {
-                view.hidden = hidden
-                addHiddenListener(view)
+                didFinishSettingHiddenValue(view, hidden: hidden)
             }
         }
     }
     
+    private func didFinishSettingHiddenValue(arrangedSubview: UIView, hidden: Bool) {
+        arrangedSubview.hidden = hidden
+        if let index = find(animatingToHiddenViews, arrangedSubview) {
+            animatingToHiddenViews.removeAtIndex(index)
+        }
+        addHiddenListener(arrangedSubview)
+    }
+
     func hiddenAnimationStopped() {
         var queueEntriesToRemove = [TZAnimationDidStopQueueEntry]()
         for entry in animationDidStopQueueEntries {
             let view = entry.view
             if view.layer.animationKeys() == nil {
-                view.hidden = entry.hidden
-                
-                if let index = find(animatingToHiddenViews, view) {
-                    animatingToHiddenViews.removeAtIndex(index)
-                }
-                addHiddenListener(view)
+                didFinishSettingHiddenValue(view, hidden: entry.hidden)
                 queueEntriesToRemove.append(entry)
             }
         }
         for entry in queueEntriesToRemove {
-            let index = find(animationDidStopQueueEntries, entry)
-            if let index = index {
+            if let index = find(animationDidStopQueueEntries, entry) {
                 animationDidStopQueueEntries.removeAtIndex(index)
             }
         }
