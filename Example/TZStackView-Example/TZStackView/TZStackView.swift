@@ -16,31 +16,32 @@ struct TZAnimationDidStopQueueEntry: Equatable {
         self.hidden = hidden
     }
 }
+
 func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) -> Bool {
     return lhs.view === rhs.view
 }
 
-class TZStackView: UIView {
+public class TZStackView: UIView {
 
     private var kvoContext = UInt8()
 
-    var distribution: TZStackViewDistribution = .Fill {
+    public var distribution: TZStackViewDistribution = .Fill {
         didSet {
             setNeedsUpdateConstraints()
         }
     }
 
-    var axis: UILayoutConstraintAxis = .Horizontal {
+    public var axis: UILayoutConstraintAxis = .Horizontal {
         didSet {
             setNeedsUpdateConstraints()
         }
     }
     
-    var alignment: TZStackViewAlignment = .Fill
+    public var alignment: TZStackViewAlignment = .Fill
 
-    var spacing: CGFloat = 0
+    public var spacing: CGFloat = 0
     
-    var arrangedSubviews: [UIView] {
+    public var arrangedSubviews: [UIView] {
         return _arrangedSubviews
     }
     
@@ -95,7 +96,7 @@ class TZStackView: UIView {
         }
     }
 
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if let view = object as? UIView where keyPath == "hidden" {
             let hidden = view.hidden
             let previousValue = change["old"] as! Bool
@@ -132,7 +133,7 @@ class TZStackView: UIView {
         addHiddenListener(arrangedSubview)
     }
 
-    func hiddenAnimationStopped() {
+    public func hiddenAnimationStopped() {
         var queueEntriesToRemove = [TZAnimationDidStopQueueEntry]()
         for entry in animationDidStopQueueEntries {
             let view = entry.view
@@ -148,21 +149,21 @@ class TZStackView: UIView {
         }
     }
     
-    func addArrangedSubview(view: UIView) {
+    public func addArrangedSubview(view: UIView) {
         _arrangedSubviews.append(view)
     }
     
-    func removeArrangedSubview(view: UIView) {
+    public func removeArrangedSubview(view: UIView) {
         if let index = find(_arrangedSubviews, view) {
             _arrangedSubviews.removeAtIndex(index)
         }
     }
 
-    func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
+    public func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
         _arrangedSubviews.insert(view, atIndex: stackIndex)
     }
 
-    override func updateConstraints() {
+    override public func updateConstraints() {
         removeConstraints(stackViewConstraints)
         stackViewConstraints.removeAll()
 
@@ -298,7 +299,7 @@ class TZStackView: UIView {
         super.updateConstraints()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

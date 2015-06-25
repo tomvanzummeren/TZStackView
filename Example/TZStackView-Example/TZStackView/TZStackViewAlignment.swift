@@ -6,7 +6,7 @@
 //  Copyright © 2015 Tom van Zummeren. All rights reserved.
 //
 
-enum TZStackViewAlignment {
+public enum TZStackViewAlignment {
     case Fill
     case Center
     case Leading
