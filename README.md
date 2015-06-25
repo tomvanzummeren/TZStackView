@@ -26,7 +26,7 @@ pod "TZStackView", "1.0.0"
 Unfortunately, using Cocoapods with a Swift pod requires iOS 8.
 
 ### Drag files directly into your project
-Alternatively drag in the following classes from the *Example* folder directly into your *Xcode* project
+Alternatively (when you do want to support iOS 7) drag in the following classes from the *Example* folder directly into your *Xcode* project
   * `TZStackView`
   * `TZSpacerView`
   * `TZStackViewAlignment`
