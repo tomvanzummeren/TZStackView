@@ -6,7 +6,7 @@
 //  Copyright © 2015 Tom van Zummeren. All rights reserved.
 //
 
-enum TZStackViewDistribution {
+public enum TZStackViewDistribution {
     case Fill
     case FillEqually
     case FillProportionally
