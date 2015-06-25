@@ -65,7 +65,7 @@ public class TZStackView: UIView {
     
     private var animatingToHiddenViews = [UIView]()
 
-    init(arrangedSubviews: [UIView] = []) {
+    public init(arrangedSubviews: [UIView] = []) {
         self._arrangedSubviews = arrangedSubviews
         super.init(frame: CGRectZero)
 
