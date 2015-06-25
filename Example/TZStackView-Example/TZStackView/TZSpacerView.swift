@@ -8,5 +8,6 @@
 
 import UIKit
 
-class TZSpacerView: UIView {
+public class TZSpacerView: UIView {
+	
 }
