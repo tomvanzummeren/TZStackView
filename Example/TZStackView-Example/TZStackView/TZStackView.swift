@@ -11,10 +11,6 @@ import UIKit
 struct TZAnimationDidStopQueueEntry: Equatable {
     let view: UIView
     let hidden: Bool
-    init(view: UIView, hidden: Bool) {
-        self.view = view
-        self.hidden = hidden
-    }
 }
 
 func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) -> Bool {
@@ -41,19 +37,15 @@ public class TZStackView: UIView {
 
     public var spacing: CGFloat = 0
     
-    public var arrangedSubviews: [UIView] {
-        return _arrangedSubviews
-    }
-    
     var layoutMarginsRelativeArrangement = false
 
     private var stackViewConstraints = [NSLayoutConstraint]()
     private var subviewConstraints = [NSLayoutConstraint]()
 
-    private var _arrangedSubviews: [UIView] {
+    private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
             setNeedsUpdateConstraints()
-            registerHiddenListeners()
+            registerHiddenListeners(oldValue)
         }
     }
     
@@ -66,21 +58,23 @@ public class TZStackView: UIView {
     private var animatingToHiddenViews = [UIView]()
 
     public init(arrangedSubviews: [UIView] = []) {
-        self._arrangedSubviews = arrangedSubviews
         super.init(frame: CGRectZero)
-
         for arrangedSubview in arrangedSubviews {
             arrangedSubview.setTranslatesAutoresizingMaskIntoConstraints(false)
             addSubview(arrangedSubview)
         }
-        registerHiddenListeners()
-        registerHiddenListeners()
+
+        // Closure to invoke didSet()
+        { self.arrangedSubviews = arrangedSubviews }()
     }
     
-    private func registerHiddenListeners() {
-        for arrangedSubview in arrangedSubviews {
-            removeHiddenListener(arrangedSubview)
-            addHiddenListener(arrangedSubview)
+    private func registerHiddenListeners(previousArrangedSubviews: [UIView]) {
+        previousArrangedSubviews.map {[weak self] in
+            self?.removeHiddenListener($0)
+        }
+
+        arrangedSubviews.map {[weak self] in
+            self?.addHiddenListener($0)
         }
     }
     
@@ -149,18 +143,20 @@ public class TZStackView: UIView {
         }
     }
     
-    public func addArrangedSubview(view: UIView) {
-        _arrangedSubviews.append(view)
+    func addArrangedSubview(view: UIView) {
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        addSubview(view)
+        arrangedSubviews.append(view)
     }
     
-    public func removeArrangedSubview(view: UIView) {
-        if let index = find(_arrangedSubviews, view) {
-            _arrangedSubviews.removeAtIndex(index)
+    func removeArrangedSubview(view: UIView) {
+        if let index = find(arrangedSubviews, view) {
+            arrangedSubviews.removeAtIndex(index)
         }
     }
 
-    public func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
-        _arrangedSubviews.insert(view, atIndex: stackIndex)
+    func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
+        arrangedSubviews.insert(view, atIndex: stackIndex)
     }
 
     override public func updateConstraints() {
