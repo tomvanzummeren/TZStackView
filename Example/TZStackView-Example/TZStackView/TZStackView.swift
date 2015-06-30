@@ -127,7 +127,7 @@ public class TZStackView: UIView {
         addHiddenListener(arrangedSubview)
     }
 
-    public func hiddenAnimationStopped() {
+    func hiddenAnimationStopped() {
         var queueEntriesToRemove = [TZAnimationDidStopQueueEntry]()
         for entry in animationDidStopQueueEntries {
             let view = entry.view
@@ -143,19 +143,19 @@ public class TZStackView: UIView {
         }
     }
     
-    func addArrangedSubview(view: UIView) {
+    public func addArrangedSubview(view: UIView) {
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         addSubview(view)
         arrangedSubviews.append(view)
     }
     
-    func removeArrangedSubview(view: UIView) {
+    public func removeArrangedSubview(view: UIView) {
         if let index = find(arrangedSubviews, view) {
             arrangedSubviews.removeAtIndex(index)
         }
     }
 
-    func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
+    public func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
         arrangedSubviews.insert(view, atIndex: stackIndex)
     }
 
