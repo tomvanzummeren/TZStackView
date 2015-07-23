@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     var tzStackView: TZStackView!
     
-    let resetButton = UIButton.buttonWithType(.System) as! UIButton
+    let resetButton = UIButton(type: .System)
     
     let instructionLabel = UILabel()
     
@@ -20,14 +20,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tzStackView = TZStackView(arrangedSubviews: createViews())
-        tzStackView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tzStackView.translatesAutoresizingMaskIntoConstraints = false
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Center
         tzStackView.spacing = 15
         view.addSubview(tzStackView)
         
-        instructionLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
         instructionLabel.textColor = UIColor.whiteColor()
         instructionLabel.font = UIFont.systemFontOfSize(15)
         instructionLabel.text = "Tap any of the boxes to set hidden=true"
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         instructionLabel.setContentCompressionResistancePriority(900, forAxis: .Horizontal)
         view.addSubview(instructionLabel)
         
-        resetButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.setTitle("reset", forState: .Normal)
         resetButton.addTarget(self, action: "reset", forControlEvents: .TouchUpInside)
         resetButton.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
