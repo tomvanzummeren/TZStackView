@@ -13,5 +13,5 @@ public enum TZStackViewAlignment {
     case Top
     case Trailing
     case Bottom
-    case FirstBaseline
+    @available(iOS 8.0, *) case FirstBaseline
 }
