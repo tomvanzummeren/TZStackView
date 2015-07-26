@@ -9,7 +9,7 @@ A wonderful layout component called the [`UIStackView` was introduced with *iOS 
 - ✅ Supports animating the `hidden` property of the *arranged subviews*
 - ❌ Supports *Storyboard*
 
-So this implementation does not support Storyboard. It is meant for iOS developers who, like me, want to use the `UIStackView` in our existing apps and like to layout their components in code as opposed to using *Storyboard*.
+So this implementation does *not* support Storyboard. It is meant for iOS developers who, like me, want to use the `UIStackView` in our existing apps and like to layout their components in code as opposed to using *Storyboard*.
 
 ## Setup
 You basically have two options to include the `TZStackView` in your *Xcode* project:
