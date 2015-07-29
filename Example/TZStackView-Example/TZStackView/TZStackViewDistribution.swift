@@ -6,7 +6,7 @@
 //  Copyright © 2015 Tom van Zummeren. All rights reserved.
 //
 
-public enum TZStackViewDistribution {
+@objc public enum TZStackViewDistribution: Int {
     case Fill
     case FillEqually
     case FillProportionally
