@@ -9,6 +9,8 @@
 import Foundation
 import XCTest
 
+import TZStackView
+
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(

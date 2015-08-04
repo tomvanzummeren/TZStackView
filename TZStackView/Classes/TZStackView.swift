@@ -42,7 +42,7 @@ public class TZStackView: UIView {
     private var stackViewConstraints = [NSLayoutConstraint]()
     private var subviewConstraints = [NSLayoutConstraint]()
 
-    private(set) var arrangedSubviews: [UIView] = [] {
+    public private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
             setNeedsUpdateConstraints()
             registerHiddenListeners(oldValue)

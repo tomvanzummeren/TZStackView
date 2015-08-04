@@ -9,6 +9,8 @@
 import UIKit
 import XCTest
 
+import TZStackView
+
 @available(iOS 9.0, *)
 class TZStackViewTests: TZStackViewTestCase {
     

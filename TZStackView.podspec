@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "TZStackView"
-  s.version     = "1.0.4-swift2"
+  s.version     = "1.0.5"
   s.summary     = "TZStackView is a replica of iOS 9's new UIStackView for use in iOS 7 and iOS 8"
   s.homepage    = "https://github.com/tomvanzummeren/TZStackView.git"
   s.license     = { :type => "MIT" }
@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.ios.deployment_target = "8.0"
-  s.source   = { :git => "https://github.com/tomvanzummeren/TZStackView.git", :tag => "1.0.4-swift2"}
-  s.source_files = "Example/TZStackView-Example/TZStackView/*.swift"
+  s.source   = { :git => "https://github.com/tomvanzummeren/TZStackView.git", :tag => "1.0.5-swift2"}
+  s.source_files = "TZStackView/Classes/*.swift"
 end
