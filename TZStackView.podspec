@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target = "8.0"
   s.source   = { :git => "https://github.com/tomvanzummeren/TZStackView.git", :tag => "1.0.5"}
-  s.source_files = "Example/TZStackView-Example/TZStackView/*.swift"
+  s.source_files = "TZStackView/Classes/*.swift"
 end
