@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0700"
-   version = "1.3">
+   version = "1.8">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -17,27 +17,46 @@
                BlueprintIdentifier = "9ECA237D1B6B59D8003C2AEC"
                BuildableName = "TZStackView.framework"
                BlueprintName = "TZStackView"
-               ReferencedContainer = "container:TZStackView-Example.xcodeproj">
+               ReferencedContainer = "container:TZStackView.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A4AB05571B70BDF4002452BA"
+               BuildableName = "TZStackViewTests.xctest"
+               BlueprintName = "TZStackViewTests"
+               ReferencedContainer = "container:TZStackView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9ECA237D1B6B59D8003C2AEC"
+            BuildableName = "TZStackView.framework"
+            BlueprintName = "TZStackView"
+            ReferencedContainer = "container:TZStackView.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -48,17 +67,17 @@
             BlueprintIdentifier = "9ECA237D1B6B59D8003C2AEC"
             BuildableName = "TZStackView.framework"
             BlueprintName = "TZStackView"
-            ReferencedContainer = "container:TZStackView-Example.xcodeproj">
+            ReferencedContainer = "container:TZStackView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
@@ -66,7 +85,7 @@
             BlueprintIdentifier = "9ECA237D1B6B59D8003C2AEC"
             BuildableName = "TZStackView.framework"
             BlueprintName = "TZStackView"
-            ReferencedContainer = "container:TZStackView-Example.xcodeproj">
+            ReferencedContainer = "container:TZStackView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
