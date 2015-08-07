@@ -92,7 +92,23 @@ class TZStackViewTestCase: XCTestCase {
             assertSameConstraints(uiConstraints, tzConstraints)
         }
     }
-    
+	
+	func verifyArrangedSubviewConsistency() {
+		XCTAssertEqual(uiStackView.arrangedSubviews.count, tzStackView.arrangedSubviews.count, "Number of arranged subviews")
+	
+		let uiArrangedSubviews = uiStackView.arrangedSubviews as! [TestView]
+		let tzArrangedSubviews = tzStackView.arrangedSubviews as! [TestView]
+		
+		assertSameOrder(uiArrangedSubviews, tzArrangedSubviews)
+		
+		for tzTestView in tzArrangedSubviews {
+			let result = tzStackView.subviews.contains(tzTestView)
+			
+			XCTAssertTrue(result, "\(tzTestView.description) is in arranged subviews but is not actually a subview")
+		}
+	}
+	
+	
     private func nonContentSizeLayoutConstraints(view: UIView) -> [NSLayoutConstraint] {
         return view.constraints.filter({ "\($0.dynamicType)" != "NSContentSizeLayoutConstraint" })
     }
@@ -112,7 +128,17 @@ class TZStackViewTestCase: XCTestCase {
             XCTAssertTrue(result, "Constraints at index \(index) do not match\n== EXPECTED ==\n\(uiConstraint.readableString())\n\n== ACTUAL ==\n\(tzConstraint.readableString())\n\n")
         }
     }
-    
+	
+	func assertSameOrder(uiTestViews: [TestView], _ tzTestViews: [TestView]) {
+		for (index, uiTestView) in uiTestViews.enumerate() {
+			let tzTestView = tzTestViews[index]
+			
+			let result = uiTestView.index == tzTestView.index
+			
+			XCTAssertTrue(result, "Views at index \(index) do not match\n== EXPECTED ==\n\(uiTestView.description)\n\n== ACTUAL ==\n\(tzTestView.description)\n\n")
+		}
+	}
+	
     private func hasSameConstraintMetaData(layoutConstraint1: NSLayoutConstraint, _ layoutConstraint2: NSLayoutConstraint) -> Bool {
         if layoutConstraint1.constant != layoutConstraint2.constant {
             return false
