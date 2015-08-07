@@ -95,7 +95,8 @@ class TZStackView: UIView {
         }
     }
 
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+
+	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         guard keyPath != nil else {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
             return
@@ -152,6 +153,8 @@ class TZStackView: UIView {
     }
     
     func addArrangedSubview(view: UIView) {
+		view.translatesAutoresizingMaskIntoConstraints = false
+		addSubview(view)
         _arrangedSubviews.append(view)
     }
     
@@ -162,8 +165,14 @@ class TZStackView: UIView {
     }
 
     func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
+		view.translatesAutoresizingMaskIntoConstraints = false
+		addSubview(view)
         _arrangedSubviews.insert(view, atIndex: stackIndex)
     }
+	
+	override func willRemoveSubview(subview: UIView) {
+		removeArrangedSubview(subview)
+	}
 
     override func updateConstraints() {
         removeConstraints(stackViewConstraints)
