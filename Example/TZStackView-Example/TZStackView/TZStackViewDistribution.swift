@@ -6,6 +6,8 @@
 //  Copyright © 2015 Tom van Zummeren. All rights reserved.
 //
 
+import Foundation
+
 @objc public enum TZStackViewDistribution: Int {
     case Fill
     case FillEqually
