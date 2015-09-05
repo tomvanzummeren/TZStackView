@@ -19,8 +19,6 @@ func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) ->
 
 public class TZStackView: UIView {
 
-    private var kvoContext = UInt8()
-
     public var distribution: TZStackViewDistribution = .Fill {
         didSet {
             setNeedsUpdateConstraints()
@@ -37,18 +35,20 @@ public class TZStackView: UIView {
 
     public var spacing: CGFloat = 0
     
-    var layoutMarginsRelativeArrangement = false
+    public var layoutMarginsRelativeArrangement = false
 
-    private var stackViewConstraints = [NSLayoutConstraint]()
-    private var subviewConstraints = [NSLayoutConstraint]()
-
-    private(set) var arrangedSubviews: [UIView] = [] {
+    public private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
             setNeedsUpdateConstraints()
             registerHiddenListeners(oldValue)
         }
     }
-    
+
+    private var kvoContext = UInt8()
+
+    private var stackViewConstraints = [NSLayoutConstraint]()
+    private var subviewConstraints = [NSLayoutConstraint]()
+
     private var spacerViews = [UIView]()
     
     private var animationDidStopQueueEntries = [TZAnimationDidStopQueueEntry]()
@@ -102,7 +102,6 @@ public class TZStackView: UIView {
             if hidden == previousValue {
                 return
             }
-
             if hidden {
                 animatingToHiddenViews.append(view)
             }
@@ -161,7 +160,13 @@ public class TZStackView: UIView {
     }
 
     public func insertArrangedSubview(view: UIView, atIndex stackIndex: Int) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
         arrangedSubviews.insert(view, atIndex: stackIndex)
+    }
+
+    override public func willRemoveSubview(subview: UIView) {
+        removeArrangedSubview(subview)
     }
 
     override public func updateConstraints() {

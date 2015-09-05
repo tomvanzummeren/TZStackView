@@ -1010,5 +1010,46 @@ class TZStackViewTests: TZStackViewTestCase {
         
         verifyConstraints()
     }
-    
+
+    // MARK: - Maintaining Consistency Between the Arranged Views and Subviews
+    // https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/#//apple_ref/doc/uid/TP40015256-CH1-SW29
+    func testConsistencyWhenAddingArrangedSubview() {
+        let uiTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
+        uiStackView.addArrangedSubview(uiTestView)
+
+        let tzTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
+        tzStackView.addArrangedSubview(tzTestView)
+
+        verifyArrangedSubviewConsistency()
+    }
+
+    func testConsistencyWhenInsertingArrangedSubview() {
+        let uiTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
+        uiStackView.insertArrangedSubview(uiTestView, atIndex: 0)
+
+        let tzTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
+        tzStackView.insertArrangedSubview(tzTestView, atIndex: 0)
+
+        verifyArrangedSubviewConsistency()
+    }
+
+    func testConsistencyWhenRemovingArrangedSubview() {
+        let uiTestView = uiStackView.arrangedSubviews.last
+        uiStackView.removeArrangedSubview(uiTestView!)
+
+        let tzTestView = tzStackView.arrangedSubviews.last
+        tzStackView.removeArrangedSubview(tzTestView!)
+
+        verifyArrangedSubviewConsistency()
+    }
+
+    func testConsistencyWhenRemovingSubview() {
+        let uiTestView = uiStackView.arrangedSubviews.last
+        uiTestView!.removeFromSuperview()
+
+        let tzTestView = tzStackView.arrangedSubviews.last
+        tzTestView!.removeFromSuperview()
+
+        verifyArrangedSubviewConsistency()
+    }
 }
