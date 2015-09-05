@@ -9,7 +9,6 @@
 import UIKit
 import XCTest
 
-@available(iOS 9.0, *)
 class TZStackViewTests: TZStackViewTestCase {
     
     override func createTestViews() -> [UIView] {

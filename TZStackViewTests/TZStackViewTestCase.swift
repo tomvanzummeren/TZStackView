@@ -17,7 +17,6 @@ func delay(delay:Double, closure:()->()) {
         ), dispatch_get_main_queue(), closure)
 }
 
-@available(iOS 9.0, *)
 class TZStackViewTestCase: XCTestCase {
     
     var uiStackView: UIStackView!
