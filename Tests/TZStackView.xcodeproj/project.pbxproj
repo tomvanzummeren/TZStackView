@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F50E0A0BBF86FBF2E864CB5 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */; };
+		5F50E0EC175349D076FCB453 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */; };
+		5F50E33B9458A1BBD396765C /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E127119A3416D558C43D /* TZStackView.swift */; };
+		5F50E5FFF3DFA23C29B1B981 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */; };
 		5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */; };
 		5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */; };
 		5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50ECF2FC09D64EB02F1309 /* ViewController.swift */; };
+		5F50E87325CEB74F7E0A79B3 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */; };
 		5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */; };
 		5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
-		5F50ED38F3688AF700798A96 /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E601B292CC10024E8AD /* TZStackView.swift */; };
+		5F50EC424A0E4DED11C2A95D /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */; };
+		5F50ECCF3037FC4A8921B9A0 /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E127119A3416D558C43D /* TZStackView.swift */; };
+		5F50EDF4EC0ADC4449848FF8 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */; };
+		5F50EED9CC4D307B5472F283 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */; };
 		5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */; };
 		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
 		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
 		DB614E5E1B292B630024E8AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB614E5D1B292B630024E8AD /* LaunchScreen.xib */; };
-		DB614E611B292CC10024E8AD /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E601B292CC10024E8AD /* TZStackView.swift */; };
-		DB614E631B292FDA0024E8AD /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */; };
-		DB72EB4C1B2F252200A06CE5 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */; };
-		DB72EB4D1B2F25A200A06CE5 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */; };
-		DB72EB4F1B2F7A8900A06CE5 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */; };
-		DB72EB501B2F7B0100A06CE5 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F50E127119A3416D558C43D /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
 		5F50E1340FBDFB7D123C9204 /* TZStackView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZStackView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplicitIntrinsicContentSizeView.swift; sourceTree = "<group>"; };
 		5F50E9955790F6814D494857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
+		5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
+		5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSpacerView.swift; sourceTree = "<group>"; };
 		5F50ECE89FF2DA8F6B16DB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		5F50ECF2FC09D64EB02F1309 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -51,10 +55,6 @@
 		DB5B70841B2A1963006043BD /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewTestCase.swift; sourceTree = "<group>"; };
 		DB614E5D1B292B630024E8AD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		DB614E601B292CC10024E8AD /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
-		DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
-		DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSpacerView.swift; sourceTree = "<group>"; };
-		DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +81,17 @@
 				5F50E9955790F6814D494857 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F50E56BC08D6726C45384AA /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				5F50E127119A3416D558C43D /* TZStackView.swift */,
+				5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */,
+				5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */,
+				5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */,
+			);
+			path = Framework;
 			sourceTree = "<group>";
 		};
 		5F50E6B23A7FD45BDBD44C86 = {
@@ -115,7 +126,6 @@
 		5F50EC0CBAE86A71ABF0B3BA /* TZStackView */ = {
 			isa = PBXGroup;
 			children = (
-				DB614E5F1B292C9E0024E8AD /* Framework */,
 				DB614E5D1B292B630024E8AD /* LaunchScreen.xib */,
 				5F50ECF4A13687970498D9A7 /* Supporting Files */,
 				5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */,
@@ -123,6 +133,7 @@
 				5F50ECF2FC09D64EB02F1309 /* ViewController.swift */,
 				5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */,
 				DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */,
+				5F50E56BC08D6726C45384AA /* Framework */,
 			);
 			path = TZStackView;
 			sourceTree = "<group>";
@@ -133,17 +144,6 @@
 				5F50ECE89FF2DA8F6B16DB3E /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DB614E5F1B292C9E0024E8AD /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				DB614E601B292CC10024E8AD /* TZStackView.swift */,
-				DB614E621B292FDA0024E8AD /* TZStackViewDistribution.swift */,
-				DB72EB4B1B2F252200A06CE5 /* TZSpacerView.swift */,
-				DB72EB4E1B2F7A8900A06CE5 /* TZStackViewAlignment.swift */,
-			);
-			name = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,12 +238,12 @@
 			files = (
 				5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */,
 				DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */,
-				DB72EB501B2F7B0100A06CE5 /* TZStackViewAlignment.swift in Sources */,
 				DB5B70851B2A1963006043BD /* TestView.swift in Sources */,
-				5F50E0A0BBF86FBF2E864CB5 /* TZStackViewDistribution.swift in Sources */,
-				5F50ED38F3688AF700798A96 /* TZStackView.swift in Sources */,
-				DB72EB4D1B2F25A200A06CE5 /* TZSpacerView.swift in Sources */,
 				5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */,
+				5F50ECCF3037FC4A8921B9A0 /* TZStackView.swift in Sources */,
+				5F50EED9CC4D307B5472F283 /* TZSpacerView.swift in Sources */,
+				5F50E5FFF3DFA23C29B1B981 /* TZStackViewDistribution.swift in Sources */,
+				5F50E0EC175349D076FCB453 /* TZStackViewAlignment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,11 +254,11 @@
 				5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */,
 				DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */,
 				5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */,
-				DB72EB4F1B2F7A8900A06CE5 /* TZStackViewAlignment.swift in Sources */,
-				DB614E631B292FDA0024E8AD /* TZStackViewDistribution.swift in Sources */,
 				5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */,
-				DB72EB4C1B2F252200A06CE5 /* TZSpacerView.swift in Sources */,
-				DB614E611B292CC10024E8AD /* TZStackView.swift in Sources */,
+				5F50E33B9458A1BBD396765C /* TZStackView.swift in Sources */,
+				5F50E87325CEB74F7E0A79B3 /* TZSpacerView.swift in Sources */,
+				5F50EDF4EC0ADC4449848FF8 /* TZStackViewDistribution.swift in Sources */,
+				5F50EC424A0E4DED11C2A95D /* TZStackViewAlignment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
