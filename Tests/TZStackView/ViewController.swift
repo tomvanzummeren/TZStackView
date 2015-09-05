@@ -1,120 +1,178 @@
 //
 //  ViewController.swift
-//  TZStackView
+//  TZStackView-Example
 //
-//  Created by Tom van Zummeren on 10/06/15.
+//  Created by Tom van Zummeren on 20/06/15.
 //  Copyright (c) 2015 Tom van Zummeren. All rights reserved.
 //
 
 import UIKit
 
-@available(iOS 9.0, *)
 class ViewController: UIViewController {
-    
-    var stackView: UIStackView!
-
+    //MARK: - Properties
+    //--------------------------------------------------------------------------
     var tzStackView: TZStackView!
-    
-    let resetButton = UIButton(type: .System)
 
-    let debugButton = UIButton(type: .System)
-    
+    let resetButton = UIButton(type: .System)
+    let instructionLabel = UILabel()
+
+    var axisSegmentedControl: UISegmentedControl!
+    var alignmentSegmentedControl: UISegmentedControl!
+    var distributionSegmentedControl: UISegmentedControl!
+
+    //MARK: - Lifecyle
+    //--------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Configure original UIStackView
-        stackView = UIStackView(arrangedSubviews: createViews())
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .Horizontal
-        stackView.distribution = .FillEqually
-        stackView.alignment = .Center
-        stackView.baselineRelativeArrangement = true
-        stackView.spacing = 15
-        stackView.layoutMarginsRelativeArrangement = true
-        view.addSubview(stackView)
-        
-        // Configure backwards compatible TZStackView the same way as UIStackView above
+        edgesForExtendedLayout = .None;
+
+        view.backgroundColor = UIColor.blackColor()
+        title = "TZStackView"
+
         tzStackView = TZStackView(arrangedSubviews: createViews())
         tzStackView.translatesAutoresizingMaskIntoConstraints = false
-        tzStackView.axis = .Horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Center
+        tzStackView.axis = .Vertical
+        tzStackView.distribution = .Fill
+        tzStackView.alignment = .Fill
         tzStackView.spacing = 15
-        tzStackView.layoutMarginsRelativeArrangement = true
         view.addSubview(tzStackView)
-        
+
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionLabel.font = UIFont.systemFontOfSize(15)
+        instructionLabel.text = "Tap any of the boxes to set hidden=true"
+        instructionLabel.textColor = UIColor.whiteColor()
+        instructionLabel.numberOfLines = 0
+        instructionLabel.setContentCompressionResistancePriority(900, forAxis: .Horizontal)
+        view.addSubview(instructionLabel)
+
         resetButton.translatesAutoresizingMaskIntoConstraints = false
-        resetButton.setTitle("reset", forState: .Normal)
+        resetButton.setTitle("Reset", forState: .Normal)
         resetButton.addTarget(self, action: "reset", forControlEvents: .TouchUpInside)
+        resetButton.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
+        resetButton.setContentHuggingPriority(1000, forAxis: .Horizontal)
         view.addSubview(resetButton)
 
-        debugButton.translatesAutoresizingMaskIntoConstraints = false
-        debugButton.setTitle("debug", forState: .Normal)
-        debugButton.addTarget(self, action: "debugPrint", forControlEvents: .TouchUpInside)
-        view.addSubview(debugButton)
+        axisSegmentedControl = UISegmentedControl(items: ["Vertical", "Horizontal"])
+        axisSegmentedControl.selectedSegmentIndex = 0
+        axisSegmentedControl.addTarget(self, action: "axisChanged:", forControlEvents: .ValueChanged)
+        axisSegmentedControl.setContentCompressionResistancePriority(900, forAxis: .Horizontal)
+        axisSegmentedControl.tintColor = UIColor.lightGrayColor()
 
-        let views:[String: AnyObject] = ["stackView": stackView, "tzStackView": tzStackView, "resetButton": resetButton, "debugButton": debugButton]
-        
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[debugButton]-[resetButton]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[resetButton]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[debugButton]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        alignmentSegmentedControl = UISegmentedControl(items: ["Fill", "Center", "Leading", "Top", "Trailing", "Bottom", "FirstBaseline"])
+        alignmentSegmentedControl.selectedSegmentIndex = 0
+        alignmentSegmentedControl.addTarget(self, action: "alignmentChanged:", forControlEvents: .ValueChanged)
+        alignmentSegmentedControl.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
+        alignmentSegmentedControl.tintColor = UIColor.lightGrayColor()
 
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[stackView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tzStackView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[tzStackView(==stackView)]-1-[stackView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        distributionSegmentedControl = UISegmentedControl(items: ["Fill", "FillEqually", "FillProportionally", "EqualSpacing", "EqualCentering"])
+        distributionSegmentedControl.selectedSegmentIndex = 0
+        distributionSegmentedControl.addTarget(self, action: "distributionChanged:", forControlEvents: .ValueChanged)
+        distributionSegmentedControl.tintColor = UIColor.lightGrayColor()
+
+        let controlsLayoutContainer = TZStackView(arrangedSubviews: [axisSegmentedControl, alignmentSegmentedControl, distributionSegmentedControl])
+        controlsLayoutContainer.axis = .Vertical
+        controlsLayoutContainer.translatesAutoresizingMaskIntoConstraints = false
+        controlsLayoutContainer.spacing = 5
+        view.addSubview(controlsLayoutContainer)
+
+        let views: [String:AnyObject] = [
+                "instructionLabel": instructionLabel,
+                "resetButton": resetButton,
+                "tzStackView": tzStackView,
+                "controlsLayoutContainer": controlsLayoutContainer
+        ]
+
+        let metrics: [String:AnyObject] = [
+                "gap": 10,
+                "topspacing": 25
+        ]
+
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-gap-[instructionLabel]-[resetButton]-gap-|",
+                options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tzStackView]|",
+                options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[controlsLayoutContainer]|",
+                options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-topspacing-[instructionLabel]-gap-[controlsLayoutContainer]-gap-[tzStackView]-(>=0)-|",
+                options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-topspacing-[resetButton]-gap-[controlsLayoutContainer]",
+                options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
     }
-    
-    func reset() {
-        UIView.animateWithDuration(0.5) {
-            for view in self.stackView.arrangedSubviews {
-                view.hidden = false
-            }
-            for view in self.tzStackView.arrangedSubviews {
-                view.hidden = false
-            }
-        }
-    }
-    
+
     private func createViews() -> [UIView] {
-        let redView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Red", baselinePercentage: 0, baselineHeightPercentage: 0.2)
-        let greenView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Green", baselinePercentage: 0.4, baselineHeightPercentage: 0.3)
-        let blueView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Blue", baselinePercentage: 0.2, baselineHeightPercentage: 0.4)
-        let purpleView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Purple", baselinePercentage: 0.6, baselineHeightPercentage: 0.1)
+        let redView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 100, height: 100), name: "Red")
+        let greenView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Green")
+        let blueView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 60, height: 60), name: "Blue")
+        let purpleView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Purple")
+        let yellowView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 100, height: 100), name: "Yellow")
 
         redView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.75)
         greenView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.75)
         blueView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.75)
         purpleView.backgroundColor = UIColor.purpleColor().colorWithAlphaComponent(0.75)
-        return [redView, greenView, blueView, purpleView]
+        yellowView.backgroundColor = UIColor.yellowColor().colorWithAlphaComponent(0.75)
+        return [redView, greenView, blueView, purpleView, yellowView]
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
 
-        debugPrint()
+    //MARK: - Button Actions
+    //--------------------------------------------------------------------------
+    func reset() {
+        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: {
+            for view in self.tzStackView.arrangedSubviews {
+                view.hidden = false
+            }
+        }, completion: nil)
+
     }
-    
-    func debugPrint() {
-//        print("== UIStackView (\(stackView.constraints.count) constraints) ==")
-//        for constraint in stackView.constraints {
-//            print(constraint.readableString())
-//        }
-//        for subview in stackView.arrangedSubviews {
-//            print("\(subview):")
-//            for constraint in subview.constraints {
-//                print("  \(constraint.readableString())")
-//            }
-//        }
-//        print("")
-//        print("== TZStackView (\(tzStackView.constraints.count) constraints) ==")
-//        for constraint in tzStackView.constraints {
-//            print(constraint.readableString())
-//        }
-//        for subview in tzStackView.arrangedSubviews {
-//            print("\(subview):")
-//            for constraint in subview.constraints {
-//                print("  \(constraint.readableString())")
-//            }
-//        }
+
+    //MARK: - Segmented Control Actions
+    //--------------------------------------------------------------------------
+    func axisChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            tzStackView.axis = .Vertical
+        default:
+            tzStackView.axis = .Horizontal
+        }
+    }
+
+    func alignmentChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            tzStackView.alignment = .Fill
+        case 1:
+            tzStackView.alignment = .Center
+        case 2:
+            tzStackView.alignment = .Leading
+        case 3:
+            tzStackView.alignment = .Top
+        case 4:
+            tzStackView.alignment = .Trailing
+        case 5:
+            tzStackView.alignment = .Bottom
+        default:
+            tzStackView.alignment = .FirstBaseline
+        }
+        tzStackView.setNeedsUpdateConstraints()
+    }
+
+    func distributionChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            tzStackView.distribution = .Fill
+        case 1:
+            tzStackView.distribution = .FillEqually
+        case 2:
+            tzStackView.distribution = .FillProportionally
+        case 3:
+            tzStackView.distribution = .EqualSpacing
+        default:
+            tzStackView.distribution = .EqualCentering
+        }
+    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

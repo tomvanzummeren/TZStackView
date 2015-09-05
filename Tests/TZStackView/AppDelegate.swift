@@ -1,29 +1,30 @@
+
 //
 //  AppDelegate.swift
-//  TZStackView
+//  TZStackView-Example
 //
-//  Created by Tom van Zummeren on 10/06/15.
+//  Created by Tom van Zummeren on 20/06/15.
 //  Copyright (c) 2015 Tom van Zummeren. All rights reserved.
 //
 
-
 import UIKit
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject:AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //Appearance proxy for the UISegmentedControl font
+        UISegmentedControl.appearance().setTitleTextAttributes(
+        [NSFontAttributeName:UIFont(name: "HelveticaNeue-Light", size:10.0)!],
+                forState: UIControlState.Normal)
 
-        if #available(iOS 9.0, *) {
-            window?.rootViewController = ViewController()
-        } else {
-            window?.rootViewController = UIViewController()
-        }
+        //Launch the application
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
         return true
     }
 }
+
