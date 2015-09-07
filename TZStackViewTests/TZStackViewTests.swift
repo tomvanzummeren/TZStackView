@@ -9,6 +9,8 @@
 import UIKit
 import XCTest
 
+import TZStackView
+
 class TZStackViewTests: TZStackViewTestCase {
     
     override func createTestViews() -> [UIView] {

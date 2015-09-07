@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F50E0EC175349D076FCB453 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */; };
-		5F50E33B9458A1BBD396765C /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E127119A3416D558C43D /* TZStackView.swift */; };
-		5F50E5FFF3DFA23C29B1B981 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */; };
 		5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */; };
 		5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */; };
 		5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50ECF2FC09D64EB02F1309 /* ViewController.swift */; };
-		5F50E87325CEB74F7E0A79B3 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */; };
 		5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */; };
 		5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
-		5F50EC424A0E4DED11C2A95D /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */; };
-		5F50ECCF3037FC4A8921B9A0 /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E127119A3416D558C43D /* TZStackView.swift */; };
-		5F50EDF4EC0ADC4449848FF8 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */; };
-		5F50EED9CC4D307B5472F283 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */; };
 		5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */; };
+		A45441C21B9B6D71002452BA /* TZStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = A45441C11B9B6D71002452BA /* TZStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A45441C61B9B6D71002452BA /* TZStackView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; };
+		A45441C71B9B6D71002452BA /* TZStackView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */; settings = {ASSET_TAGS = (); }; };
+		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; settings = {ASSET_TAGS = (); }; };
+		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; settings = {ASSET_TAGS = (); }; };
+		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; settings = {ASSET_TAGS = (); }; };
 		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
 		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
@@ -35,22 +34,46 @@
 			remoteGlobalIDString = 5F50E36345E94CFC65ED7270;
 			remoteInfo = TZStackView;
 		};
+		A45441C41B9B6D71002452BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F50E8956739A06BEE120598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A45441BE1B9B6D71002452BA;
+			remoteInfo = TZStackView;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A45441CB1B9B6D71002452BA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A45441C71B9B6D71002452BA /* TZStackView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		5F50E127119A3416D558C43D /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
-		5F50E1340FBDFB7D123C9204 /* TZStackView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZStackView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F50E1340FBDFB7D123C9204 /* TZStackViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZStackViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplicitIntrinsicContentSizeView.swift; sourceTree = "<group>"; };
 		5F50E9955790F6814D494857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
-		5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
-		5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSpacerView.swift; sourceTree = "<group>"; };
 		5F50ECE89FF2DA8F6B16DB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		5F50ECF2FC09D64EB02F1309 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZStackViewTests.swift; sourceTree = "<group>"; };
 		5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TZStackViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A45441BF1B9B6D71002452BA /* TZStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A45441C11B9B6D71002452BA /* TZStackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZStackView.h; sourceTree = "<group>"; };
+		A45441C31B9B6D71002452BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSpacerView.swift; sourceTree = "<group>"; };
+		A45441CD1B9B6D9C002452BA /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
+		A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
+		A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
 		DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
 		DB5B70841B2A1963006043BD /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewTestCase.swift; sourceTree = "<group>"; };
@@ -69,6 +92,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45441C61B9B6D71002452BA /* TZStackView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A45441BB1B9B6D71002452BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,33 +114,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5F50E56BC08D6726C45384AA /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				5F50E127119A3416D558C43D /* TZStackView.swift */,
-				5F50EC4D0011DE1D902D52EA /* TZSpacerView.swift */,
-				5F50EA387E1158311D792119 /* TZStackViewDistribution.swift */,
-				5F50EC2D1077B000FD1759B1 /* TZStackViewAlignment.swift */,
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
 		5F50E6B23A7FD45BDBD44C86 = {
 			isa = PBXGroup;
 			children = (
-				5F50EB61965EE1FD3F76FB91 /* Products */,
-				5F50EC0CBAE86A71ABF0B3BA /* TZStackView */,
+				A45441C01B9B6D71002452BA /* TZStackView */,
 				5F50E7526ADB7151E0540D2D /* TZStackViewTests */,
+				5F50EC0CBAE86A71ABF0B3BA /* TZStackViewDemo */,
+				5F50EB61965EE1FD3F76FB91 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 		5F50E7526ADB7151E0540D2D /* TZStackViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F50E05A91CC731E5AFD4E94 /* Supporting Files */,
 				5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */,
 				DB5B70841B2A1963006043BD /* TestView.swift */,
 				DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */,
+				5F50E05A91CC731E5AFD4E94 /* Supporting Files */,
 			);
 			path = TZStackViewTests;
 			sourceTree = "<group>";
@@ -117,25 +138,25 @@
 		5F50EB61965EE1FD3F76FB91 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F50E1340FBDFB7D123C9204 /* TZStackView.app */,
+				5F50E1340FBDFB7D123C9204 /* TZStackViewDemo.app */,
 				5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */,
+				A45441BF1B9B6D71002452BA /* TZStackView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5F50EC0CBAE86A71ABF0B3BA /* TZStackView */ = {
+		5F50EC0CBAE86A71ABF0B3BA /* TZStackViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DB614E5D1B292B630024E8AD /* LaunchScreen.xib */,
-				5F50ECF4A13687970498D9A7 /* Supporting Files */,
-				5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */,
 				5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */,
 				5F50ECF2FC09D64EB02F1309 /* ViewController.swift */,
 				5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */,
 				DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */,
-				5F50E56BC08D6726C45384AA /* Framework */,
+				DB614E5D1B292B630024E8AD /* LaunchScreen.xib */,
+				5F50ECF4A13687970498D9A7 /* Supporting Files */,
+				5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */,
 			);
-			path = TZStackView;
+			path = TZStackViewDemo;
 			sourceTree = "<group>";
 		};
 		5F50ECF4A13687970498D9A7 /* Supporting Files */ = {
@@ -146,24 +167,58 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A45441C01B9B6D71002452BA /* TZStackView */ = {
+			isa = PBXGroup;
+			children = (
+				A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */,
+				A45441CD1B9B6D9C002452BA /* TZStackView.swift */,
+				A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */,
+				A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */,
+				A45441D41B9B6E46002452BA /* Supporting Files */,
+			);
+			path = TZStackView;
+			sourceTree = "<group>";
+		};
+		A45441D41B9B6E46002452BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A45441C11B9B6D71002452BA /* TZStackView.h */,
+				A45441C31B9B6D71002452BA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A45441BC1B9B6D71002452BA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45441C21B9B6D71002452BA /* TZStackView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		5F50E36345E94CFC65ED7270 /* TZStackView */ = {
+		5F50E36345E94CFC65ED7270 /* TZStackViewDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackView" */;
+			buildConfigurationList = 5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackViewDemo" */;
 			buildPhases = (
 				5F50EACD0CA47C3C2D5ECE2D /* Sources */,
 				5F50EFCE1AB77614030E1791 /* Frameworks */,
 				5F50EB90676857A21F608692 /* Resources */,
+				A45441CB1B9B6D71002452BA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A45441C51B9B6D71002452BA /* PBXTargetDependency */,
 			);
-			name = TZStackView;
+			name = TZStackViewDemo;
 			productName = TZStackView;
-			productReference = 5F50E1340FBDFB7D123C9204 /* TZStackView.app */;
+			productReference = 5F50E1340FBDFB7D123C9204 /* TZStackViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5F50EF63134E65D95D5312EE /* TZStackViewTests */ = {
@@ -184,6 +239,24 @@
 			productReference = 5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A45441BE1B9B6D71002452BA /* TZStackView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A45441C81B9B6D71002452BA /* Build configuration list for PBXNativeTarget "TZStackView" */;
+			buildPhases = (
+				A45441BA1B9B6D71002452BA /* Sources */,
+				A45441BB1B9B6D71002452BA /* Frameworks */,
+				A45441BC1B9B6D71002452BA /* Headers */,
+				A45441BD1B9B6D71002452BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TZStackView;
+			productName = TZStackView;
+			productReference = A45441BF1B9B6D71002452BA /* TZStackView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,6 +266,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Tom van Zummeren";
+				TargetAttributes = {
+					A45441BE1B9B6D71002452BA = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
 			};
 			buildConfigurationList = 5F50EBF385F683E8C65E5F50 /* Build configuration list for PBXProject "TZStackView" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -206,7 +284,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5F50E36345E94CFC65ED7270 /* TZStackView */,
+				A45441BE1B9B6D71002452BA /* TZStackView */,
+				5F50E36345E94CFC65ED7270 /* TZStackViewDemo */,
 				5F50EF63134E65D95D5312EE /* TZStackViewTests */,
 			);
 		};
@@ -229,6 +308,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A45441BD1B9B6D71002452BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -240,10 +326,6 @@
 				DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */,
 				DB5B70851B2A1963006043BD /* TestView.swift in Sources */,
 				5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */,
-				5F50ECCF3037FC4A8921B9A0 /* TZStackView.swift in Sources */,
-				5F50EED9CC4D307B5472F283 /* TZSpacerView.swift in Sources */,
-				5F50E5FFF3DFA23C29B1B981 /* TZStackViewDistribution.swift in Sources */,
-				5F50E0EC175349D076FCB453 /* TZStackViewAlignment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,10 +337,17 @@
 				DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */,
 				5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */,
 				5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */,
-				5F50E33B9458A1BBD396765C /* TZStackView.swift in Sources */,
-				5F50E87325CEB74F7E0A79B3 /* TZSpacerView.swift in Sources */,
-				5F50EDF4EC0ADC4449848FF8 /* TZStackViewDistribution.swift in Sources */,
-				5F50EC424A0E4DED11C2A95D /* TZStackViewAlignment.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A45441BA1B9B6D71002452BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */,
+				A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */,
+				A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */,
+				A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +356,13 @@
 /* Begin PBXTargetDependency section */
 		5F50E9A4787A8017DFBA09FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5F50E36345E94CFC65ED7270 /* TZStackView */;
+			target = 5F50E36345E94CFC65ED7270 /* TZStackViewDemo */;
 			targetProxy = 5F50E2D085856B752DDB3B93 /* PBXContainerItemProxy */;
+		};
+		A45441C51B9B6D71002452BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A45441BE1B9B6D71002452BA /* TZStackView */;
+			targetProxy = A45441C41B9B6D71002452BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -359,7 +453,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = TZStackView/Info.plist;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = TZStackViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.tomvanzummeren.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,7 +464,7 @@
 		5F50E86DCFE460998B6EFE66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TZStackView.app/TZStackView";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TZStackViewDemo.app/TZStackViewDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -385,7 +480,7 @@
 		5F50E984DD96284DF06BEF30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TZStackView.app/TZStackView";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TZStackViewDemo.app/TZStackViewDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -402,10 +497,57 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = TZStackView/Info.plist;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = TZStackViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.tomvanzummeren.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A45441C91B9B6D71002452BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TZStackView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.tomvanzummeren.TZStackView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A45441CA1B9B6D71002452BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TZStackView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.tomvanzummeren.TZStackView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -421,7 +563,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackView" */ = {
+		5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F50E2E44E5144E17840C724 /* Debug */,
@@ -435,6 +577,15 @@
 			buildConfigurations = (
 				5F50E2A2200A464705C478D7 /* Debug */,
 				5F50E2B435DD50B517F66006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A45441C81B9B6D71002452BA /* Build configuration list for PBXNativeTarget "TZStackView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A45441C91B9B6D71002452BA /* Debug */,
+				A45441CA1B9B6D71002452BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
