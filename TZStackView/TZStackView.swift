@@ -107,6 +107,8 @@ public class TZStackView: UIView {
             }
             // Perform the animation
             setNeedsUpdateConstraints()
+            updateConstraintsIfNeeded()
+            
             setNeedsLayout()
             layoutIfNeeded()
             
