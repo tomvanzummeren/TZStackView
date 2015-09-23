@@ -330,7 +330,7 @@ public class TZStackView: UIView {
     }
 
     required public init(coder aDecoder: NSCoder) {
-        super.init(frame: CGRectZero)
+        super.init(coder: aDecoder)!
     }
     
     private func addSpacerView() -> TZSpacerView {
