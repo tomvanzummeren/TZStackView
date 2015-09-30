@@ -27,7 +27,9 @@ class ExplicitIntrinsicContentSizeView: UIView {
     }
 
     required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.name = ""
+        self.contentSize = CGSizeMake(100, 100)
+        super.init(coder: aDecoder)!
     }
 
     override func intrinsicContentSize() -> CGSize {

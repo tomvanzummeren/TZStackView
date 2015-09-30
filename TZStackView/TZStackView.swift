@@ -17,6 +17,7 @@ func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) ->
     return lhs.view === rhs.view
 }
 
+@IBDesignable
 public class TZStackView: UIView {
 
     public var distribution: TZStackViewDistribution = .Fill {
@@ -37,7 +38,7 @@ public class TZStackView: UIView {
     
     public var layoutMarginsRelativeArrangement = false
 
-    public private(set) var arrangedSubviews: [UIView] = [] {
+    public var arrangedSubviews: [UIView] = [] {
         didSet {
             setNeedsUpdateConstraints()
             registerHiddenListeners(oldValue)
@@ -57,6 +58,10 @@ public class TZStackView: UIView {
     
     private var animatingToHiddenViews = [UIView]()
 
+    public override init(frame: CGRect) {
+        super.init(frame: CGRectZero)
+    }
+    
     public init(arrangedSubviews: [UIView] = []) {
         super.init(frame: CGRectZero)
         for arrangedSubview in arrangedSubviews {
@@ -329,6 +334,10 @@ public class TZStackView: UIView {
         super.updateConstraints()
     }
 
+    override public func prepareForInterfaceBuilder() {
+        
+    }
+    
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
