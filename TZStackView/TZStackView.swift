@@ -36,6 +36,8 @@ public class TZStackView: UIView {
     public var spacing: CGFloat = 0
     
     public var layoutMarginsRelativeArrangement = false
+  
+    public var baselineRelativeArrangement = false  // Currently ignored
 
     public private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
@@ -71,15 +73,35 @@ public class TZStackView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
       
-        ; // Ensure closure is not applied to previous line
+      
+        self.axis = UILayoutConstraintAxis(rawValue: aDecoder.decodeIntegerForKey("UIStackViewAxis"))!
+        self.distribution = TZStackViewDistribution(rawValue: aDecoder.decodeIntegerForKey("UIStackViewDistribution"))!
+        self.alignment = TZStackViewAlignment(rawValue: aDecoder.decodeIntegerForKey("UIStackViewAlignment"))!
+        self.spacing = CGFloat(aDecoder.decodeDoubleForKey("UIStackViewSpacing"))
+        self.layoutMarginsRelativeArrangement = aDecoder.decodeBoolForKey("UIStackViewLayoutMarginsRelative")
+        self.baselineRelativeArrangement = aDecoder.decodeBoolForKey("UIStackViewBaselineRelative")
+   
+        ; // Ensure closure is separated properly
       
         // Closure to invoke didSet()
-        { self.arrangedSubviews = self.subviews }()
+        { self.arrangedSubviews = aDecoder.decodeObjectForKey("UIStackViewArrangedSubviews") as! [UIView] }()
     }
   
     deinit {
         // This removes `hidden` value KVO observers using didSet()
         { self.arrangedSubviews = [] }()
+    }
+  
+    public override func encodeWithCoder(aCoder: NSCoder) {
+        super.encodeWithCoder(aCoder)
+      
+        aCoder.encodeInteger(axis.rawValue, forKey: "UIStackViewAxis")
+        aCoder.encodeInteger(distribution.rawValue, forKey: "UIStackViewDistribution")
+        aCoder.encodeInteger(alignment.rawValue, forKey: "UIStackViewAlignment")
+        aCoder.encodeDouble(Double(spacing), forKey: "UIStackViewSpacing")
+        aCoder.encodeBool(layoutMarginsRelativeArrangement, forKey: "UIStackViewLayoutMarginsRelative")
+        aCoder.encodeBool(baselineRelativeArrangement, forKey: "UIStackViewBaselineRelative")
+        aCoder.encodeObject(arrangedSubviews, forKey: "UIStackViewArrangedSubviews")
     }
     
     private func registerHiddenListeners(previousArrangedSubviews: [UIView]) {
