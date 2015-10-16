@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+
+@interface TZModuleLocator : NSObject
+@end
+
+@implementation TZModuleLocator
+@end
+
+
 // ----------------------------------------------------
 // Runtime injection start.
 // Assemble codes below are based on:
@@ -63,7 +71,16 @@ __attribute__((constructor)) static void TZStackViewPatchEntry(void) {
 #endif
       
       if (stackViewClassLocation && !*stackViewClassLocation) {
-        Class superclass = NSClassFromString(@"TZStackView") ? NSClassFromString(@"TZStackView") : NSClassFromString(@"TZStackView.TZStackView");
+        // Locate Swift module name
+        NSBundle *sourceBundle = [NSBundle bundleForClass:TZModuleLocator.class];
+        NSString *moduleName = [sourceBundle objectForInfoDictionaryKey:@"CFBundleName"];
+        
+        // Locate TZStackView class
+        NSString *stackViewClassName = [moduleName stringByAppendingString:@".TZStackView"];
+        Class superclass = NSClassFromString(stackViewClassName);
+        NSCAssert(superclass != nil, @"Unable to locate TZStackView");
+        
+        // Subclass TZStackView as UIStackView
         Class class = objc_allocateClassPair(superclass, "UIStackView", 0);
         if (class) {
           objc_registerClassPair(class);
