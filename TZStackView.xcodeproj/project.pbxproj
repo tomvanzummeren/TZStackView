@@ -20,6 +20,7 @@
 		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; settings = {ASSET_TAGS = (); }; };
 		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; settings = {ASSET_TAGS = (); }; };
 		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; settings = {ASSET_TAGS = (); }; };
+		AAA6E7D11BD16AEF00C1685B /* TZStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA6E7D01BD16AEF00C1685B /* TZStackView.m */; settings = {ASSET_TAGS = (); }; };
 		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
 		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
@@ -74,6 +75,7 @@
 		A45441CD1B9B6D9C002452BA /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
 		A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
 		A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
+		AAA6E7D01BD16AEF00C1685B /* TZStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZStackView.m; sourceTree = "<group>"; };
 		DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
 		DB5B70841B2A1963006043BD /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewTestCase.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */,
 				A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */,
 				A45441D41B9B6E46002452BA /* Supporting Files */,
+				AAA6E7D01BD16AEF00C1685B /* TZStackView.m */,
 			);
 			path = TZStackView;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA6E7D11BD16AEF00C1685B /* TZStackView.m in Sources */,
 				A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */,
 				A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */,
 				A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */,
