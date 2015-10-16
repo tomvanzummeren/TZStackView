@@ -68,6 +68,15 @@ public class TZStackView: UIView {
         { self.arrangedSubviews = arrangedSubviews }()
     }
     
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+      
+        ; // Ensure closure is not applied to previous line
+      
+        // Closure to invoke didSet()
+        { self.arrangedSubviews = self.subviews }()
+    }
+  
     deinit {
         // This removes `hidden` value KVO observers using didSet()
         { self.arrangedSubviews = [] }()
@@ -329,10 +338,6 @@ public class TZStackView: UIView {
         super.updateConstraints()
     }
 
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-    }
-    
     private func addSpacerView() -> TZSpacerView {
         let spacerView = TZSpacerView()
         spacerView.translatesAutoresizingMaskIntoConstraints = false
