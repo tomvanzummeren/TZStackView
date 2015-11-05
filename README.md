@@ -25,6 +25,15 @@ pod "TZStackView", "1.1.2"
 ```
 Unfortunately, using Cocoapods with a Swift pod requires iOS 8.
 
+### Use [Carthage](https://github.com/Carthage/Carthage)
+
+Example `Cartfile`:
+```
+github "tomvanzummeren/TZStackView" ~> 1.1
+```
+
+Run `carthage` to build the framework and drag the built `TZStackView.framework` into your Xcode project.
+
 ### Drag files directly into your project
 Alternatively (when you do want to support iOS 7) drag in the following classes from the *Example* folder directly into your *Xcode* project
   * `TZStackView`
