@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */; };
 		5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */; };
-		5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50ECF2FC09D64EB02F1309 /* ViewController.swift */; };
 		5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */; };
 		5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */; };
@@ -20,6 +19,10 @@
 		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; settings = {ASSET_TAGS = (); }; };
 		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; settings = {ASSET_TAGS = (); }; };
 		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; settings = {ASSET_TAGS = (); }; };
+		DA006A7C1BBC308F00EEF37A /* ExplicitIntrinsicContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */; settings = {ASSET_TAGS = (); }; };
+		DA55BC161BBC21FD008C57B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55BC141BBC21FD008C57B2 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DA55BC171BBC21FD008C57B2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA55BC151BBC21FD008C57B2 /* ViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		DA55BC191BBC22B6008C57B2 /* TZStackViewIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55BC181BBC22B6008C57B2 /* TZStackViewIB.swift */; settings = {ASSET_TAGS = (); }; };
 		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
 		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
@@ -62,7 +65,6 @@
 		5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplicitIntrinsicContentSizeView.swift; sourceTree = "<group>"; };
 		5F50E9955790F6814D494857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		5F50ECE89FF2DA8F6B16DB3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		5F50ECF2FC09D64EB02F1309 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZStackViewTests.swift; sourceTree = "<group>"; };
 		5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,9 @@
 		A45441CD1B9B6D9C002452BA /* TZStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackView.swift; sourceTree = "<group>"; };
 		A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewAlignment.swift; sourceTree = "<group>"; };
 		A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewDistribution.swift; sourceTree = "<group>"; };
+		DA55BC141BBC21FD008C57B2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DA55BC151BBC21FD008C57B2 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		DA55BC181BBC22B6008C57B2 /* TZStackViewIB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewIB.swift; sourceTree = "<group>"; };
 		DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
 		DB5B70841B2A1963006043BD /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZStackViewTestCase.swift; sourceTree = "<group>"; };
@@ -149,7 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */,
-				5F50ECF2FC09D64EB02F1309 /* ViewController.swift */,
+				DA55BC141BBC21FD008C57B2 /* ViewController.swift */,
+				DA55BC151BBC21FD008C57B2 /* ViewController.xib */,
 				5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */,
 				DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */,
 				DB614E5D1B292B630024E8AD /* LaunchScreen.xib */,
@@ -172,6 +178,7 @@
 			children = (
 				A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */,
 				A45441CD1B9B6D9C002452BA /* TZStackView.swift */,
+				DA55BC181BBC22B6008C57B2 /* TZStackViewIB.swift */,
 				A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */,
 				A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */,
 				A45441D41B9B6E46002452BA /* Supporting Files */,
@@ -297,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB614E5E1B292B630024E8AD /* LaunchScreen.xib in Resources */,
+				DA55BC171BBC21FD008C57B2 /* ViewController.xib in Resources */,
 				5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,7 +343,7 @@
 			files = (
 				5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */,
 				DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */,
-				5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */,
+				DA55BC161BBC21FD008C57B2 /* ViewController.swift in Sources */,
 				5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +352,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA55BC191BBC22B6008C57B2 /* TZStackViewIB.swift in Sources */,
+				DA006A7C1BBC308F00EEF37A /* ExplicitIntrinsicContentSizeView.swift in Sources */,
 				A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */,
 				A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */,
 				A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */,
