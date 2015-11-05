@@ -57,15 +57,10 @@ public class TZStackView: UIView {
     
     private var animatingToHiddenViews = [UIView]()
     
-    private var _backgroundColor: UIColor? = nil
+    // Disable setBackgroundColor to mimic an actual UIStackView which is a non-drawing view.
     override public var backgroundColor: UIColor? {
-        get {
-            return self._backgroundColor
-        }
-        set {
-            // Disable setBackgroundColor to mimic a real UIStackView which is a non-drawing view.
-            self._backgroundColor = nil
-        }
+        get { return nil }
+        set { }
     }
 
     public init(arrangedSubviews: [UIView] = []) {
