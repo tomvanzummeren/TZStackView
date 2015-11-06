@@ -56,9 +56,6 @@ public class TZStackView: UIView {
     private var registeredKvoSubviews = [UIView]()
     
     private var animatingToHiddenViews = [UIView]()
-    
-    // Disable setBackgroundColor to mimic an actual UIStackView which is a non-drawing view.
-    override public var backgroundColor: UIColor? { get { return nil } set { } }
 
     public init(arrangedSubviews: [UIView] = []) {
         super.init(frame: CGRectZero)
@@ -607,5 +604,10 @@ public class TZStackView: UIView {
             return true
         }
         return animatingToHiddenViews.indexOf(view) != nil
+    }
+    
+    // Disables setting the background color to mimic an actual UIStackView which is a non-drawing view.
+    override public class func layerClass() -> AnyClass {
+        return CATransformLayer.self
     }
 }
