@@ -17,6 +17,7 @@ func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) ->
     return lhs.view === rhs.view
 }
 
+@IBDesignable
 public class TZStackView: UIView {
 
     public var distribution: TZStackViewDistribution = .Fill {
@@ -32,10 +33,37 @@ public class TZStackView: UIView {
     }
     
     public var alignment: TZStackViewAlignment = .Fill
-
-    public var spacing: CGFloat = 0
     
-    public var layoutMarginsRelativeArrangement = false
+    @objc @IBInspectable private var axisValue: Int {
+        get {
+            return axis.rawValue
+        }
+        set {
+            axis = UILayoutConstraintAxis(rawValue: newValue) ?? .Horizontal
+        }
+    }
+    
+    @objc @IBInspectable private var alignmentValue: Int {
+        get {
+            return alignment.rawValue
+        }
+        set {
+            alignment = TZStackViewAlignment(rawValue: newValue) ?? .Fill
+        }
+    }
+    
+    @objc @IBInspectable private var distributionValue: Int {
+        get {
+            return distribution.rawValue
+        }
+        set {
+            distribution = TZStackViewDistribution(rawValue: newValue) ?? .Fill
+        }
+    }
+
+    @objc @IBInspectable public var spacing: CGFloat = 0
+    
+    @objc @IBInspectable public var layoutMarginsRelativeArrangement: Bool = false
 
     public private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
@@ -59,6 +87,20 @@ public class TZStackView: UIView {
 
     public init(arrangedSubviews: [UIView] = []) {
         super.init(frame: CGRectZero)
+        commonInit(arrangedSubviews)
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit([])
+    }
+
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        commonInit([])
+    }
+    
+    private func commonInit(arrangedSubviews: [UIView]) {
         for arrangedSubview in arrangedSubviews {
             arrangedSubview.translatesAutoresizingMaskIntoConstraints = false
             addSubview(arrangedSubview)
@@ -72,7 +114,30 @@ public class TZStackView: UIView {
         // This removes `hidden` value KVO observers using didSet()
         { self.arrangedSubviews = [] }()
     }
+
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // a hack, remove Interface Builder generated constraints that are not created by you
+        for aConstraint in constraints where NSStringFromClass(aConstraint.dynamicType) == "NSIBPrototypingLayoutConstraint" {
+            removeConstraint(aConstraint)
+        }
+        
+        for aView in subviews {
+            addArrangedSubview(aView)
+        }
+    }
     
+    override public func prepareForInterfaceBuilder() {
+        if #available(iOS 8.0, *) {
+            super.prepareForInterfaceBuilder()
+                        
+            for aView in subviews {
+                addArrangedSubview(aView)
+            }
+        }
+    }
+
     private func registerHiddenListeners(previousArrangedSubviews: [UIView]) {
         for subview in previousArrangedSubviews {
             self.removeHiddenListener(subview)
@@ -329,10 +394,6 @@ public class TZStackView: UIView {
         super.updateConstraints()
     }
 
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-    }
-    
     private func addSpacerView() -> TZSpacerView {
         let spacerView = TZSpacerView()
         spacerView.translatesAutoresizingMaskIntoConstraints = false
