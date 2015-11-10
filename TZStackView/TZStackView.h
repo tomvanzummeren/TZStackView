@@ -16,4 +16,5 @@ FOUNDATION_EXPORT const unsigned char TZStackViewVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TZStackView/PublicHeader.h>
 
-
+#define TZStackViewAlignmentTop TZStackViewAlignmentLeading
+#define TZStackViewAlignmentBottom TZStackViewAlignmentTrailing
