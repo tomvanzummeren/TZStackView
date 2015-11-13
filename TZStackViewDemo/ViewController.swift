@@ -39,6 +39,14 @@ class ViewController: UIViewController {
         tzStackView.spacing = 15
         view.addSubview(tzStackView)
 
+        let toIBButton = UIButton(type: .System)
+        toIBButton.translatesAutoresizingMaskIntoConstraints = false
+        toIBButton.setTitle("Storyboard Views", forState: .Normal)
+        toIBButton.addTarget(self, action: "toIB", forControlEvents: .TouchUpInside)
+        toIBButton.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
+        toIBButton.setContentHuggingPriority(1000, forAxis: .Vertical)
+        view.addSubview(toIBButton)
+
         instructionLabel.translatesAutoresizingMaskIntoConstraints = false
         instructionLabel.font = UIFont.systemFontOfSize(15)
         instructionLabel.text = "Tap any of the boxes to set hidden=true"
@@ -84,6 +92,7 @@ class ViewController: UIViewController {
         view.addSubview(controlsLayoutContainer)
 
         let views: [String:AnyObject] = [
+                "toIBButton": toIBButton,
                 "instructionLabel": instructionLabel,
                 "resetButton": resetButton,
                 "tzStackView": tzStackView,
@@ -95,6 +104,8 @@ class ViewController: UIViewController {
                 "topspacing": 25
         ]
 
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[toIBButton]-gap-|",
+            options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-gap-[instructionLabel]-[resetButton]-gap-|",
                 options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tzStackView]|",
@@ -102,7 +113,7 @@ class ViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[controlsLayoutContainer]|",
                 options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
 
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-topspacing-[instructionLabel]-gap-[controlsLayoutContainer]-gap-[tzStackView]|",
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-topspacing-[toIBButton]-gap-[instructionLabel]-gap-[controlsLayoutContainer]-gap-[tzStackView]|",
                 options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
         view.addConstraint(NSLayoutConstraint(item: instructionLabel, attribute: .CenterY, relatedBy: .Equal, toItem: resetButton, attribute: .CenterY, multiplier: 1, constant: 0))
     }
@@ -141,6 +152,22 @@ class ViewController: UIViewController {
             }
         }, completion: nil)
 
+    }
+    
+    func toIB() {
+        
+        let storyboard = UIStoryboard(name: "Storyboard", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()!
+        viewController.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .Cancel, target: self, action: "backFromIB")
+        
+        let navController = UINavigationController(rootViewController: viewController)
+        
+        presentViewController(navController, animated: true, completion: nil)
+        
+    }
+    
+    func backFromIB() {
+        dismissViewControllerAnimated(true, completion:nil)
     }
 
     //MARK: - Segmented Control Actions
