@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         instructionLabel.textColor = UIColor.whiteColor()
         instructionLabel.numberOfLines = 0
         instructionLabel.setContentCompressionResistancePriority(900, forAxis: .Horizontal)
+        instructionLabel.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
         instructionLabel.setContentHuggingPriority(1000, forAxis: .Vertical)
         view.addSubview(instructionLabel)
 
@@ -53,31 +54,33 @@ class ViewController: UIViewController {
         resetButton.addTarget(self, action: "reset", forControlEvents: .TouchUpInside)
         resetButton.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
         resetButton.setContentHuggingPriority(1000, forAxis: .Horizontal)
-        resetButton.setContentHuggingPriority(1000, forAxis: .Vertical)
         view.addSubview(resetButton)
 
         axisSegmentedControl = UISegmentedControl(items: ["Vertical", "Horizontal"])
         axisSegmentedControl.selectedSegmentIndex = 0
         axisSegmentedControl.addTarget(self, action: "axisChanged:", forControlEvents: .ValueChanged)
-        axisSegmentedControl.setContentCompressionResistancePriority(900, forAxis: .Horizontal)
+        axisSegmentedControl.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
+        axisSegmentedControl.setContentHuggingPriority(1000, forAxis: .Vertical)
         axisSegmentedControl.tintColor = UIColor.lightGrayColor()
 
         alignmentSegmentedControl = UISegmentedControl(items: ["Fill", "Center", "Leading", "Top", "Trailing", "Bottom", "FirstBaseline"])
         alignmentSegmentedControl.selectedSegmentIndex = 0
         alignmentSegmentedControl.addTarget(self, action: "alignmentChanged:", forControlEvents: .ValueChanged)
-        alignmentSegmentedControl.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
+        alignmentSegmentedControl.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
+        alignmentSegmentedControl.setContentHuggingPriority(1000, forAxis: .Vertical)
         alignmentSegmentedControl.tintColor = UIColor.lightGrayColor()
 
         distributionSegmentedControl = UISegmentedControl(items: ["Fill", "FillEqually", "FillProportionally", "EqualSpacing", "EqualCentering"])
         distributionSegmentedControl.selectedSegmentIndex = 0
         distributionSegmentedControl.addTarget(self, action: "distributionChanged:", forControlEvents: .ValueChanged)
+        distributionSegmentedControl.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
+        distributionSegmentedControl.setContentHuggingPriority(1000, forAxis: .Vertical)
         distributionSegmentedControl.tintColor = UIColor.lightGrayColor()
 
         let controlsLayoutContainer = TZStackView(arrangedSubviews: [axisSegmentedControl, alignmentSegmentedControl, distributionSegmentedControl])
         controlsLayoutContainer.axis = .Vertical
         controlsLayoutContainer.translatesAutoresizingMaskIntoConstraints = false
         controlsLayoutContainer.spacing = 5
-        controlsLayoutContainer.setContentHuggingPriority(1000, forAxis: .Vertical)
         view.addSubview(controlsLayoutContainer)
 
         let views: [String:AnyObject] = [
@@ -101,8 +104,7 @@ class ViewController: UIViewController {
 
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-topspacing-[instructionLabel]-gap-[controlsLayoutContainer]-gap-[tzStackView]|",
                 options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-topspacing-[resetButton]-gap-[controlsLayoutContainer]",
-                options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        view.addConstraint(NSLayoutConstraint(item: instructionLabel, attribute: .CenterY, relatedBy: .Equal, toItem: resetButton, attribute: .CenterY, multiplier: 1, constant: 0))
     }
 
     private func createViews() -> [UIView] {
@@ -111,6 +113,16 @@ class ViewController: UIViewController {
         let blueView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 60, height: 60), name: "Blue")
         let purpleView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 80, height: 80), name: "Purple")
         let yellowView = ExplicitIntrinsicContentSizeView(intrinsicContentSize: CGSize(width: 100, height: 100), name: "Yellow")
+        
+        let views = [redView, greenView, blueView, purpleView, yellowView]
+        
+        for (i, view) in views.enumerate() {
+            let j = UILayoutPriority(i)
+            view.setContentCompressionResistancePriority(751 + j, forAxis: .Horizontal)
+            view.setContentCompressionResistancePriority(751 + j, forAxis: .Vertical)
+            view.setContentHuggingPriority(251 + j, forAxis: .Horizontal)
+            view.setContentHuggingPriority(251 + j, forAxis: .Vertical)
+        }
 
         redView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.75)
         greenView.backgroundColor = UIColor.greenColor().colorWithAlphaComponent(0.75)
