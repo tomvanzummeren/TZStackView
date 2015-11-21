@@ -96,7 +96,7 @@ class TZStackViewTestCase: XCTestCase {
             logAllConstraints()
         }
         // Assert same constraints are created
-        assertSameConstraints(uiStackView.constraints, tzStackView.constraints)
+        assertSameConstraints(nonMarginsLayoutConstraints(uiStackView), nonMarginsLayoutConstraints(tzStackView))
         
         for (index, uiArrangedSubview) in uiStackView.arrangedSubviews.enumerate() {
             let tzArrangedSubview = tzStackView.arrangedSubviews[index]
@@ -111,6 +111,16 @@ class TZStackViewTestCase: XCTestCase {
     
     private func nonContentSizeLayoutConstraints(view: UIView) -> [NSLayoutConstraint] {
         return view.constraints.filter({ "\($0.dynamicType)" != "NSContentSizeLayoutConstraint" })
+    }
+    
+    private func nonMarginsLayoutConstraints(view: UIView) -> [NSLayoutConstraint] {
+        return view.constraints.filter { aConstraint in
+            if let identifier = aConstraint.identifier {
+                return !identifier.hasSuffix("Margin-guide-constraint")
+            } else {
+                return true
+            }
+        }
     }
     
     func assertSameConstraints(uiConstraints: [NSLayoutConstraint], _ tzConstraints: [NSLayoutConstraint]) {

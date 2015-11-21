@@ -33,7 +33,7 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testSameConstraints() {
-        let margins = [false]
+        let margins = [false, true]
         let axes = [
             (UILayoutConstraintAxis.Horizontal, "Horizontal"),
             (.Vertical, "Vertical")
