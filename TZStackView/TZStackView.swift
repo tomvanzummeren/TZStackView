@@ -188,7 +188,6 @@ public class TZStackView: UIView {
                     guideConstraint = constraint(item: arrangedSubview, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 25)
                 }
                 subviewConstraints.append(guideConstraint)
-                arrangedSubview.addConstraint(guideConstraint)
             }
             
             if isHidden(arrangedSubview) {
@@ -200,7 +199,6 @@ public class TZStackView: UIView {
                     hiddenConstraint = constraint(item: arrangedSubview, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, constant: 0)
                 }
                 subviewConstraints.append(hiddenConstraint)
-                arrangedSubview.addConstraint(hiddenConstraint)
             }
         }
         
@@ -323,9 +321,10 @@ public class TZStackView: UIView {
                     stackViewConstraints.append(constraint(item: self, attribute: .TopMargin, toItem: spacerViews[0]))
                 }
             }
-            addConstraints(stackViewConstraints)
         }
-
+        
+        NSLayoutConstraint.activateConstraints(subviewConstraints + stackViewConstraints)
+        
         super.updateConstraints()
     }
 
