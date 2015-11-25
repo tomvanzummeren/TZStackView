@@ -123,6 +123,7 @@
 				5F50EB61965EE1FD3F76FB91 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		5F50E7526ADB7151E0540D2D /* TZStackViewTests */ = {
 			isa = PBXGroup;
