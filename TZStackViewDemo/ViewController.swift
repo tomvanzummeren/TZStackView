@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         axisSegmentedControl.setContentCompressionResistancePriority(900, forAxis: .Horizontal)
         axisSegmentedControl.tintColor = UIColor.lightGrayColor()
 
-        alignmentSegmentedControl = UISegmentedControl(items: ["Fill", "Center", "Leading", "Top", "Trailing", "Bottom", "FirstBaseline"])
+        alignmentSegmentedControl = UISegmentedControl(items: ["Fill", "Center", "Leading", "Top", "Trailing", "Bottom", "FirstBaseline", "LastBaseline"])
         alignmentSegmentedControl.selectedSegmentIndex = 0
         alignmentSegmentedControl.addTarget(self, action: "alignmentChanged:", forControlEvents: .ValueChanged)
         alignmentSegmentedControl.setContentCompressionResistancePriority(1000, forAxis: .Horizontal)
@@ -156,8 +156,10 @@ class ViewController: UIViewController {
             tzStackView.alignment = .Trailing
         case 5:
             tzStackView.alignment = .Bottom
-        default:
+        case 6:
             tzStackView.alignment = .FirstBaseline
+        default:
+            tzStackView.alignment = .LastBaseline
         }
         tzStackView.setNeedsUpdateConstraints()
     }
