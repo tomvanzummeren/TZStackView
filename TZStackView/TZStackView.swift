@@ -556,9 +556,6 @@ public class TZStackView: UIView {
                 switch (alignment, axis) {
                 case (.FirstBaseline, .Horizontal):
                     bottomView = spacerViews[0]
-                case (.FirstBaseline, .Vertical):
-                    topView = spacerViews[0]
-                    bottomView = spacerViews[0]
                 default: break
                 }
             }
