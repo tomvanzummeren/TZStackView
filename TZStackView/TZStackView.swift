@@ -547,6 +547,8 @@ public class TZStackView: UIView {
                 bottomView = spacerViews[0]
             case (.Trailing, _):
                 topView = spacerViews[0]
+            case (.LastBaseline, .Horizontal):
+                bottomView = spacerViews[0]
             default: break
             }
             
