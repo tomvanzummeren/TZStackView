@@ -9,5 +9,5 @@
 import UIKit
 
 public class TZSpacerView: UIView {
-	
+	public var identifier: String = ""
 }
