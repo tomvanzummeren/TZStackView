@@ -159,7 +159,6 @@ class ViewController: UIViewController {
         default:
             tzStackView.alignment = .FirstBaseline
         }
-        tzStackView.setNeedsUpdateConstraints()
     }
 
     func distributionChanged(sender: UISegmentedControl) {
