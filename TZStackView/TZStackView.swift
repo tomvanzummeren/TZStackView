@@ -188,7 +188,6 @@ public class TZStackView: UIView {
                     guideConstraint = constraint(item: arrangedSubview, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 25)
                 }
                 subviewConstraints.append(guideConstraint)
-                arrangedSubview.addConstraint(guideConstraint)
             }
             
             if isHidden(arrangedSubview) {
@@ -200,7 +199,6 @@ public class TZStackView: UIView {
                     hiddenConstraint = constraint(item: arrangedSubview, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, constant: 0)
                 }
                 subviewConstraints.append(hiddenConstraint)
-                arrangedSubview.addConstraint(hiddenConstraint)
             }
         }
         
@@ -222,8 +220,10 @@ public class TZStackView: UIView {
                 stackViewConstraints += createMatchEdgesContraints(arrangedSubviews)
                 stackViewConstraints += createFirstAndLastViewMatchEdgesContraints()
                 
-                if alignment == .FirstBaseline && axis == .Horizontal {
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                if #available(iOS 8, *) {
+                    if alignment == .FirstBaseline && axis == .Horizontal {
+                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    }
                 }
 
                 if distribution == .FillEqually {
@@ -257,8 +257,10 @@ public class TZStackView: UIView {
                 switch axis {
                 case .Horizontal:
                     stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49))
-                    if alignment == .FirstBaseline {
-                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    if #available(iOS 8, *) {
+                        if alignment == .FirstBaseline {
+                            stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                        }
                     }
                 case .Vertical:
                     stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
@@ -283,8 +285,10 @@ public class TZStackView: UIView {
                 switch axis {
                 case .Horizontal:
                     stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49))
-                    if alignment == .FirstBaseline {
-                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    if #available(iOS 8, *) {
+                        if alignment == .FirstBaseline {
+                            stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                        }
                     }
                 case .Vertical:
                     stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
@@ -315,17 +319,25 @@ public class TZStackView: UIView {
                 stackViewConstraints += createSurroundingSpacerViewConstraints(spacerViews[0], views: visibleArrangedSubviews)
             }
 
-            if layoutMarginsRelativeArrangement {
-                if spacerViews.count > 0 {
-                    stackViewConstraints.append(constraint(item: self, attribute: .BottomMargin, toItem: spacerViews[0]))
-                    stackViewConstraints.append(constraint(item: self, attribute: .LeftMargin, toItem: spacerViews[0]))
-                    stackViewConstraints.append(constraint(item: self, attribute: .RightMargin, toItem: spacerViews[0]))
-                    stackViewConstraints.append(constraint(item: self, attribute: .TopMargin, toItem: spacerViews[0]))
+            if #available(iOS 8, *) {
+                if layoutMarginsRelativeArrangement {
+                    if spacerViews.count > 0 {
+                        stackViewConstraints.append(constraint(item: self, attribute: .BottomMargin, toItem: spacerViews[0]))
+                        stackViewConstraints.append(constraint(item: self, attribute: .LeftMargin, toItem: spacerViews[0]))
+                        stackViewConstraints.append(constraint(item: self, attribute: .RightMargin, toItem: spacerViews[0]))
+                        stackViewConstraints.append(constraint(item: self, attribute: .TopMargin, toItem: spacerViews[0]))
+                    }
                 }
             }
-            addConstraints(stackViewConstraints)
         }
-
+        
+        let constraintsToActivate = subviewConstraints + stackViewConstraints
+        if #available(iOS 8.0, *) {
+            NSLayoutConstraint.activateConstraints(constraintsToActivate)
+        } else {
+            addConstraints(constraintsToActivate)
+        }
+        
         super.updateConstraints()
     }
 
@@ -468,37 +480,50 @@ public class TZStackView: UIView {
     private func createMatchEdgesContraints(views: [UIView]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
-        switch axis {
-        case .Horizontal:
-            switch alignment {
-            case .Fill:
-                constraints += equalAttributes(views: views, attribute: .Bottom)
-                constraints += equalAttributes(views: views, attribute: .Top)
-            case .Center:
-                constraints += equalAttributes(views: views, attribute: .CenterY)
-            case .Leading, .Top:
-                constraints += equalAttributes(views: views, attribute: .Top)
-            case .Trailing, .Bottom:
-                constraints += equalAttributes(views: views, attribute: .Bottom)
-            case .FirstBaseline:
-                constraints += equalAttributes(views: views, attribute: .FirstBaseline)
-            }
+        switch (alignment, axis) {
+        case (.Fill, .Horizontal): // Fill alignment
+            constraints += equalAttributes(views: views, attribute: .Bottom)
+            constraints += equalAttributes(views: views, attribute: .Top)
+        case (.Fill, .Vertical):
+            constraints += equalAttributes(views: views, attribute: .Leading)
+            constraints += equalAttributes(views: views, attribute: .Trailing)
             
-        case .Vertical:
-            switch alignment {
-            case .Fill:
-                constraints += equalAttributes(views: views, attribute: .Leading)
-                constraints += equalAttributes(views: views, attribute: .Trailing)
-            case .Center:
-                constraints += equalAttributes(views: views, attribute: .CenterX)
-            case .Leading, .Top:
-                constraints += equalAttributes(views: views, attribute: .Leading)
-            case .Trailing, .Bottom:
-                constraints += equalAttributes(views: views, attribute: .Trailing)
-            case .FirstBaseline:
+        case (.Center, .Horizontal): // Center alignment
+            constraints += equalAttributes(views: views, attribute: .CenterY)
+        case (.Center, .Vertical):
+            constraints += equalAttributes(views: views, attribute: .CenterX)
+            
+        case (.Leading, .Horizontal): // Leading & Top alignment
+            constraints += equalAttributes(views: views, attribute: .Top)
+        case (.Leading, .Vertical):
+            constraints += equalAttributes(views: views, attribute: .Leading)
+            
+        case (.Trailing, .Horizontal): // Trailing and Bottom alignment
+            constraints += equalAttributes(views: views, attribute: .Bottom)
+        case (.Trailing, .Vertical):
+            constraints += equalAttributes(views: views, attribute: .Trailing)
+            
+        case (.LastBaseline, .Horizontal): // Last-Baseline alignment, works only on horizontal axis
+            if #available(iOS 8, *) {
+                constraints += equalAttributes(views: views, attribute: .LastBaseline)
+            } else {
+                constraints += equalAttributes(views: views, attribute: .Baseline)
+            }
+        case (.LastBaseline, .Vertical):
+            constraints += []
+        default: break
+        }
+        
+        if #available(iOS 8, *) { // First-Baseline alignment requires iOS 8+
+            switch (alignment, axis) {
+            case (.FirstBaseline, .Horizontal): // First-Baseline alignment, works only on horizontal axis
+                constraints += equalAttributes(views: views, attribute: .FirstBaseline)
+            case (.FirstBaseline, .Vertical):
                 constraints += []
+            default: break
             }
         }
+        
         return constraints
     }
     
@@ -512,21 +537,26 @@ public class TZStackView: UIView {
 
         var topView = arrangedSubviews.first!
         var bottomView = arrangedSubviews.first!
+        
         if spacerViews.count > 0 {
-            if alignment == .Center {
+            switch (alignment, axis) {
+            case (.Center, _):
                 topView = spacerViews[0]
                 bottomView = spacerViews[0]
-            } else if alignment == .Top || alignment == .Leading {
+            case (.Leading, _):
                 bottomView = spacerViews[0]
-            } else if alignment == .Bottom || alignment == .Trailing {
+            case (.Trailing, _):
                 topView = spacerViews[0]
-            } else if alignment == .FirstBaseline {
-                switch axis {
-                case .Horizontal:
+            case (.LastBaseline, .Horizontal):
+                bottomView = spacerViews[0]
+            default: break
+            }
+            
+            if #available(iOS 8, *) {
+                switch (alignment, axis) {
+                case (.FirstBaseline, .Horizontal):
                     bottomView = spacerViews[0]
-                case .Vertical:
-                    topView = spacerViews[0]
-                    bottomView = spacerViews[0]
+                default: break
                 }
             }
         }

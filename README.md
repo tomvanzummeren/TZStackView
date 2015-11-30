@@ -4,7 +4,7 @@ A wonderful layout component called the [`UIStackView` was introduced with *iOS 
 `UIStackView` requires *iOS 9*, but we're not ready to make our apps require *iOS 9+* just yet. In the meanwhile, we developers are eager to try this component in our apps right now! This is why I created this replica of the `UIStackView`, called the `TZStackView` (TZ = Tom van Zummeren, my initials). I created this component very carefully, tested every single corner case and matched the results against the *real* `UIStackView` with automated `XCTestCases`.
 
 ## Features
-- ✅ Compatible with **iOS 7.x** and **iOS 8.x**
+- ✅ Compatible with **iOS 7.x** or later
 - ✅ Supports the complete API of `UIStackView` including **all** *distribution* and *alignment* options
 - ✅ Supports animating the `hidden` property of the *arranged subviews*
 - ❌ Supports *Storyboard*
