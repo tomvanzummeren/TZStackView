@@ -462,10 +462,10 @@ public class TZStackView: UIView {
             return []
         }
         
-        var topPriority: Float = 1000
+        var topPriority: UILayoutPriority = 1000
         var topRelation: NSLayoutRelation = .LessThanOrEqual
         
-        var bottomPriority: Float = 1000
+        var bottomPriority: UILayoutPriority = 1000
         var bottomRelation: NSLayoutRelation = .GreaterThanOrEqual
         
         if alignment == .Top || alignment == .Leading {
@@ -517,7 +517,7 @@ public class TZStackView: UIView {
         }
         totalSize += (CGFloat(totalCount - 1) * spacing)
         
-        var priority: Float = 1000
+        var priority: UILayoutPriority = 1000
         let countDownPriority = (views.filter({!self.isHidden($0)}).count > 1)
         for arrangedSubview in views {
             if countDownPriority {
@@ -541,7 +541,7 @@ public class TZStackView: UIView {
     }
     
     // Matchs all Width or Height attributes of all given views
-    private func createFillEquallyConstraints(views: [UIView], priority: Float = 1000) -> [NSLayoutConstraint] {
+    private func createFillEquallyConstraints(views: [UIView], priority: UILayoutPriority = 1000) -> [NSLayoutConstraint] {
         switch axis {
         case .Horizontal:
             return equalAttributes(views: views.filter({ !self.isHidden($0) }), attribute: .Width, priority: priority)
@@ -552,7 +552,7 @@ public class TZStackView: UIView {
     }
     
     // Chains together the given views using Leading/Trailing or Top/Bottom
-    private func createFillConstraints(views: [UIView], priority: Float = 1000, relatedBy relation: NSLayoutRelation = .Equal, constant: CGFloat) -> [NSLayoutConstraint] {
+    private func createFillConstraints(views: [UIView], priority: UILayoutPriority = 1000, relatedBy relation: NSLayoutRelation = .Equal, constant: CGFloat) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
@@ -720,7 +720,7 @@ public class TZStackView: UIView {
     }
 
     // Convenience method to help make NSLayoutConstraint in a less verbose way
-    private func constraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation = .Equal, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute? = nil, multiplier: CGFloat = 1, constant c: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
+    private func constraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation = .Equal, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute? = nil, multiplier: CGFloat = 1, constant c: CGFloat = 0, priority: UILayoutPriority = 1000) -> NSLayoutConstraint {
 
         let attribute2 = attr2 != nil ? attr2! : attr1
 
