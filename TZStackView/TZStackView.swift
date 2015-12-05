@@ -302,6 +302,7 @@ public class TZStackView: UIView {
                 case .Vertical:
                     guideConstraint = constraint(item: arrangedSubview, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 25)
                 }
+                guideConstraint.identifier = "TZSV-ambiguity-suppression"
                 subviewConstraints.append(guideConstraint)
                 arrangedSubview.addConstraint(guideConstraint)
             }
@@ -314,6 +315,7 @@ public class TZStackView: UIView {
                 case .Vertical:
                     hiddenConstraint = constraint(item: arrangedSubview, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, constant: 0)
                 }
+                hiddenConstraint.identifier = "TZSV-hiding"
                 subviewConstraints.append(hiddenConstraint)
                 arrangedSubview.addConstraint(hiddenConstraint)
             }
@@ -336,17 +338,17 @@ public class TZStackView: UIView {
             switch distribution {
             case .FillEqually, .Fill, .FillProportionally:
                 if (alignment == .FirstBaseline || alignment == .LastBaseline) && axis == .Horizontal {
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                 }
 
                 if distribution == .FillEqually {
-                    stackViewConstraints += createFillEquallyConstraints(arrangedSubviews)
+                    stackViewConstraints += createFillEquallyConstraints(arrangedSubviews, identifier: "TZSV-fill-equally")
                 }
                 if distribution == .FillProportionally {
                     stackViewConstraints += createFillProportionallyConstraints(arrangedSubviews)
                 }
                 
-                stackViewConstraints += createFillConstraints(arrangedSubviews, constant: spacing)
+                stackViewConstraints += createFillConstraints(arrangedSubviews, constant: spacing, identifier: "TZSV-spacing")
             case .EqualSpacing:
                 var views = [UIView]()
                 var index = 0
@@ -365,17 +367,17 @@ public class TZStackView: UIView {
                 
                 switch axis {
                 case .Horizontal:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                     if alignment == .FirstBaseline || alignment == .LastBaseline {
-                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                     }
                 case .Vertical:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier:"TZSV-canvas-fit"))
                 }
 
-                stackViewConstraints += createFillConstraints(views, constant: 0)
-                stackViewConstraints += createFillEquallyConstraints(distributionSpacers)
-                stackViewConstraints += createFillConstraints(arrangedSubviews, relatedBy: .GreaterThanOrEqual, constant: spacing)
+                stackViewConstraints += createFillConstraints(views, constant: 0, identifier: "TZSV-distributing-edge")
+                stackViewConstraints += createFillEquallyConstraints(distributionSpacers, identifier: "TZSV-fill-equally")
+                stackViewConstraints += createFillConstraints(arrangedSubviews, relatedBy: .GreaterThanOrEqual, constant: spacing, identifier: "TZSV-spacing")
             case .EqualCentering:
                 for (index, _) in visibleArrangedSubviews.enumerate() {
                     if index > 0 {
@@ -385,12 +387,12 @@ public class TZStackView: UIView {
                 
                 switch axis {
                 case .Horizontal:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                     if alignment == .FirstBaseline || alignment == .LastBaseline {
-                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                     }
                 case .Vertical:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
+                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                 }
 
                 var previousArrangedSubview: UIView?
@@ -400,18 +402,18 @@ public class TZStackView: UIView {
                         
                         switch axis {
                         case .Horizontal:
-                            stackViewConstraints.append(constraint(item: previousArrangedSubview, attribute: .CenterX, toItem: spacerView, attribute: .Leading))
-                            stackViewConstraints.append(constraint(item: arrangedSubview, attribute: .CenterX, toItem: spacerView, attribute: .Trailing))
+                            stackViewConstraints.append(constraint(item: previousArrangedSubview, attribute: .CenterX, toItem: spacerView, attribute: .Leading, identifier: "TZSV-distributing-edge"))
+                            stackViewConstraints.append(constraint(item: arrangedSubview, attribute: .CenterX, toItem: spacerView, attribute: .Trailing, identifier: "TZSV-distributing-edge"))
                         case .Vertical:
-                            stackViewConstraints.append(constraint(item: previousArrangedSubview, attribute: .CenterY, toItem: spacerView, attribute: .Top))
-                            stackViewConstraints.append(constraint(item: arrangedSubview, attribute: .CenterY, toItem: spacerView, attribute: .Bottom))
+                            stackViewConstraints.append(constraint(item: previousArrangedSubview, attribute: .CenterY, toItem: spacerView, attribute: .Top, identifier: "TZSV-distributing-edge"))
+                            stackViewConstraints.append(constraint(item: arrangedSubview, attribute: .CenterY, toItem: spacerView, attribute: .Bottom, identifier: "TZSV-distributing-edge"))
                         }
                     }
                     previousArrangedSubview = arrangedSubview
                 }
 
-                stackViewConstraints += createFillEquallyConstraints(distributionSpacers, priority: 150)
-                stackViewConstraints += createFillConstraints(arrangedSubviews, relatedBy: .GreaterThanOrEqual, constant: spacing)
+                stackViewConstraints += createFillEquallyConstraints(distributionSpacers, identifier: "TZSV-fill-equally", priority: 150)
+                stackViewConstraints += createFillConstraints(arrangedSubviews, relatedBy: .GreaterThanOrEqual, constant: spacing, identifier: "TZSV-spacing")
             }
             
             if let spanner = alignmentSpanner {
@@ -482,19 +484,21 @@ public class TZStackView: UIView {
         for view in views {
             switch axis {
             case .Horizontal:
-                constraints.append(constraint(item: spacerView, attribute: .Top, relatedBy: topRelation, toItem: view, priority: topPriority))
-                constraints.append(constraint(item: spacerView, attribute: .Bottom, relatedBy: bottomRelation, toItem: view, priority: bottomPriority))
+                constraints.append(constraint(item: spacerView, attribute: .Top, relatedBy: topRelation, toItem: view, priority: topPriority, identifier: "TZSV-spanning-boundary"))
+                constraints.append(constraint(item: spacerView, attribute: .Bottom, relatedBy: bottomRelation, toItem: view, priority: bottomPriority, identifier: "TZSV-spanning-boundary"))
             case .Vertical:
-                constraints.append(constraint(item: spacerView, attribute: .Leading, relatedBy: topRelation, toItem: view, priority: topPriority))
-                constraints.append(constraint(item: spacerView, attribute: .Trailing, relatedBy: bottomRelation, toItem: view, priority: bottomPriority))
+                constraints.append(constraint(item: spacerView, attribute: .Leading, relatedBy: topRelation, toItem: view, priority: topPriority, identifier: "TZSV-spanning-boundary"))
+                constraints.append(constraint(item: spacerView, attribute: .Trailing, relatedBy: bottomRelation, toItem: view, priority: bottomPriority, identifier: "TZSV-spanning-boundary"))
             }
         }
+        
         switch axis {
         case .Horizontal:
-            constraints.append(constraint(item: spacerView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 51))
+            constraints.append(constraint(item: spacerView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 51, identifier: "TZSV-spanning-fit"))
         case .Vertical:
-            constraints.append(constraint(item: spacerView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 51))
+            constraints.append(constraint(item: spacerView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 51, identifier: "TZSV-spanning-fit"))
         }
+
         return constraints
     }
     
@@ -537,22 +541,25 @@ public class TZStackView: UIView {
             }
         }
         
+        constraints.forEach { $0.identifier = "TZSV-fill-proportionally" }
         return constraints
     }
     
     // Matchs all Width or Height attributes of all given views
-    private func createFillEquallyConstraints(views: [UIView], priority: UILayoutPriority = 1000) -> [NSLayoutConstraint] {
+    private func createFillEquallyConstraints(views: [UIView], identifier: String, priority: UILayoutPriority = 1000) -> [NSLayoutConstraint] {
+        let constraints: [NSLayoutConstraint]
         switch axis {
         case .Horizontal:
-            return equalAttributes(views: views.filter({ !self.isHidden($0) }), attribute: .Width, priority: priority)
-            
+            constraints = equalAttributes(views: views.filter({ !self.isHidden($0) }), attribute: .Width, priority: priority)
         case .Vertical:
-            return equalAttributes(views: views.filter({ !self.isHidden($0) }), attribute: .Height, priority: priority)
+            constraints = equalAttributes(views: views.filter({ !self.isHidden($0) }), attribute: .Height, priority: priority)
         }
+        constraints.forEach { $0.identifier = identifier }
+        return constraints
     }
     
     // Chains together the given views using Leading/Trailing or Top/Bottom
-    private func createFillConstraints(views: [UIView], priority: UILayoutPriority = 1000, relatedBy relation: NSLayoutRelation = .Equal, constant: CGFloat) -> [NSLayoutConstraint] {
+    private func createFillConstraints(views: [UIView], priority: UILayoutPriority = 1000, relatedBy relation: NSLayoutRelation = .Equal, constant: CGFloat, identifier: String) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
@@ -576,6 +583,8 @@ public class TZStackView: UIView {
             }
             previousView = view
         }
+        
+        constraints.forEach { $0.identifier = identifier }
         return constraints
     }
     
@@ -618,6 +627,8 @@ public class TZStackView: UIView {
                 constraints += []
             }
         }
+        
+        constraints.forEach { $0.identifier = "TZSV-alignment" }
         return constraints
     }
     
@@ -707,6 +718,7 @@ public class TZStackView: UIView {
             }
         }
         
+        constraints.forEach { $0.identifier = "TZSV-canvas-connection" }
         return constraints
     }
     
@@ -733,12 +745,13 @@ public class TZStackView: UIView {
     }
 
     // Convenience method to help make NSLayoutConstraint in a less verbose way
-    private func constraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation = .Equal, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute? = nil, multiplier: CGFloat = 1, constant c: CGFloat = 0, priority: UILayoutPriority = 1000) -> NSLayoutConstraint {
+    private func constraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation = .Equal, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute? = nil, multiplier: CGFloat = 1, constant c: CGFloat = 0, priority: UILayoutPriority = 1000, identifier: String? = nil) -> NSLayoutConstraint {
 
         let attribute2 = attr2 != nil ? attr2! : attr1
 
         let constraint = NSLayoutConstraint(item: view1, attribute: attr1, relatedBy: relation, toItem: view2, attribute: attribute2, multiplier: multiplier, constant: c)
         constraint.priority = priority
+        constraint.identifier = identifier
         return constraint
     }
     

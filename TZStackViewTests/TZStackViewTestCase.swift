@@ -190,6 +190,9 @@ class TZStackViewTestCase: XCTestCase {
         if layoutConstraint1.secondAttribute != layoutConstraint2.secondAttribute {
             return false
         }
+        if !isSameIdentifier(layoutConstraint1.identifier, layoutConstraint2.identifier) {
+            return false
+        }
         return true
     }
     
@@ -204,6 +207,9 @@ class TZStackViewTestCase: XCTestCase {
             return false
         }
         if layoutConstraint1.secondAttribute != layoutConstraint2.firstAttribute {
+            return false
+        }
+        if !isSameIdentifier(layoutConstraint1.identifier, layoutConstraint2.identifier) {
             return false
         }
         return true
@@ -251,6 +257,17 @@ class TZStackViewTestCase: XCTestCase {
         }
         
         return identifier1 == identifier2 || (hasPrefix(identifier1) && hasPrefix(identifier2) && dropPrefix(identifier1) == dropPrefix(identifier2))
+    }
+    
+    private func isSameIdentifier(identifier1: String?, _ identifier2: String?) -> Bool {
+        switch (identifier1, identifier2) {
+        case (nil, nil):
+            return true
+        case (.Some, nil), (nil, .Some):
+            return false
+        case (.Some(let id1), .Some(let id2)):
+            return isSameIdentifier(id1, id2)
+        }
     }
 
     func assertSameOrder(uiTestViews: [TestView], _ tzTestViews: [TestView]) {
