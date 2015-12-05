@@ -53,7 +53,7 @@ class TZStackViewTests: TZStackViewTestCase {
             (.Center, .Center, "Center"),
             (.Trailing, .Trailing, "Trailing"),
             (UIStackViewAlignment.Bottom, TZStackViewAlignment.Bottom, "Bottom"),
-             // TODO: LastBaseline
+            (.LastBaseline, .LastBaseline, "LastBaseline"),
         ]
         let spacings = [CGFloat(10)]
         
