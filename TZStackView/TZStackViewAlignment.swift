@@ -23,6 +23,8 @@ import Foundation
     */
     case Leading = 1
     public static let Top: TZStackViewAlignment = .Leading
+    
+    // only valid for iOS 8 and later
     case FirstBaseline = 2 // Valid for horizontal axis only
     
     /* Center the items in a vertical stack horizontally
@@ -36,5 +38,5 @@ import Foundation
     */
     case Trailing = 4
     public static let Bottom: TZStackViewAlignment = .Trailing
-//    case LastBaseline = 5 // Valid for horizontal axis only
+    case LastBaseline = 5 // Valid for horizontal axis only
 }

@@ -335,7 +335,7 @@ public class TZStackView: UIView {
             
             switch distribution {
             case .FillEqually, .Fill, .FillProportionally:
-                if alignment == .FirstBaseline && axis == .Horizontal {
+                if (alignment == .FirstBaseline || alignment == .LastBaseline) && axis == .Horizontal {
                     stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
                 }
 
@@ -366,7 +366,7 @@ public class TZStackView: UIView {
                 switch axis {
                 case .Horizontal:
                     stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49))
-                    if alignment == .FirstBaseline {
+                    if alignment == .FirstBaseline || alignment == .LastBaseline {
                         stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
                     }
                 case .Vertical:
@@ -386,7 +386,7 @@ public class TZStackView: UIView {
                 switch axis {
                 case .Horizontal:
                     stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49))
-                    if alignment == .FirstBaseline {
+                    if alignment == .FirstBaseline || alignment == .LastBaseline {
                         stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49))
                     }
                 case .Vertical:
@@ -599,6 +599,8 @@ public class TZStackView: UIView {
                 if #available(iOS 8.0, *) {
                     constraints += equalAttributes(views: views, attribute: .FirstBaseline)
                 }
+            case .LastBaseline:
+                constraints += equalAttributes(views: views, attribute: .Baseline)
             }
             
         case .Vertical:
@@ -612,7 +614,7 @@ public class TZStackView: UIView {
                 constraints += equalAttributes(views: views, attribute: .Leading)
             case .Trailing:
                 constraints += equalAttributes(views: views, attribute: .Trailing)
-            case .FirstBaseline:
+            case .FirstBaseline, .LastBaseline:
                 constraints += []
             }
         }
@@ -650,6 +652,7 @@ public class TZStackView: UIView {
         
         let topView: UIView
         let bottomView: UIView
+        var bottomRelation = NSLayoutRelation.Equal
         var centerView: UIView?
         
         switch alignment {
@@ -675,19 +678,29 @@ public class TZStackView: UIView {
                 topView = alignmentSpanner!
                 bottomView = alignmentSpanner!
             }
+        case .LastBaseline:
+            switch axis {
+            case .Horizontal:
+                topView = alignmentSpanner!
+                bottomView = firstArrangedView
+                bottomRelation = .GreaterThanOrEqual
+            case .Vertical:
+                topView = alignmentSpanner!
+                bottomView = alignmentSpanner!
+            }
         }
         
         switch axis {
         case .Horizontal:
             constraints.append(constraint(item: edgeItem, attribute: .Top, toItem: topView))
-            constraints.append(constraint(item: edgeItem, attribute: .Bottom, toItem: bottomView))
+            constraints.append(constraint(item: edgeItem, attribute: .Bottom, relatedBy: bottomRelation, toItem: bottomView))
 
             if let centerView = centerView {
                 constraints.append(constraint(item: edgeItem, attribute: .CenterY, toItem: centerView))
             }
         case .Vertical:
             constraints.append(constraint(item: edgeItem, attribute: .Leading, toItem: topView))
-            constraints.append(constraint(item: edgeItem, attribute: .Trailing, toItem: bottomView))
+            constraints.append(constraint(item: edgeItem, attribute: .Trailing, relatedBy: bottomRelation, toItem: bottomView))
 
             if let centerView = centerView  {
                 constraints.append(constraint(item: edgeItem, attribute: .CenterX, toItem: centerView))
