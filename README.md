@@ -1,4 +1,4 @@
-# TZStackView
+# TZStackView [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 A wonderful layout component called the [`UIStackView` was introduced with *iOS 9*](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/). With this component it is really easy to layout components in a row both horizontally and vertically. Apple recommends using the `UIStackView` wherever possible and resort to explicit `NSLayoutConstraints` only when there is no way to do it with `UIStackView`. This saves you lots of boiler plate `NSLayoutConstraint` creation code.
 
 `UIStackView` requires *iOS 9*, but we're not ready to make our apps require *iOS 9+* just yet. In the meanwhile, we developers are eager to try this component in our apps right now! This is why I created this replica of the `UIStackView`, called the `TZStackView` (TZ = Tom van Zummeren, my initials). I created this component very carefully, tested every single corner case and matched the results against the *real* `UIStackView` with automated `XCTestCases`.
@@ -24,6 +24,15 @@ use_frameworks!
 pod "TZStackView", "1.1.2"
 ```
 Unfortunately, using Cocoapods with a Swift pod requires iOS 8.
+
+### Use [Carthage](https://github.com/Carthage/Carthage)
+
+Example `Cartfile`:
+```
+github "tomvanzummeren/TZStackView" ~> 1.1
+```
+
+Run `carthage` to build the framework and drag the built `TZStackView.framework` into your Xcode project.
 
 ### Drag files directly into your project
 Alternatively (when you do want to support iOS 7) drag in the following classes from the *Example* folder directly into your *Xcode* project
