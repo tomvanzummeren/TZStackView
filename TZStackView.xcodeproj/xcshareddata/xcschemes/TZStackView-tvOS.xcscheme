@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "302908791C14E09400F748C4"
-               BuildableName = "TZStackView-tvOS.framework"
+               BuildableName = "TZStackView.framework"
                BlueprintName = "TZStackView-tvOS"
                ReferencedContainer = "container:TZStackView.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "302908791C14E09400F748C4"
-            BuildableName = "TZStackView-tvOS.framework"
+            BuildableName = "TZStackView.framework"
             BlueprintName = "TZStackView-tvOS"
             ReferencedContainer = "container:TZStackView.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "302908791C14E09400F748C4"
-            BuildableName = "TZStackView-tvOS.framework"
+            BuildableName = "TZStackView.framework"
             BlueprintName = "TZStackView-tvOS"
             ReferencedContainer = "container:TZStackView.xcodeproj">
          </BuildableReference>
