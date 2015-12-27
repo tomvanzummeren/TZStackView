@@ -87,9 +87,14 @@ class TZStackViewTestCase: XCTestCase {
     
     func verifyConstraints(log log: Bool = false) {
         // Force constraints to be created
+        uiStackView.setNeedsUpdateConstraints()
         uiStackView.updateConstraintsIfNeeded()
+        uiStackView.setNeedsLayout()
         uiStackView.layoutIfNeeded()
+        
+        tzStackView.setNeedsUpdateConstraints()
         tzStackView.updateConstraintsIfNeeded()
+        tzStackView.setNeedsLayout()
         tzStackView.layoutIfNeeded()
 
         if log {
@@ -154,27 +159,10 @@ class TZStackViewTestCase: XCTestCase {
         for (index, uiConstraint) in uiConstraints.enumerate() {
             let tzConstraint = tzConstraints[index]
             
-            let result = hasSameConstraintMetaData(uiConstraint, tzConstraint)
-                && (isSameConstraint(uiConstraint, tzConstraint) || isSameConstraintFlipped(uiConstraint, tzConstraint))
+            let result = isSameConstraint(uiConstraint, tzConstraint) || isSameConstraintFlipped(uiConstraint, tzConstraint)
             
             XCTAssertTrue(result, "Constraints at index \(index) do not match\n== EXPECTED ==\n\(uiConstraint.readableString())\n\n== ACTUAL ==\n\(tzConstraint.readableString())\n\n")
         }
-    }
-    
-    private func hasSameConstraintMetaData(layoutConstraint1: NSLayoutConstraint, _ layoutConstraint2: NSLayoutConstraint) -> Bool {
-        if layoutConstraint1.constant != layoutConstraint2.constant {
-            return false
-        }
-        if layoutConstraint1.multiplier != layoutConstraint2.multiplier {
-            return false
-        }
-        if layoutConstraint1.priority != layoutConstraint2.priority {
-            if layoutConstraint1.priority < 100 || layoutConstraint1.priority > 150
-                || layoutConstraint2.priority < 100 || layoutConstraint2.priority > 150 {
-                    return false
-            }
-        }
-        return true
     }
     
     private func isSameConstraint(layoutConstraint1: NSLayoutConstraint, _ layoutConstraint2: NSLayoutConstraint) -> Bool {
@@ -190,6 +178,18 @@ class TZStackViewTestCase: XCTestCase {
         if layoutConstraint1.secondAttribute != layoutConstraint2.secondAttribute {
             return false
         }
+        if layoutConstraint1.relation != layoutConstraint2.relation {
+            return false
+        }
+        if fabs(layoutConstraint1.multiplier - layoutConstraint2.multiplier) > 0.001 {
+            return false
+        }
+        if fabs(layoutConstraint1.constant - layoutConstraint2.constant) > 0.001 {
+            return false
+        }
+        if fabs(layoutConstraint1.priority - layoutConstraint2.priority) > 0.001 {
+            return false
+        }
         if !isSameIdentifier(layoutConstraint1.identifier, layoutConstraint2.identifier) {
             return false
         }
@@ -197,22 +197,41 @@ class TZStackViewTestCase: XCTestCase {
     }
     
     private func isSameConstraintFlipped(layoutConstraint1: NSLayoutConstraint, _ layoutConstraint2: NSLayoutConstraint) -> Bool {
-        if !viewsEqual(layoutConstraint1.firstItem, layoutConstraint2.secondItem) {
-            return false
+        func flipRelation(relation: NSLayoutRelation) -> NSLayoutRelation {
+            switch relation {
+            case .Equal:
+                return .Equal
+            case .GreaterThanOrEqual:
+                return .LessThanOrEqual
+            case .LessThanOrEqual:
+                return .GreaterThanOrEqual
+            }
         }
-        if !viewsEqual(layoutConstraint1.secondItem, layoutConstraint2.firstItem) {
-            return false
+
+        func flipConstraint(constraint: NSLayoutConstraint) -> NSLayoutConstraint {
+            guard constraint.multiplier != 0 else {
+                return constraint
+            }
+            
+            guard let secondItem = constraint.secondItem else {
+                return constraint
+            }
+            
+            let flipped = NSLayoutConstraint(item: secondItem,
+                attribute: constraint.secondAttribute,
+                relatedBy: constraint.multiplier > 0 ? flipRelation(constraint.relation) : constraint.relation,
+                toItem: constraint.firstItem,
+                attribute: constraint.firstAttribute,
+                multiplier: 1 / constraint.multiplier,
+                constant: -constraint.constant / constraint.multiplier)
+            
+            flipped.identifier = constraint.identifier
+            flipped.priority = constraint.priority
+            
+            return flipped
         }
-        if layoutConstraint1.firstAttribute != layoutConstraint2.secondAttribute {
-            return false
-        }
-        if layoutConstraint1.secondAttribute != layoutConstraint2.firstAttribute {
-            return false
-        }
-        if !isSameIdentifier(layoutConstraint1.identifier, layoutConstraint2.identifier) {
-            return false
-        }
-        return true
+        
+        return isSameConstraint(layoutConstraint1, flipConstraint(layoutConstraint2))
     }
 
     private func printConstraints(constraints: [NSLayoutConstraint]) {
