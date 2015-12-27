@@ -666,8 +666,11 @@ public class TZStackView: UIView {
         let firstArrangedView = arrangedSubviews.first!
         
         let topView: UIView
+        var topRelation = NSLayoutRelation.Equal
+        
         let bottomView: UIView
         var bottomRelation = NSLayoutRelation.Equal
+        
         var centerView: UIView?
         
         switch alignment {
@@ -689,6 +692,7 @@ public class TZStackView: UIView {
             case .Horizontal:
                 topView = firstArrangedView
                 bottomView = alignmentSpanner!
+                topRelation = .LessThanOrEqual
             case .Vertical:
                 topView = alignmentSpanner!
                 bottomView = alignmentSpanner!
@@ -707,14 +711,14 @@ public class TZStackView: UIView {
         
         switch axis {
         case .Horizontal:
-            constraints.append(constraint(item: edgeItem, attribute: .Top, toItem: topView))
+            constraints.append(constraint(item: edgeItem, attribute: .Top, relatedBy: topRelation, toItem: topView))
             constraints.append(constraint(item: edgeItem, attribute: .Bottom, relatedBy: bottomRelation, toItem: bottomView))
 
             if let centerView = centerView {
                 constraints.append(constraint(item: edgeItem, attribute: .CenterY, toItem: centerView))
             }
         case .Vertical:
-            constraints.append(constraint(item: edgeItem, attribute: .Leading, toItem: topView))
+            constraints.append(constraint(item: edgeItem, attribute: .Leading, relatedBy: topRelation, toItem: topView))
             constraints.append(constraint(item: edgeItem, attribute: .Trailing, relatedBy: bottomRelation, toItem: bottomView))
 
             if let centerView = centerView  {
