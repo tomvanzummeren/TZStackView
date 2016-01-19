@@ -619,8 +619,8 @@ public class TZStackView: UIView {
         case .Vertical:
             switch alignment {
             case .Fill:
-                constraints += equalAttributes(views: views, attribute: .Leading)
                 constraints += equalAttributes(views: views, attribute: .Trailing)
+                constraints += equalAttributes(views: views, attribute: .Leading)
             case .Center:
                 constraints += equalAttributes(views: views, attribute: .CenterX)
             case .Leading:
