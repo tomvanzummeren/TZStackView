@@ -356,7 +356,13 @@ public class TZStackView: UIView {
                     stackViewConstraints += createFillEquallyConstraints(arrangedSubviews, identifier: "TZSV-fill-equally")
                 }
                 if distribution == .FillProportionally {
-                    stackViewConstraints += createFillProportionallyConstraints(arrangedSubviews)
+                    let (someStackViewConstraints, someSubviewConstraints) = createFillProportionallyConstraints(arrangedSubviews)
+                    
+                    stackViewConstraints += someStackViewConstraints
+                    for (owningView, constraints) in someSubviewConstraints {
+                        owningView.addConstraints(constraints)
+                        subviewConstraints += constraints
+                    }
                 }
                 
                 stackViewConstraints += createFillConstraints(arrangedSubviews, constant: spacing, identifier: "TZSV-spacing")
@@ -415,6 +421,37 @@ public class TZStackView: UIView {
                 rightConstraint.identifier = "TZView-rightMargin-guide-constraint"
                 topConstraint.identifier = "TZView-topMargin-guide-constraint"
                 stackViewConstraints += [bottomConstraint, leftConstraint, rightConstraint, topConstraint]
+            }
+            
+            if axis == .Horizontal {
+                switch distribution {
+                case .Fill, .EqualSpacing, .EqualCentering:
+                    let totalVisible = visibleArrangedSubviews.count
+                    let multilineLabels = arrangedSubviews.filter { view in
+                        isMultilineLabel(view)
+                    }
+                    
+                    if  totalVisible > 0 {
+                        let totalSpacing = spacing * CGFloat(totalVisible - 1)
+                        
+                        let ratio = CGFloat(1) / CGFloat(totalVisible)
+                        let decrease = totalSpacing / CGFloat(totalVisible)
+                        
+                        let edgeItem = layoutMarginsView ?? self
+                        
+                        for label in multilineLabels {
+                            stackViewConstraints.append(constraint(item: label, attribute: .Width, relatedBy: .Equal, toItem: edgeItem, attribute: .Width, multiplier: ratio, constant: -decrease, priority: 760, identifier: "TZSV-text-width-disambiguation"))
+                        }
+                    } else {
+                        for label in multilineLabels {
+                            let aConstraint = constraint(item: label, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 760, identifier: "TZSV-text-width-disambiguation")
+                            subviewConstraints.append(aConstraint)
+                            label.addConstraint(aConstraint)
+                        }
+                    }
+                case .FillEqually, .FillProportionally:
+                    break
+                }
             }
             
             addConstraints(stackViewConstraints)
@@ -506,27 +543,64 @@ public class TZStackView: UIView {
         return constraints
     }
     
-    private func createFillProportionallyConstraints(views: [UIView]) -> [NSLayoutConstraint] {
-        var constraints = [NSLayoutConstraint]()
-
-        var totalSize: CGFloat = 0
-        var totalCount = 0
-        for arrangedSubview in views {
-            if isHidden(arrangedSubview) {
-                continue
-            }
+    private func createFillProportionallyConstraints(views: [UIView]) -> (stackViewConstraints: [NSLayoutConstraint], subviewConstraints: [(owningView: UIView, [NSLayoutConstraint])]) {
+        func intrinsicContentLengthOf(view: UIView) -> CGFloat {
+            let size = view.intrinsicContentSize()
             switch axis {
             case .Horizontal:
-                totalSize += arrangedSubview.intrinsicContentSize().width
+                if let label = view as? UILabel where label.numberOfLines != 1 { // multiline label
+                    return 0
+                } else {
+                    return size.width != UIViewNoIntrinsicMetric ? size.width : 0
+                }
             case .Vertical:
-                totalSize += arrangedSubview.intrinsicContentSize().height
+                return size.height != UIViewNoIntrinsicMetric ? size.height : 0
             }
-            totalCount++
         }
-        totalSize += (CGFloat(totalCount - 1) * spacing)
         
+        let nonHiddenViews = views.filter { view in
+            return !isHidden(view)
+        }
+        
+        if nonHiddenViews.count == 0 {
+            return ([], [])
+        }
+        
+        let numberOfHiddenViews = views.count - nonHiddenViews.count
+        
+        let totalViewLength = nonHiddenViews
+            .map { view in
+                intrinsicContentLengthOf(view)
+            }
+            .reduce(CGFloat(0), combine: +)
+        
+        let showingTotalIsSmall: Bool
+        if  numberOfHiddenViews == 0 {
+            switch nonHiddenViews.count {
+            case 0: // not possible
+                showingTotalIsSmall = false
+            case 1:
+                let view = nonHiddenViews[0]
+                showingTotalIsSmall = intrinsicContentLengthOf(view) <= 1
+            default:
+                showingTotalIsSmall = totalViewLength == 0
+            }
+        } else {
+            showingTotalIsSmall = totalViewLength <= spacing * CGFloat(numberOfHiddenViews)
+        }
+        
+        if showingTotalIsSmall {
+            return (stackViewConstraints: createFillEquallyConstraints(nonHiddenViews, identifier: "TZSV-fill-equally"), subviewConstraints: [])
+        }
+        
+        var stackViewConstraints = [NSLayoutConstraint]()
+        var subviewConstraints = [(owningView: UIView, [NSLayoutConstraint])]()
+
+        let totalSpacing = CGFloat(nonHiddenViews.count - 1) * spacing
+        let totalSize = totalViewLength + totalSpacing
+
         var priority: UILayoutPriority = 1000
-        let countDownPriority = (views.filter({!self.isHidden($0)}).count > 1)
+        let countDownPriority = nonHiddenViews.count > 1
         for arrangedSubview in views {
             if countDownPriority {
                 priority--
@@ -535,18 +609,35 @@ public class TZStackView: UIView {
             if isHidden(arrangedSubview) {
                 continue
             }
-            switch axis {
-            case .Horizontal:
-                let multiplier = arrangedSubview.intrinsicContentSize().width / totalSize
-                constraints.append(constraint(item: arrangedSubview, attribute: .Width, toItem: self, multiplier: multiplier, priority: priority))
-            case .Vertical:
-                let multiplier = arrangedSubview.intrinsicContentSize().height / totalSize
-                constraints.append(constraint(item: arrangedSubview, attribute: .Height, toItem: self, multiplier: multiplier, priority: priority))
+
+            let length = intrinsicContentLengthOf(arrangedSubview)
+            if length == 0 {
+                let theConstraint: NSLayoutConstraint
+                switch axis {
+                case .Horizontal:
+                    theConstraint = constraint(item: arrangedSubview, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 1000, constant: 0)
+                case .Vertical:
+                    theConstraint = constraint(item: arrangedSubview, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 1000, constant: 0)
+                }
+                theConstraint.identifier = "TZSV-fill-proportionally"
+                subviewConstraints.append((owningView: arrangedSubview, [theConstraint]))
+            } else {
+                // totalSize can't be zero, since nonHiddenViews.count != 0
+                let multiplier = length / totalSize
+                let theConstraint: NSLayoutConstraint
+                switch axis {
+                case .Horizontal:
+                    theConstraint = constraint(item: arrangedSubview, attribute: .Width, toItem: self, multiplier: multiplier, priority: priority)
+                case .Vertical:
+                    theConstraint = constraint(item: arrangedSubview, attribute: .Height, toItem: self, multiplier: multiplier, priority: priority)
+                }
+                
+                theConstraint.identifier = "TZSV-fill-proportionally"
+                stackViewConstraints.append(theConstraint)
             }
         }
         
-        constraints.forEach { $0.identifier = "TZSV-fill-proportionally" }
-        return constraints
+        return (stackViewConstraints, subviewConstraints)
     }
     
     // Matchs all Width or Height attributes of all given views
@@ -843,6 +934,14 @@ public class TZStackView: UIView {
         return arrangedSubviews
             .map { isHidden($0) }
             .reduce(true) { $0 && $1 }
+    }
+        
+    private func isMultilineLabel(view: UIView) -> Bool {
+        if let label = view as? UILabel where label.numberOfLines != 1 {
+            return true
+        } else {
+            return false
+        }
     }
     
     // Disables setting the background color to mimic an actual UIStackView which is a non-drawing view.
