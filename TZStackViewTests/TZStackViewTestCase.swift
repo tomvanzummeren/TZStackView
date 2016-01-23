@@ -24,16 +24,7 @@ class TZStackViewTestCase: XCTestCase {
     var uiStackView: UIStackView!
     var tzStackView: TZStackView!
 
-    override func setUp() {
-        super.setUp()
-        recreateStackViews()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-
-    func recreateStackViews() {
+    func recreateStackViews(createSubviews: () -> [UIView]) {
         // clean old views otherwise some old spacer views and constraints are left
         if uiStackView != nil {
             uiStackView.removeFromSuperview()
@@ -44,16 +35,14 @@ class TZStackViewTestCase: XCTestCase {
         }
         
         // Create stack views with same views
-        uiStackView = UIStackView(arrangedSubviews: createTestViews())
+        uiStackView = UIStackView(arrangedSubviews: createSubviews())
         uiStackView.translatesAutoresizingMaskIntoConstraints = false
-        tzStackView = TZStackView(arrangedSubviews: createTestViews())
+        tzStackView = TZStackView(arrangedSubviews: createSubviews())
         tzStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let window = UIApplication.sharedApplication().windows[0]
         window.addSubview(uiStackView)
         window.addSubview(tzStackView)
-        
-        configureStackViews(uiStackView, tzStackView)
     }
     
     func logAllConstraints() {
@@ -74,15 +63,6 @@ class TZStackViewTestCase: XCTestCase {
             print("\(subview):")
             printConstraints(nonContentSizeLayoutConstraints(subview))
         }
-    }
-    
-    // To override in subclass
-    func createTestViews() -> [UIView] {
-        fatalError("implement createViews()")
-    }
-    
-    // To override in subclass
-    func configureStackViews(uiStackView: UIStackView, _ tzStackView: TZStackView) {
     }
     
     func verifyConstraints(log log: Bool = false) {

@@ -13,23 +13,13 @@ import TZStackView
 
 class TZStackViewTests: TZStackViewTestCase {
     
-    override func createTestViews() -> [UIView] {
+    func createTestViews() -> [UIView] {
         var views = [UIView]()
         for i in 0 ..< 5 {
             views.append(TestView(index: i, size: CGSize(width: 100 * (i + 1), height: 100 * (i + 1))))
         }
-//        views[0].hidden = true
-//        views[1].hidden = true
-//        views[2].hidden = true
-//        views[3].hidden = true
-//        views[4].hidden = true
         
         return views
-    }
-    
-    // Be careful to configure the same thing on the UIStackView as on the TZStackView, otherwise the test is unfair
-    override func configureStackViews(uiStackView: UIStackView, _ tzStackView: TZStackView) {
-
     }
     
     func testSameConstraints() {
@@ -56,11 +46,13 @@ class TZStackViewTests: TZStackViewTestCase {
             (.LastBaseline, .LastBaseline, "LastBaseline"),
         ]
         let spacings = [CGFloat(10)]
+        let subviews = [createTestViews]
         
-        let cases = margins * axes * distributions * alignments * spacings
+        let cases = margins * axes * distributions * alignments * spacings * subviews
 
         for aCase in cases {
-            let (tuple4, spacing) = aCase
+            let (tuple5, subview) = aCase
+            let (tuple4, spacing) = tuple5
             let (tuple3, aligment) = tuple4
             let (tuple2, distribution) = tuple3
             let (tuple1, axis) = tuple2
@@ -68,7 +60,7 @@ class TZStackViewTests: TZStackViewTestCase {
             
             print("Test for layoutMarginsRelativeArrangement=\(margin), axis=\(axis.1), distribution=\(distribution.2), aligment=\(aligment.2), spacing=\(spacing)\n")
             
-            recreateStackViews()
+            recreateStackViews(subview)
             
             uiStackView.layoutMarginsRelativeArrangement = margin
             tzStackView.layoutMarginsRelativeArrangement = margin
@@ -90,6 +82,8 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillHorizontalFill() {
+        recreateStackViews(createTestViews)
+        
         uiStackView.axis = .Horizontal
         uiStackView.distribution = .Fill
         uiStackView.alignment = .Fill
@@ -106,6 +100,8 @@ class TZStackViewTests: TZStackViewTestCase {
     // MARK: - Maintaining Consistency Between the Arranged Views and Subviews
     // https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/#//apple_ref/doc/uid/TP40015256-CH1-SW29
     func testConsistencyWhenAddingArrangedSubview() {
+        recreateStackViews(createTestViews)
+        
         let uiTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
         uiStackView.addArrangedSubview(uiTestView)
 
@@ -116,6 +112,8 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testConsistencyWhenInsertingArrangedSubview() {
+        recreateStackViews(createTestViews)
+        
         let uiTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
         uiStackView.insertArrangedSubview(uiTestView, atIndex: 0)
 
@@ -126,6 +124,8 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testConsistencyWhenRemovingArrangedSubview() {
+        recreateStackViews(createTestViews)
+        
         let uiTestView = uiStackView.arrangedSubviews.last
         uiStackView.removeArrangedSubview(uiTestView!)
 
@@ -136,6 +136,8 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testConsistencyWhenRemovingSubview() {
+        recreateStackViews(createTestViews)
+        
         let uiTestView = uiStackView.arrangedSubviews.last
         uiTestView!.removeFromSuperview()
 
