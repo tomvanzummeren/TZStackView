@@ -109,11 +109,6 @@ class TZStackViewTestCase: XCTestCase {
     }
     
     func assertSameConstraints(uiConstraints: [NSLayoutConstraint], _ tzConstraints: [NSLayoutConstraint]) {
-        XCTAssertEqual(uiConstraints.count, tzConstraints.count, "Number of constraints")
-        if uiConstraints.count != tzConstraints.count {
-            return
-        }
-        
         func getGuides(constraints: [NSLayoutConstraint]) -> [NSObject] {
             var result = Set<NSObject>()
             
@@ -135,13 +130,43 @@ class TZStackViewTestCase: XCTestCase {
         let tzGuides = getGuides(tzConstraints)
         
         XCTAssertEqual(uiGuides.count, tzGuides.count, "Number of layout guides")
+
+        let uiGrouped = Array(uiConstraints.enumerate()).groupBy{ (index, constraint) in constraint.identifier ?? "" }
+        let tzGrouped = Array(tzConstraints.enumerate()).groupBy{ (index, constraint) in constraint.identifier ?? "" }
         
-        for (index, uiConstraint) in uiConstraints.enumerate() {
-            let tzConstraint = tzConstraints[index]
-            
-            let result = isSameConstraint(uiConstraint, tzConstraint) || isSameConstraintFlipped(uiConstraint, tzConstraint)
-            
-            XCTAssertTrue(result, "Constraints at index \(index) do not match\n== EXPECTED ==\n\(uiConstraint.readableString())\n\n== ACTUAL ==\n\(tzConstraint.readableString())\n\n")
+        identifierLoop: for (identifier, uiGroup) in uiGrouped {
+            let tzIdentifier = identifier.hasPrefix("UI") ? "TZ" + String(identifier.characters.dropFirst("UI".characters.count)) : identifier
+            if let tzGroup = tzGrouped[tzIdentifier] {
+                XCTAssertEqual(uiGroup.count, tzGroup.count, "Number of constraints with identifier \(identifier)")
+                guard uiGroup.count == tzGroup.count else {
+                    continue
+                }
+               
+                var tzGroupLeft = tzGroup
+                for (index, uiConstraint) in uiGroup { // note, the index is the index of uiConstraints, not uiGroup
+                    let tzIndex = tzGroupLeft.indexOf { (_, tzConstraint) in
+                        return isSameConstraint(uiConstraint, tzConstraint) || isSameConstraintFlipped(uiConstraint, tzConstraint)
+                    }
+                    
+                    if let tzIndex = tzIndex {
+                        tzGroupLeft.removeAtIndex(tzIndex)
+                    } else {
+                        XCTAssert(false, "Constraints at index \(index) do not match\n== EXPECTED ==\n\(uiConstraint.readableString())\n\n== POSSIBLE ACTUAL ==\n\(tzConstraints[index].readableString())\n\n")
+                        continue identifierLoop
+                    }
+                }
+            } else {
+                XCTAssert(false, "EXPECTED constraints with identifier \(identifier) have no match")
+            }
+        }
+        
+        for (identifier, _) in tzGrouped {
+            let uiIdentifier = identifier.hasPrefix("TZ") ? "UI" + String(identifier.characters.dropFirst("TZ".characters.count)) : identifier
+            if let _ = uiGrouped[uiIdentifier] {
+                // nothing to check unless UI constraints have two same constraints
+            } else {
+                XCTAssert(false, "UNEXPECTED extra constraints with identifier \(identifier)")
+            }
         }
     }
     
