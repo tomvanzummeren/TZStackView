@@ -15,6 +15,7 @@
 		5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */; };
 		7E0975301C0AA6820082FC9F /* Array+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E09752F1C0AA6820082FC9F /* Array+Product.swift */; };
 		7E214B741BF61501006448AC /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E214B731BF61501006448AC /* Storyboard.storyboard */; };
+		7ECF47E91C54A90C00475089 /* Array+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF47E81C54A90C00475089 /* Array+Group.swift */; };
 		A45441C21B9B6D71002452BA /* TZStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = A45441C11B9B6D71002452BA /* TZStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A45441C61B9B6D71002452BA /* TZStackView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; };
 		A45441C71B9B6D71002452BA /* TZStackView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -71,6 +72,7 @@
 		5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TZStackViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E09752F1C0AA6820082FC9F /* Array+Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Product.swift"; sourceTree = "<group>"; };
 		7E214B731BF61501006448AC /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		7ECF47E81C54A90C00475089 /* Array+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Group.swift"; sourceTree = "<group>"; };
 		A45441BF1B9B6D71002452BA /* TZStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A45441C11B9B6D71002452BA /* TZStackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZStackView.h; sourceTree = "<group>"; };
 		A45441C31B9B6D71002452BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				7E09752F1C0AA6820082FC9F /* Array+Product.swift */,
+				7ECF47E81C54A90C00475089 /* Array+Group.swift */,
 				5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */,
 				DB5B70841B2A1963006043BD /* TestView.swift */,
 				DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */,
@@ -333,6 +336,7 @@
 				DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */,
 				DB5B70851B2A1963006043BD /* TestView.swift in Sources */,
 				7E0975301C0AA6820082FC9F /* Array+Product.swift in Sources */,
+				7ECF47E91C54A90C00475089 /* Array+Group.swift in Sources */,
 				5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
