@@ -336,15 +336,12 @@ public class TZStackView: UIView {
             
             stackViewConstraints += createMatchEdgesContraints(arrangedSubviews)
             stackViewConstraints += createFirstAndLastViewMatchEdgesContraints()
+            stackViewConstraints += createCanvasFitConstraints()
             
             let visibleArrangedSubviews = arrangedSubviews.filter({!self.isHidden($0)})
             
             switch distribution {
             case .FillEqually, .Fill, .FillProportionally:
-                if (alignment == .FirstBaseline || alignment == .LastBaseline) && axis == .Horizontal {
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
-                }
-
                 if distribution == .FillEqually {
                     stackViewConstraints += createFillEquallyConstraints(arrangedSubviews, identifier: "TZSV-fill-equally")
                 }
@@ -368,16 +365,6 @@ public class TZStackView: UIView {
                     views.append(arrangedSubview)
                     index++
                 }
-                
-                switch axis {
-                case .Horizontal:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
-                    if alignment == .FirstBaseline || alignment == .LastBaseline {
-                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
-                    }
-                case .Vertical:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier:"TZSV-canvas-fit"))
-                }
 
                 stackViewConstraints += createFillConstraints(views, constant: 0, identifier: "TZSV-distributing-edge")
                 stackViewConstraints += createFillEquallyConstraints(distributionSpacers, identifier: "TZSV-fill-equally")
@@ -387,16 +374,6 @@ public class TZStackView: UIView {
                     if index > 0 {
                         distributionSpacers.append(addSpacerView("TZSV-distributing"))
                     }
-                }
-                
-                switch axis {
-                case .Horizontal:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
-                    if alignment == .FirstBaseline || alignment == .LastBaseline {
-                        stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
-                    }
-                case .Vertical:
-                    stackViewConstraints.append(constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit"))
                 }
 
                 var previousArrangedSubview: UIView?
@@ -461,6 +438,37 @@ public class TZStackView: UIView {
         
         insertSubview(spacerView, atIndex: 0)
         return spacerView
+    }
+    
+    private func createCanvasFitConstraints() -> [NSLayoutConstraint] {
+        func widthFitConstraint() -> NSLayoutConstraint {
+            return constraint(item: self, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit")
+        }
+        
+        func heightFitConstraint() -> NSLayoutConstraint {
+            return constraint(item: self, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, priority: 49, identifier: "TZSV-canvas-fit")
+        }
+        
+        var result = [NSLayoutConstraint]()
+        
+        let baselineAlignment = (alignment == .FirstBaseline || alignment == .LastBaseline) && axis == .Horizontal
+
+        if baselineAlignment {
+            result.append(heightFitConstraint())
+        }
+        
+        switch distribution {
+        case .FillEqually, .Fill, .FillProportionally:
+            break
+        case .EqualSpacing, .EqualCentering:
+            switch axis {
+            case .Horizontal:
+                result.append(widthFitConstraint())
+            case .Vertical:
+                result.append(heightFitConstraint())
+            }
+        }
+        return result
     }
     
     private func createSurroundingSpacerViewConstraints(spacerView: UIView, views: [UIView]) -> [NSLayoutConstraint] {
