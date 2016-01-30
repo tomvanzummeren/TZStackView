@@ -111,6 +111,7 @@ public class TZStackView: UIView {
     
     private var layoutMarginsView: TZSpacerView?
     private var alignmentSpanner: TZSpacerView?
+    private var orderingSpanner: TZSpacerView?
     private var distributionSpacers: [TZSpacerView] = []
     
     private var animationDidStopQueueEntries = [TZAnimationDidStopQueueEntry]()
@@ -291,6 +292,11 @@ public class TZStackView: UIView {
             alignmentSpanner = nil
         }
         
+        if let spacerView = orderingSpanner {
+            spacerView.removeFromSuperview()
+            orderingSpanner = nil
+        }
+        
         for spacerView in distributionSpacers {
             spacerView.removeFromSuperview()
         }
@@ -330,8 +336,12 @@ public class TZStackView: UIView {
                 layoutMarginsView = addSpacerView("TZViewLayoutMarginsGuide")
             }
             
-            if alignment != .Fill {
+            if alignment != .Fill || areAllViewsHidden() {
                 alignmentSpanner = addSpacerView("TZSV-alignment-spanner")
+            }
+
+            if areAllViewsHidden() {
+                orderingSpanner = addSpacerView("TZSV-ordering-spanner")
             }
             
             stackViewConstraints += createMatchEdgesContraints(arrangedSubviews)
@@ -453,7 +463,7 @@ public class TZStackView: UIView {
         
         let baselineAlignment = (alignment == .FirstBaseline || alignment == .LastBaseline) && axis == .Horizontal
 
-        if baselineAlignment {
+        if baselineAlignment && !areAllViewsHidden() {
             result.append(heightFitConstraint())
         }
         
@@ -654,86 +664,118 @@ public class TZStackView: UIView {
         
         let edgeItem = layoutMarginsView ?? self
         
-        switch axis {
-        case .Horizontal:
-            if let firstView = firstView {
-                constraints.append(constraint(item: edgeItem, attribute: .Leading, toItem: firstView))
-            }
-            if let lastView = lastView {
-                constraints.append(constraint(item: edgeItem, attribute: .Trailing, toItem: lastView))
-            }
-        case .Vertical:
-            if let firstView = firstView {
-                constraints.append(constraint(item: edgeItem, attribute: .Top, toItem: firstView))
-            }
-            if let lastView = lastView {
-                constraints.append(constraint(item: edgeItem, attribute: .Bottom, toItem: lastView))
-            }
-        }
-
-        let firstArrangedView = arrangedSubviews.first!
-        
-        let topView: UIView
-        var topRelation = NSLayoutRelation.Equal
-        
-        let bottomView: UIView
-        var bottomRelation = NSLayoutRelation.Equal
-        
-        var centerView: UIView?
-        
-        switch alignment {
-        case .Fill:
-            topView = firstArrangedView
-            bottomView = firstArrangedView
-        case .Center:
-            topView = alignmentSpanner!
-            bottomView = alignmentSpanner!
-            centerView = firstArrangedView
-        case .Leading:
-            topView = firstArrangedView
-            bottomView = alignmentSpanner!
-        case .Trailing:
-            topView = alignmentSpanner!
-            bottomView = firstArrangedView
-        case .FirstBaseline:
+        if areAllViewsHidden() {
             switch axis {
             case .Horizontal:
+                constraints.append(constraint(item: edgeItem, attribute: .Leading, toItem: orderingSpanner!))
+                constraints.append(constraint(item: edgeItem, attribute: .Trailing, toItem: orderingSpanner!))
+                
+                constraints.append(constraint(item: edgeItem, attribute: .Top, toItem: alignmentSpanner!))
+                constraints.append(constraint(item: edgeItem, attribute: .Bottom, toItem: alignmentSpanner!))
+                
+                switch alignment {
+                case .Center:
+                    constraints.append(constraint(item: edgeItem, attribute: .CenterY, toItem: alignmentSpanner!))
+                default:
+                    break
+                }
+            case .Vertical:
+                constraints.append(constraint(item: edgeItem, attribute: .Top, toItem: orderingSpanner!))
+                constraints.append(constraint(item: edgeItem, attribute: .Bottom, toItem: orderingSpanner!))
+                
+                constraints.append(constraint(item: edgeItem, attribute: .Leading, toItem: alignmentSpanner!))
+                constraints.append(constraint(item: edgeItem, attribute: .Trailing, toItem: alignmentSpanner!))
+                
+                switch alignment {
+                case .Center:
+                    constraints.append(constraint(item: edgeItem, attribute: .CenterX, toItem: alignmentSpanner!))
+                default:
+                    break
+                }
+            }
+        } else {
+            switch axis {
+            case .Horizontal:
+                if let firstView = firstView {
+                    constraints.append(constraint(item: edgeItem, attribute: .Leading, toItem: firstView))
+                }
+                if let lastView = lastView {
+                    constraints.append(constraint(item: edgeItem, attribute: .Trailing, toItem: lastView))
+                }
+            case .Vertical:
+                if let firstView = firstView {
+                    constraints.append(constraint(item: edgeItem, attribute: .Top, toItem: firstView))
+                }
+                if let lastView = lastView {
+                    constraints.append(constraint(item: edgeItem, attribute: .Bottom, toItem: lastView))
+                }
+            }
+
+            let firstArrangedView = arrangedSubviews.first!
+            
+            let topView: UIView
+            var topRelation = NSLayoutRelation.Equal
+            
+            let bottomView: UIView
+            var bottomRelation = NSLayoutRelation.Equal
+            
+            var centerView: UIView?
+            
+            // alignmentSpanner must be non nil when alignment is not .Fill
+            switch alignment {
+            case .Fill:
+                topView = firstArrangedView
+                bottomView = firstArrangedView
+            case .Center:
+                topView = alignmentSpanner!
+                bottomView = alignmentSpanner!
+                centerView = firstArrangedView
+            case .Leading:
                 topView = firstArrangedView
                 bottomView = alignmentSpanner!
-                topRelation = .LessThanOrEqual
-            case .Vertical:
-                topView = alignmentSpanner!
-                bottomView = alignmentSpanner!
-            }
-        case .LastBaseline:
-            switch axis {
-            case .Horizontal:
+            case .Trailing:
                 topView = alignmentSpanner!
                 bottomView = firstArrangedView
-                bottomRelation = .GreaterThanOrEqual
+            case .FirstBaseline:
+                switch axis {
+                case .Horizontal:
+                    topView = firstArrangedView
+                    bottomView = alignmentSpanner!
+                    topRelation = .LessThanOrEqual
+                case .Vertical:
+                    topView = alignmentSpanner!
+                    bottomView = alignmentSpanner!
+                }
+            case .LastBaseline:
+                switch axis {
+                case .Horizontal:
+                    topView = alignmentSpanner!
+                    bottomView = firstArrangedView
+                    bottomRelation = .GreaterThanOrEqual
+                case .Vertical:
+                    topView = alignmentSpanner!
+                    bottomView = alignmentSpanner!
+                }
+            }
+            
+            switch axis {
+            case .Horizontal:
+                constraints.append(constraint(item: edgeItem, attribute: .Top, relatedBy: topRelation, toItem: topView))
+                constraints.append(constraint(item: edgeItem, attribute: .Bottom, relatedBy: bottomRelation, toItem: bottomView))
+
+                if let centerView = centerView {
+                    constraints.append(constraint(item: edgeItem, attribute: .CenterY, toItem: centerView))
+                }
             case .Vertical:
-                topView = alignmentSpanner!
-                bottomView = alignmentSpanner!
+                constraints.append(constraint(item: edgeItem, attribute: .Leading, relatedBy: topRelation, toItem: topView))
+                constraints.append(constraint(item: edgeItem, attribute: .Trailing, relatedBy: bottomRelation, toItem: bottomView))
+
+                if let centerView = centerView  {
+                    constraints.append(constraint(item: edgeItem, attribute: .CenterX, toItem: centerView))
+                }
             }
         }
-        
-        switch axis {
-        case .Horizontal:
-            constraints.append(constraint(item: edgeItem, attribute: .Top, relatedBy: topRelation, toItem: topView))
-            constraints.append(constraint(item: edgeItem, attribute: .Bottom, relatedBy: bottomRelation, toItem: bottomView))
-
-            if let centerView = centerView {
-                constraints.append(constraint(item: edgeItem, attribute: .CenterY, toItem: centerView))
-            }
-        case .Vertical:
-            constraints.append(constraint(item: edgeItem, attribute: .Leading, relatedBy: topRelation, toItem: topView))
-            constraints.append(constraint(item: edgeItem, attribute: .Trailing, relatedBy: bottomRelation, toItem: bottomView))
-
-            if let centerView = centerView  {
-                constraints.append(constraint(item: edgeItem, attribute: .CenterX, toItem: centerView))
-            }
-        }
-        
+    
         constraints.forEach { $0.identifier = "TZSV-canvas-connection" }
         return constraints
     }
@@ -776,6 +818,12 @@ public class TZStackView: UIView {
             return true
         }
         return animatingToHiddenViews.indexOf(view) != nil
+    }
+    
+    private func areAllViewsHidden() -> Bool {
+        return arrangedSubviews
+            .map { isHidden($0) }
+            .reduce(true) { $0 && $1 }
     }
     
     // Disables setting the background color to mimic an actual UIStackView which is a non-drawing view.
