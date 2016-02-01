@@ -386,25 +386,7 @@ public class TZStackView: UIView {
                     }
                 }
 
-                var previousArrangedSubview: UIView?
-                for (index, arrangedSubview) in visibleArrangedSubviews.enumerate() {
-                    if let previousArrangedSubview = previousArrangedSubview {
-                        let spacerView = distributionSpacers[index - 1]
-                        
-                        switch axis {
-                        case .Horizontal:
-                            stackViewConstraints.append(constraint(item: previousArrangedSubview, attribute: .CenterX, toItem: spacerView, attribute: .Leading, identifier: "TZSV-distributing-edge"))
-                            stackViewConstraints.append(constraint(item: arrangedSubview, attribute: .CenterX, toItem: spacerView, attribute: .Trailing, identifier: "TZSV-distributing-edge"))
-                        case .Vertical:
-                            stackViewConstraints.append(constraint(item: previousArrangedSubview, attribute: .CenterY, toItem: spacerView, attribute: .Top, identifier: "TZSV-distributing-edge"))
-                            stackViewConstraints.append(constraint(item: arrangedSubview, attribute: .CenterY, toItem: spacerView, attribute: .Bottom, identifier: "TZSV-distributing-edge"))
-                        }
-                    }
-                    previousArrangedSubview = arrangedSubview
-                }
-
-                stackViewConstraints += createFillEquallyConstraints(distributionSpacers, identifier: "TZSV-fill-equally", priority: 150)
-                stackViewConstraints += createFillConstraints(arrangedSubviews, relatedBy: .GreaterThanOrEqual, constant: spacing, identifier: "TZSV-spacing")
+                stackViewConstraints += createEqualCenteringConstraints(arrangedSubviews)
             }
             
             if let spanner = alignmentSpanner {
@@ -610,6 +592,49 @@ public class TZStackView: UIView {
         return constraints
     }
     
+    private func createEqualCenteringConstraints(views: [UIView]) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+        
+        let visibleViewsWithIndex = views.enumerate().filter { (_, view) in !isHidden(view) }
+        
+        for enumerationIndex in visibleViewsWithIndex.indices.dropFirst() {
+            let spacerView = distributionSpacers[enumerationIndex - 1]
+            let previouseView = visibleViewsWithIndex[enumerationIndex - 1].1
+            let view = visibleViewsWithIndex[enumerationIndex].1
+            
+            switch axis {
+            case .Horizontal:
+                constraints.append(constraint(item: previouseView, attribute: .CenterX, toItem: spacerView, attribute: .Leading, identifier: "TZSV-distributing-edge"))
+                constraints.append(constraint(item: view, attribute: .CenterX, toItem: spacerView, attribute: .Trailing, identifier: "TZSV-distributing-edge"))
+            case .Vertical:
+                constraints.append(constraint(item: previouseView, attribute: .CenterY, toItem: spacerView, attribute: .Top, identifier: "TZSV-distributing-edge"))
+                constraints.append(constraint(item: view, attribute: .CenterY, toItem: spacerView, attribute: .Bottom, identifier: "TZSV-distributing-edge"))
+            }
+        }
+        
+        if let firstSpacerView = distributionSpacers.first {
+            for enumerationIndex in visibleViewsWithIndex.indices.dropFirst(2) {
+                let spacerView = distributionSpacers[enumerationIndex - 1]
+                let viewIndex = visibleViewsWithIndex[enumerationIndex - 1].0
+                
+                let attribute: NSLayoutAttribute
+                switch axis {
+                case .Horizontal:
+                    attribute = .Width
+                case .Vertical:
+                    attribute = .Height
+                }
+                
+                let aConstraint = constraint(item: firstSpacerView, attribute: attribute, toItem: spacerView, attribute: attribute, priority: 150 - UILayoutPriority(viewIndex), identifier: "TZSV-fill-equally")
+                constraints.append(aConstraint)
+            }
+        }
+                
+        constraints += createFillConstraints(arrangedSubviews, relatedBy: .GreaterThanOrEqual, constant: spacing, identifier: "TZSV-spacing")
+        
+        return constraints
+    }
+    
     // Matches all Bottom/Top or Leading Trailing constraints of te given views and matches those attributes of the first/last view to the container
     private func createMatchEdgesContraints(views: [UIView]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
@@ -780,22 +805,16 @@ public class TZStackView: UIView {
         return constraints
     }
     
-    private func equalAttributes(views views: [UIView], attribute: NSLayoutAttribute, priority: Float = 1000) -> [NSLayoutConstraint] {
-        var currentPriority = priority
+    private func equalAttributes(views views: [UIView], attribute: NSLayoutAttribute, priority: UILayoutPriority = 1000) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         if views.count > 0 {
-            
             var firstView: UIView?
 
-            let countDownPriority = (currentPriority < 1000)
             for view in views {
                 if let firstView = firstView {
-                    constraints.append(constraint(item: firstView, attribute: attribute, toItem: view, priority: currentPriority))
+                    constraints.append(constraint(item: firstView, attribute: attribute, toItem: view, priority: priority))
                 } else {
                     firstView = view
-                }
-                if countDownPriority {
-                    currentPriority--
                 }
             }
         }
