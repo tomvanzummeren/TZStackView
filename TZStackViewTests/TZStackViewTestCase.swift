@@ -25,14 +25,8 @@ class TZStackViewTestCase: XCTestCase {
     var tzStackView: TZStackView!
 
     func recreateStackViews(createSubviews: () -> [UIView]) {
-        // clean old views otherwise some old spacer views and constraints are left
-        if uiStackView != nil {
-            uiStackView.removeFromSuperview()
-        }
-        
-        if tzStackView != nil {
-            tzStackView.removeFromSuperview()
-        }
+        // don't use old views otherwise some old spacer views and constraints are left
+        // don't remove old view to avoid layout engine internal error
         
         // Create stack views with same views
         uiStackView = UIStackView(arrangedSubviews: createSubviews())
@@ -69,13 +63,9 @@ class TZStackViewTestCase: XCTestCase {
         // Force constraints to be created
         uiStackView.setNeedsUpdateConstraints()
         uiStackView.updateConstraintsIfNeeded()
-        uiStackView.setNeedsLayout()
-        uiStackView.layoutIfNeeded()
         
         tzStackView.setNeedsUpdateConstraints()
         tzStackView.updateConstraintsIfNeeded()
-        tzStackView.setNeedsLayout()
-        tzStackView.layoutIfNeeded()
 
         if log {
             logAllConstraints()
