@@ -239,7 +239,10 @@ class TZStackViewTestCase: XCTestCase {
         if object1 == nil && object2 == nil {
             return true
         }
-        if let view1 = object1 as? UIView, view2 = object2 as? UIView where view1 == view2 {
+        if let view1 = object1 as? TestView, view2 = object2 as? TestView where view1 == view2 {
+            return true
+        }
+        if let label1 = object1 as? TestLabel, label2 = object2 as? TestLabel where label1 == label2 {
             return true
         }
         if object1 is UIStackView && object2 is TZStackView {
@@ -284,21 +287,28 @@ class TZStackViewTestCase: XCTestCase {
         }
     }
 
-    func assertSameOrder(uiTestViews: [TestView], _ tzTestViews: [TestView]) {
-        for (index, uiTestView) in uiTestViews.enumerate() {
-            let tzTestView = tzTestViews[index]
+    func assertSameOrder(uiTestViews: [UIView], _ tzTestViews: [UIView]) {
+        for (index, uiView) in uiTestViews.enumerate() {
+            let tzView = tzTestViews[index]
 
-            let result = uiTestView.index == tzTestView.index
+            let result: Bool
+            if let uiTestView = uiView as? TestView, let tzTestView = tzView as? TestView {
+                result = uiTestView == tzTestView
+            } else if let uiTestLabel = uiView as? TestLabel, let tzTestLabel = tzView as? TestLabel {
+                result = uiTestLabel == tzTestLabel
+            } else {
+                result = true
+            }
 
-            XCTAssertTrue(result, "Views at index \(index) do not match\n== EXPECTED ==\n\(uiTestView.description)\n\n== ACTUAL ==\n\(tzTestView.description)\n\n")
+            XCTAssertTrue(result, "Views at index \(index) do not match\n== EXPECTED ==\n\(uiView.description)\n\n== ACTUAL ==\n\(tzView.description)\n\n")
         }
     }
 
     func verifyArrangedSubviewConsistency() {
         XCTAssertEqual(uiStackView.arrangedSubviews.count, tzStackView.arrangedSubviews.count, "Number of arranged subviews")
 
-        let uiArrangedSubviews = uiStackView.arrangedSubviews as! [TestView]
-        let tzArrangedSubviews = tzStackView.arrangedSubviews as! [TestView]
+        let uiArrangedSubviews = uiStackView.arrangedSubviews
+        let tzArrangedSubviews = tzStackView.arrangedSubviews
 
         assertSameOrder(uiArrangedSubviews, tzArrangedSubviews)
 

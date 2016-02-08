@@ -32,9 +32,6 @@ class TestView: UIView {
     }
 }
 
- func ==(lhs: NSObject, rhs: NSObject) -> Bool {
-    if let lhs = lhs as? TestView, rhs = rhs as? TestView {
-        return lhs.index == rhs.index
-    }
-    return lhs === rhs
+func ==(lhs: TestView, rhs: TestView) -> Bool {
+    return lhs.index == rhs.index
 }

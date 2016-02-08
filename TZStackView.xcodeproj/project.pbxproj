@@ -16,6 +16,7 @@
 		7E0975301C0AA6820082FC9F /* Array+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E09752F1C0AA6820082FC9F /* Array+Product.swift */; };
 		7E214B741BF61501006448AC /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E214B731BF61501006448AC /* Storyboard.storyboard */; };
 		7ECF47E91C54A90C00475089 /* Array+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF47E81C54A90C00475089 /* Array+Group.swift */; };
+		7EFDCDC41C6853E7009A5296 /* TestLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFDCDC31C6853E7009A5296 /* TestLabel.swift */; };
 		A45441C21B9B6D71002452BA /* TZStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = A45441C11B9B6D71002452BA /* TZStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A45441C61B9B6D71002452BA /* TZStackView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; };
 		A45441C71B9B6D71002452BA /* TZStackView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -73,6 +74,7 @@
 		7E09752F1C0AA6820082FC9F /* Array+Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Product.swift"; sourceTree = "<group>"; };
 		7E214B731BF61501006448AC /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		7ECF47E81C54A90C00475089 /* Array+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Group.swift"; sourceTree = "<group>"; };
+		7EFDCDC31C6853E7009A5296 /* TestLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLabel.swift; sourceTree = "<group>"; };
 		A45441BF1B9B6D71002452BA /* TZStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A45441C11B9B6D71002452BA /* TZStackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZStackView.h; sourceTree = "<group>"; };
 		A45441C31B9B6D71002452BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				7E09752F1C0AA6820082FC9F /* Array+Product.swift */,
 				7ECF47E81C54A90C00475089 /* Array+Group.swift */,
 				5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */,
+				7EFDCDC31C6853E7009A5296 /* TestLabel.swift */,
 				DB5B70841B2A1963006043BD /* TestView.swift */,
 				DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */,
 				5F50E05A91CC731E5AFD4E94 /* Supporting Files */,
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EFDCDC41C6853E7009A5296 /* TestLabel.swift in Sources */,
 				5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */,
 				DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */,
 				DB5B70851B2A1963006043BD /* TestView.swift in Sources */,
