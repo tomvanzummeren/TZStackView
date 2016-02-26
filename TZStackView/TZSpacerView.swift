@@ -8,6 +8,6 @@
 
 import UIKit
 
-public class TZSpacerView: UIView {
-	public var identifier: String = ""
+class _TZSpacerView: UIView {
+    var identifier: String = ""
 }

@@ -109,10 +109,10 @@ public class TZStackView: UIView {
     private var stackViewConstraints = [NSLayoutConstraint]()
     private var subviewConstraints = [NSLayoutConstraint]()
     
-    private var layoutMarginsView: TZSpacerView?
-    private var alignmentSpanner: TZSpacerView?
-    private var orderingSpanner: TZSpacerView?
-    private var distributionSpacers: [TZSpacerView] = []
+    private var layoutMarginsView: _TZSpacerView?
+    private var alignmentSpanner: _TZSpacerView?
+    private var orderingSpanner: _TZSpacerView?
+    private var distributionSpacers: [_TZSpacerView] = []
     
     private var animationDidStopQueueEntries = [TZAnimationDidStopQueueEntry]()
     
@@ -460,8 +460,8 @@ public class TZStackView: UIView {
         super.updateConstraints()
     }
 
-    private func addSpacerView(identifier: String = "") -> TZSpacerView {
-        let spacerView = TZSpacerView()
+    private func addSpacerView(identifier: String = "") -> _TZSpacerView {
+        let spacerView = _TZSpacerView()
         spacerView.translatesAutoresizingMaskIntoConstraints = false
         spacerView.identifier = identifier
         

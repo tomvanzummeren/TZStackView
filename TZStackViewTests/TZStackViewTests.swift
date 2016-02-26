@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-import TZStackView
+@testable import TZStackView
 
 class TZStackViewTests: TZStackViewTestCase {
     func createTestViewWithHiddenFuncs() -> [(createViewsFunc: () -> [UIView], description: String)] {

@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-import TZStackView
+@testable import TZStackView
 
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
@@ -104,11 +104,11 @@ class TZStackViewTestCase: XCTestCase {
             
             for aConstraint in constraints {
                 let firstItem = aConstraint.firstItem
-                if firstItem is TZSpacerView || firstItem is UILayoutGuide {
+                if firstItem is _TZSpacerView || firstItem is UILayoutGuide {
                     result.insert(firstItem as! NSObject)
                 }
                 
-                if let secondItem = aConstraint.secondItem where secondItem is TZSpacerView || secondItem is UILayoutGuide {
+                if let secondItem = aConstraint.secondItem where secondItem is _TZSpacerView || secondItem is UILayoutGuide {
                     result.insert(secondItem as! NSObject)
                 }
             }
@@ -252,12 +252,12 @@ class TZStackViewTestCase: XCTestCase {
             return true
         }
         // Wish I could assert more accurately than this
-        if let object1 = object1 as? UILayoutGuide, object2 = object2 as? TZSpacerView
+        if let object1 = object1 as? UILayoutGuide, object2 = object2 as? _TZSpacerView
             where isSameIdentifier(object1.identifier, object2.identifier) {
             return true
         }
         // Wish I could assert more accurately than this
-        if let object1 = object1 as? TZSpacerView, object2 = object2 as? UILayoutGuide
+        if let object1 = object1 as? _TZSpacerView, object2 = object2 as? UILayoutGuide
             where isSameIdentifier(object1.identifier, object2.identifier) {
             return true
         }
