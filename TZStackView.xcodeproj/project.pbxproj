@@ -13,13 +13,15 @@
 		5F50E9F2F7E5B2DA68C946E0 /* ExplicitIntrinsicContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */; };
 		5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		5F50EF474D670FC33E8E80EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F50ED5A43FBFC32B9B9E1AA /* Images.xcassets */; };
+		7E44D3921C906B1800A3D266 /* TZFuncAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44D3911C906B1800A3D266 /* TZFuncAnimationDelegate.swift */; };
+		7E44D3941C906C3F00A3D266 /* HidingAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E44D3931C906C3F00A3D266 /* HidingAnimationTests.swift */; };
 		A45441C21B9B6D71002452BA /* TZStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = A45441C11B9B6D71002452BA /* TZStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A45441C61B9B6D71002452BA /* TZStackView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; };
 		A45441C71B9B6D71002452BA /* TZStackView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */; settings = {ASSET_TAGS = (); }; };
-		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; settings = {ASSET_TAGS = (); }; };
-		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; settings = {ASSET_TAGS = (); }; };
-		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; settings = {ASSET_TAGS = (); }; };
+		A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */; };
+		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; };
+		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; };
+		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; };
 		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
 		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
@@ -67,6 +69,8 @@
 		5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZStackViewTests.swift; sourceTree = "<group>"; };
 		5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TZStackViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E44D3911C906B1800A3D266 /* TZFuncAnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZFuncAnimationDelegate.swift; sourceTree = "<group>"; };
+		7E44D3931C906C3F00A3D266 /* HidingAnimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HidingAnimationTests.swift; sourceTree = "<group>"; };
 		A45441BF1B9B6D71002452BA /* TZStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A45441C11B9B6D71002452BA /* TZStackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZStackView.h; sourceTree = "<group>"; };
 		A45441C31B9B6D71002452BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */,
+				7E44D3931C906C3F00A3D266 /* HidingAnimationTests.swift */,
 				DB5B70841B2A1963006043BD /* TestView.swift */,
 				DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */,
 				5F50E05A91CC731E5AFD4E94 /* Supporting Files */,
@@ -174,6 +179,7 @@
 				A45441CD1B9B6D9C002452BA /* TZStackView.swift */,
 				A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */,
 				A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */,
+				7E44D3911C906B1800A3D266 /* TZFuncAnimationDelegate.swift */,
 				A45441D41B9B6E46002452BA /* Supporting Files */,
 			);
 			path = TZStackView;
@@ -326,6 +332,7 @@
 				DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */,
 				DB5B70851B2A1963006043BD /* TestView.swift in Sources */,
 				5F50EAD959E8ACC5929DBD75 /* NSLayoutConstraintExtension.swift in Sources */,
+				7E44D3941C906C3F00A3D266 /* HidingAnimationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +353,7 @@
 			files = (
 				A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */,
 				A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */,
+				7E44D3921C906B1800A3D266 /* TZFuncAnimationDelegate.swift in Sources */,
 				A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */,
 				A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */,
 			);
