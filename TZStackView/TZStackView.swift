@@ -8,15 +8,6 @@
 
 import UIKit
 
-struct TZAnimationDidStopQueueEntry: Equatable {
-    let view: UIView
-    let hidden: Bool
-}
-
-func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) -> Bool {
-    return lhs.view === rhs.view
-}
-
 public class TZStackView: UIView {
 
     public var distribution: TZStackViewDistribution = .Fill {
@@ -51,8 +42,6 @@ public class TZStackView: UIView {
 
     private var spacerViews = [UIView]()
     
-    private var animationDidStopQueueEntries = [TZAnimationDidStopQueueEntry]()
-    
     private var registeredKvoSubviews = [UIView]()
     
     private var animatingToHiddenViews = [UIView]()
@@ -84,7 +73,7 @@ public class TZStackView: UIView {
     }
     
     private func addHiddenListener(view: UIView) {
-        view.addObserver(self, forKeyPath: "hidden", options: [.Old, .New], context: &kvoContext)
+        view.addObserver(self, forKeyPath: "hidden", options: [.New], context: &kvoContext)
         registeredKvoSubviews.append(view)
     }
     
@@ -96,55 +85,70 @@ public class TZStackView: UIView {
     }
 
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if let view = object as? UIView, change = change where keyPath == "hidden" {
+        if let view = object as? UIView where keyPath == "hidden" {
+            let hiddenCallbackKey = "TZSV-hidden-callback"
+            
             let hidden = view.hidden
-            let previousValue = change["old"] as! Bool
-            if hidden == previousValue {
-                return
+
+            let previouseKeys = Set(view.layer.animationKeys() ?? [])
+            
+            if let callbackAnimation = view.layer.animationForKey(hiddenCallbackKey) {
+                (callbackAnimation.delegate as! TZFuncAnimationDelegate).cancel(callbackAnimation)
+                view.layer.removeAnimationForKey(hiddenCallbackKey)
             }
+            
+            // Canceling the previouse callback will reset the hidden property, so we set it back without triggering KVO
+            view.layer.hidden = hidden
             if hidden {
                 animatingToHiddenViews.append(view)
             }
+            
             // Perform the animation
             setNeedsUpdateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
             
-            removeHiddenListener(view)
-            view.hidden = false
-
-            if let _ = view.layer.animationKeys() {
-                UIView.setAnimationDelegate(self)
-                animationDidStopQueueEntries.insert(TZAnimationDidStopQueueEntry(view: view, hidden: hidden), atIndex: 0)
-                UIView.setAnimationDidStopSelector("hiddenAnimationStopped")
+            let afterKeys = Set(view.layer.animationKeys() ?? [])
+            let addedKeys = afterKeys.subtract(previouseKeys)
+            
+            view.layer.hidden = false // This will set view.hidden without triggering KVO
+            
+            let animationFinishFunc = { [weak self, weak view] () in
+                view?.layer.hidden = hidden
+                if let selv = self, strongView = view {
+                    if let index = selv.animatingToHiddenViews.indexOf(strongView) {
+                        selv.animatingToHiddenViews.removeAtIndex(index)
+                    }
+                }
+            }
+            
+            // Try to find the animation object associated with the hidding process.
+            if let hidingAnimation = addedKeys.first.flatMap({ key in view.layer.animationForKey(key)}) {
+                let callbackAnimation = CAAnimationGroup()
+                callbackAnimation.animations = []
+                callbackAnimation.delegate = TZFuncAnimationDelegate { _ in
+                    animationFinishFunc()
+                }
+                animation(callbackAnimation, copyTimingFrom: hidingAnimation, superLayer: view.layer)
+                
+                view.layer.addAnimation(callbackAnimation, forKey: hiddenCallbackKey)
             } else {
-                didFinishSettingHiddenValue(view, hidden: hidden)
+                animationFinishFunc()
             }
         }
     }
     
-    private func didFinishSettingHiddenValue(arrangedSubview: UIView, hidden: Bool) {
-        arrangedSubview.hidden = hidden
-        if let index = animatingToHiddenViews.indexOf(arrangedSubview) {
-            animatingToHiddenViews.removeAtIndex(index)
-        }
-        addHiddenListener(arrangedSubview)
-    }
-
-    func hiddenAnimationStopped() {
-        var queueEntriesToRemove = [TZAnimationDidStopQueueEntry]()
-        for entry in animationDidStopQueueEntries {
-            let view = entry.view
-            if view.layer.animationKeys() == nil {
-                didFinishSettingHiddenValue(view, hidden: entry.hidden)
-                queueEntriesToRemove.append(entry)
-            }
-        }
-        for entry in queueEntriesToRemove {
-            if let index = animationDidStopQueueEntries.indexOf(entry) {
-                animationDidStopQueueEntries.removeAtIndex(index)
-            }
-        }
+    private func animation(animation: CAAnimation, copyTimingFrom other: CAAnimation, superLayer: CALayer) {
+        // 1. When a CAAnimation is added to a layer, its beginTime will be adjusted to current time if its beginTime is 0.
+        // 2. The beginTime of the animation objects added by the system, is the block animation's delay time. So if it's non zero, it should be converted to the layer's time space
+        animation.beginTime = other.beginTime == 0 ? 0 : superLayer.convertTime(CACurrentMediaTime(), fromLayer: nil) + other.beginTime
+        animation.duration = other.duration
+        animation.speed = other.speed
+        animation.timeOffset = other.timeOffset
+        animation.repeatCount = other.repeatCount
+        animation.repeatDuration = other.repeatDuration
+        animation.autoreverses = other.autoreverses
+        animation.fillMode = other.fillMode
     }
     
     public func addArrangedSubview(view: UIView) {
