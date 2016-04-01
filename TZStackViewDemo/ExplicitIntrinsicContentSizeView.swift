@@ -15,7 +15,7 @@ class ExplicitIntrinsicContentSizeView: UIView {
         self.contentSize = intrinsicContentSize
         super.init(frame: CGRectZero)
 
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "tap")
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ExplicitIntrinsicContentSizeView.tap))
         addGestureRecognizer(gestureRecognizer)
         userInteractionEnabled = true
     }
