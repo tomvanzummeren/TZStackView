@@ -26,23 +26,36 @@ class TZStackViewTestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // Create stack views with same views
-        uiStackView = UIStackView(arrangedSubviews: createTestViews())
-        uiStackView.translatesAutoresizingMaskIntoConstraints = false
-        tzStackView = TZStackView(arrangedSubviews: createTestViews())
-        tzStackView.translatesAutoresizingMaskIntoConstraints = false
-
-        let window = UIApplication.sharedApplication().windows[0]
-        window.addSubview(uiStackView)
-        window.addSubview(tzStackView)
-
-        configureStackViews(uiStackView, tzStackView)
+        recreateStackViews()
     }
     
     override func tearDown() {
         super.tearDown()
     }
 
+    func recreateStackViews() {
+        // clean old views otherwise some old spacer views and constraints are left
+        if uiStackView != nil {
+            uiStackView.removeFromSuperview()
+        }
+        
+        if tzStackView != nil {
+            tzStackView.removeFromSuperview()
+        }
+        
+        // Create stack views with same views
+        uiStackView = UIStackView(arrangedSubviews: createTestViews())
+        uiStackView.translatesAutoresizingMaskIntoConstraints = false
+        tzStackView = TZStackView(arrangedSubviews: createTestViews())
+        tzStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let window = UIApplication.sharedApplication().windows[0]
+        window.addSubview(uiStackView)
+        window.addSubview(tzStackView)
+        
+        configureStackViews(uiStackView, tzStackView)
+    }
+    
     func logAllConstraints() {
         print("================= UISTACKVIEW (\(uiStackView.constraints.count)) =================")
         print("subviews: \(uiStackView.subviews)")
@@ -74,14 +87,16 @@ class TZStackViewTestCase: XCTestCase {
     
     func verifyConstraints(log log: Bool = false) {
         // Force constraints to be created
+        uiStackView.updateConstraintsIfNeeded()
         uiStackView.layoutIfNeeded()
+        tzStackView.updateConstraintsIfNeeded()
         tzStackView.layoutIfNeeded()
 
         if log {
             logAllConstraints()
         }
         // Assert same constraints are created
-        assertSameConstraints(uiStackView.constraints, tzStackView.constraints)
+        assertSameConstraints(nonMarginsLayoutConstraints(uiStackView), nonMarginsLayoutConstraints(tzStackView))
         
         for (index, uiArrangedSubview) in uiStackView.arrangedSubviews.enumerate() {
             let tzArrangedSubview = tzStackView.arrangedSubviews[index]
@@ -98,11 +113,43 @@ class TZStackViewTestCase: XCTestCase {
         return view.constraints.filter({ "\($0.dynamicType)" != "NSContentSizeLayoutConstraint" })
     }
     
+    private func nonMarginsLayoutConstraints(view: UIView) -> [NSLayoutConstraint] {
+        return view.constraints.filter { aConstraint in
+            if let identifier = aConstraint.identifier {
+                return !identifier.hasSuffix("Margin-guide-constraint")
+            } else {
+                return true
+            }
+        }
+    }
+    
     func assertSameConstraints(uiConstraints: [NSLayoutConstraint], _ tzConstraints: [NSLayoutConstraint]) {
         XCTAssertEqual(uiConstraints.count, tzConstraints.count, "Number of constraints")
         if uiConstraints.count != tzConstraints.count {
             return
         }
+        
+        func getGuides(constraints: [NSLayoutConstraint]) -> [NSObject] {
+            var result = Set<NSObject>()
+            
+            for aConstraint in constraints {
+                let firstItem = aConstraint.firstItem
+                if firstItem is TZSpacerView || firstItem is UILayoutGuide {
+                    result.insert(firstItem as! NSObject)
+                }
+                
+                if let secondItem = aConstraint.secondItem where secondItem is TZSpacerView || secondItem is UILayoutGuide {
+                    result.insert(secondItem as! NSObject)
+                }
+            }
+            
+            return Array(result)
+        }
+        
+        let uiGuides = getGuides(uiConstraints)
+        let tzGuides = getGuides(tzConstraints)
+        
+        XCTAssertEqual(uiGuides.count, tzGuides.count, "Number of layout guides")
         
         for (index, uiConstraint) in uiConstraints.enumerate() {
             let tzConstraint = tzConstraints[index]
@@ -182,14 +229,28 @@ class TZStackViewTestCase: XCTestCase {
             return true
         }
         // Wish I could assert more accurately than this
-        if object1 is UILayoutGuide && object2 is TZSpacerView {
+        if let object1 = object1 as? UILayoutGuide, object2 = object2 as? TZSpacerView
+            where isSameIdentifier(object1.identifier, object2.identifier) {
             return true
         }
         // Wish I could assert more accurately than this
-        if object1 is TZSpacerView && object2 is UILayoutGuide {
+        if let object1 = object1 as? TZSpacerView, object2 = object2 as? UILayoutGuide
+            where isSameIdentifier(object1.identifier, object2.identifier) {
             return true
         }
         return false
+    }
+    
+    private func isSameIdentifier(identifier1: String, _ identifier2: String) -> Bool {
+        func hasPrefix(str: String) -> Bool {
+            return str.hasPrefix("UI") || str.hasPrefix("TZ")
+        }
+        
+        func dropPrefix(str: String) -> String {
+            return String(str.characters.dropFirst("UI".characters.count))
+        }
+        
+        return identifier1 == identifier2 || (hasPrefix(identifier1) && hasPrefix(identifier2) && dropPrefix(identifier1) == dropPrefix(identifier2))
     }
 
     func assertSameOrder(uiTestViews: [TestView], _ tzTestViews: [TestView]) {
