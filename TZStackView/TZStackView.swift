@@ -317,10 +317,10 @@ public class TZStackView: UIView {
 
             if layoutMarginsRelativeArrangement {
                 if spacerViews.count > 0 {
-                    stackViewConstraints.append(constraint(item: self, attribute: .BottomMargin, toItem: spacerViews[0]))
-                    stackViewConstraints.append(constraint(item: self, attribute: .LeftMargin, toItem: spacerViews[0]))
-                    stackViewConstraints.append(constraint(item: self, attribute: .RightMargin, toItem: spacerViews[0]))
-                    stackViewConstraints.append(constraint(item: self, attribute: .TopMargin, toItem: spacerViews[0]))
+                    stackViewConstraints.append(constraint(item: self, attribute: .BottomMargin, toItem: spacerViews[0], attribute: .Bottom))
+                    stackViewConstraints.append(constraint(item: self, attribute: .LeftMargin, toItem: spacerViews[0], attribute: .Left))
+                    stackViewConstraints.append(constraint(item: self, attribute: .RightMargin, toItem: spacerViews[0], attribute: .Right))
+                    stackViewConstraints.append(constraint(item: self, attribute: .TopMargin, toItem: spacerViews[0], attribute: .Top))
                 }
             }
             addConstraints(stackViewConstraints)
