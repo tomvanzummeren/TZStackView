@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3029087B1C14E09400F748C4 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; };
+		3029087C1C14E09400F748C4 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */; };
+		3029087D1C14E09400F748C4 /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; };
+		3029087E1C14E09400F748C4 /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; };
+		302908811C14E09400F748C4 /* TZStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = A45441C11B9B6D71002452BA /* TZStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F50E6EAC8DDE44079E03638 /* TZStackViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EDEB0947F99E67140FC6 /* TZStackViewTests.swift */; };
 		5F50E81C644B9C88791038B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50EF54F01A3A6938C6CEA1 /* AppDelegate.swift */; };
 		5F50E83B164FAE28B52A5A91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50ECF2FC09D64EB02F1309 /* ViewController.swift */; };
@@ -16,10 +21,10 @@
 		A45441C21B9B6D71002452BA /* TZStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = A45441C11B9B6D71002452BA /* TZStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A45441C61B9B6D71002452BA /* TZStackView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; };
 		A45441C71B9B6D71002452BA /* TZStackView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A45441BF1B9B6D71002452BA /* TZStackView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */; settings = {ASSET_TAGS = (); }; };
-		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; settings = {ASSET_TAGS = (); }; };
-		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; settings = {ASSET_TAGS = (); }; };
-		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; settings = {ASSET_TAGS = (); }; };
+		A45441D01B9B6D9C002452BA /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CC1B9B6D9C002452BA /* TZSpacerView.swift */; };
+		A45441D11B9B6D9C002452BA /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CD1B9B6D9C002452BA /* TZStackView.swift */; };
+		A45441D21B9B6D9C002452BA /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CE1B9B6D9C002452BA /* TZStackViewAlignment.swift */; };
+		A45441D31B9B6D9C002452BA /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45441CF1B9B6D9C002452BA /* TZStackViewDistribution.swift */; };
 		DB41AF6A1B294B8E003DB902 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41AF691B294B8E003DB902 /* NSLayoutConstraintExtension.swift */; };
 		DB5B70851B2A1963006043BD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70841B2A1963006043BD /* TestView.swift */; };
 		DB5B70871B2B8816006043BD /* TZStackViewTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5B70861B2B8816006043BD /* TZStackViewTestCase.swift */; };
@@ -58,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		302908861C14E09400F748C4 /* TZStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		302908881C14E0D400F748C4 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		5F50E1340FBDFB7D123C9204 /* TZStackViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZStackViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F50E5EB8202F5247F8517F3 /* ExplicitIntrinsicContentSizeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplicitIntrinsicContentSizeView.swift; sourceTree = "<group>"; };
 		5F50E9955790F6814D494857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +88,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3029087F1C14E09400F748C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F50E714DA218369BD219AE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +155,7 @@
 				5F50E1340FBDFB7D123C9204 /* TZStackViewDemo.app */,
 				5F50EFD0C46B7C7F989F10E1 /* TZStackViewTests.xctest */,
 				A45441BF1B9B6D71002452BA /* TZStackView.framework */,
+				302908861C14E09400F748C4 /* TZStackView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +199,7 @@
 			children = (
 				A45441C11B9B6D71002452BA /* TZStackView.h */,
 				A45441C31B9B6D71002452BA /* Info.plist */,
+				302908881C14E0D400F748C4 /* Info-tvOS.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -191,6 +207,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		302908801C14E09400F748C4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				302908811C14E09400F748C4 /* TZStackView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A45441BC1B9B6D71002452BA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +226,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		302908791C14E09400F748C4 /* TZStackView-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 302908831C14E09400F748C4 /* Build configuration list for PBXNativeTarget "TZStackView-tvOS" */;
+			buildPhases = (
+				3029087A1C14E09400F748C4 /* Sources */,
+				3029087F1C14E09400F748C4 /* Frameworks */,
+				302908801C14E09400F748C4 /* Headers */,
+				302908821C14E09400F748C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TZStackView-tvOS";
+			productName = TZStackView;
+			productReference = 302908861C14E09400F748C4 /* TZStackView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		5F50E36345E94CFC65ED7270 /* TZStackViewDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F50EB67250401C8180503F9 /* Build configuration list for PBXNativeTarget "TZStackViewDemo" */;
@@ -285,6 +327,7 @@
 			projectRoot = "";
 			targets = (
 				A45441BE1B9B6D71002452BA /* TZStackView */,
+				302908791C14E09400F748C4 /* TZStackView-tvOS */,
 				5F50E36345E94CFC65ED7270 /* TZStackViewDemo */,
 				5F50EF63134E65D95D5312EE /* TZStackViewTests */,
 			);
@@ -292,6 +335,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		302908821C14E09400F748C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F50EB90676857A21F608692 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +368,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3029087A1C14E09400F748C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3029087B1C14E09400F748C4 /* TZStackViewAlignment.swift in Sources */,
+				3029087C1C14E09400F748C4 /* TZSpacerView.swift in Sources */,
+				3029087D1C14E09400F748C4 /* TZStackView.swift in Sources */,
+				3029087E1C14E09400F748C4 /* TZStackViewDistribution.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F50E06BB91A5156164D83ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,6 +428,56 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		302908841C14E09400F748C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/TZStackView/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.tomvanzummeren.TZStackView;
+				PRODUCT_NAME = TZStackView;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		302908851C14E09400F748C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/TZStackView/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.tomvanzummeren.TZStackView;
+				PRODUCT_NAME = TZStackView;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		5F50E2A2200A464705C478D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -554,6 +665,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		302908831C14E09400F748C4 /* Build configuration list for PBXNativeTarget "TZStackView-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302908841C14E09400F748C4 /* Debug */,
+				302908851C14E09400F748C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5F50E4200B3FF23FD89C2CE5 /* Build configuration list for PBXNativeTarget "TZStackViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
