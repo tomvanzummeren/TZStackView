@@ -188,7 +188,6 @@ public class TZStackView: UIView {
                     guideConstraint = constraint(item: arrangedSubview, attribute: .Width, toItem: nil, attribute: .NotAnAttribute, constant: 0, priority: 25)
                 }
                 subviewConstraints.append(guideConstraint)
-                arrangedSubview.addConstraint(guideConstraint)
             }
             
             if isHidden(arrangedSubview) {
@@ -200,7 +199,6 @@ public class TZStackView: UIView {
                     hiddenConstraint = constraint(item: arrangedSubview, attribute: .Height, toItem: nil, attribute: .NotAnAttribute, constant: 0)
                 }
                 subviewConstraints.append(hiddenConstraint)
-                arrangedSubview.addConstraint(hiddenConstraint)
             }
         }
         
@@ -323,9 +321,10 @@ public class TZStackView: UIView {
                     stackViewConstraints.append(constraint(item: self, attribute: .TopMargin, toItem: spacerViews[0], attribute: .Top))
                 }
             }
-            addConstraints(stackViewConstraints)
         }
-
+        
+        NSLayoutConstraint.activateConstraints(subviewConstraints + stackViewConstraints)
+        
         super.updateConstraints()
     }
 
@@ -476,12 +475,14 @@ public class TZStackView: UIView {
                 constraints += equalAttributes(views: views, attribute: .Top)
             case .Center:
                 constraints += equalAttributes(views: views, attribute: .CenterY)
-            case .Leading, .Top:
+            case .Leading:
                 constraints += equalAttributes(views: views, attribute: .Top)
-            case .Trailing, .Bottom:
+            case .Trailing:
                 constraints += equalAttributes(views: views, attribute: .Bottom)
             case .FirstBaseline:
                 constraints += equalAttributes(views: views, attribute: .FirstBaseline)
+            case .LastBaseline:
+                constraints += equalAttributes(views: views, attribute: .LastBaseline)
             }
             
         case .Vertical:
@@ -491,11 +492,13 @@ public class TZStackView: UIView {
                 constraints += equalAttributes(views: views, attribute: .Trailing)
             case .Center:
                 constraints += equalAttributes(views: views, attribute: .CenterX)
-            case .Leading, .Top:
+            case .Leading:
                 constraints += equalAttributes(views: views, attribute: .Leading)
-            case .Trailing, .Bottom:
+            case .Trailing:
                 constraints += equalAttributes(views: views, attribute: .Trailing)
             case .FirstBaseline:
+                constraints += []
+            case .LastBaseline:
                 constraints += []
             }
         }
