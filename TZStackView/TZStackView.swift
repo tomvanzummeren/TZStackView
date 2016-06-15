@@ -31,11 +31,23 @@ public class TZStackView: UIView {
         }
     }
     
-    public var alignment: TZStackViewAlignment = .Fill
+    public var alignment: TZStackViewAlignment = .Fill {
+        didSet {
+            setNeedsUpdateConstraints()
+        }
+    }
 
-    public var spacing: CGFloat = 0
+    public var spacing: CGFloat = 0 {
+        didSet {
+            setNeedsUpdateConstraints()
+        }
+    }
     
-    public var layoutMarginsRelativeArrangement = false
+    public var layoutMarginsRelativeArrangement = false {
+        didSet {
+            setNeedsUpdateConstraints()
+        }
+    }
 
     public private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
