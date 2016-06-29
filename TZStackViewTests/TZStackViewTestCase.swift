@@ -26,23 +26,36 @@ class TZStackViewTestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // Create stack views with same views
-        uiStackView = UIStackView(arrangedSubviews: createTestViews())
-        uiStackView.translatesAutoresizingMaskIntoConstraints = false
-        tzStackView = TZStackView(arrangedSubviews: createTestViews())
-        tzStackView.translatesAutoresizingMaskIntoConstraints = false
-
-        let window = UIApplication.sharedApplication().windows[0]
-        window.addSubview(uiStackView)
-        window.addSubview(tzStackView)
-
-        configureStackViews(uiStackView, tzStackView)
+        recreateStackViews()
     }
     
     override func tearDown() {
         super.tearDown()
     }
 
+    func recreateStackViews() {
+        // clean old views otherwise some old spacer views and constraints are left
+        if uiStackView != nil {
+            uiStackView.removeFromSuperview()
+        }
+        
+        if tzStackView != nil {
+            tzStackView.removeFromSuperview()
+        }
+        
+        // Create stack views with same views
+        uiStackView = UIStackView(arrangedSubviews: createTestViews())
+        uiStackView.translatesAutoresizingMaskIntoConstraints = false
+        tzStackView = TZStackView(arrangedSubviews: createTestViews())
+        tzStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let window = UIApplication.sharedApplication().windows[0]
+        window.addSubview(uiStackView)
+        window.addSubview(tzStackView)
+        
+        configureStackViews(uiStackView, tzStackView)
+    }
+    
     func logAllConstraints() {
         print("================= UISTACKVIEW (\(uiStackView.constraints.count)) =================")
         print("subviews: \(uiStackView.subviews)")
@@ -74,7 +87,9 @@ class TZStackViewTestCase: XCTestCase {
     
     func verifyConstraints(log log: Bool = false) {
         // Force constraints to be created
+        uiStackView.updateConstraintsIfNeeded()
         uiStackView.layoutIfNeeded()
+        tzStackView.updateConstraintsIfNeeded()
         tzStackView.layoutIfNeeded()
 
         if log {
