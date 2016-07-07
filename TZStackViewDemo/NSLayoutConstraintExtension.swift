@@ -11,7 +11,7 @@ import UIKit
 extension NSLayoutConstraint {
     
     func readableString() -> String {
-        return "\(self.dynamicType)(\n  item1: \(unwrap(firstItem)), firstAttribute: \(toString(firstAttribute))\n  relation: \(toString(relation))\n  secondItem: \(unwrap(secondItem)), secondAttribute: \(toString(secondAttribute))\n  constant: \(constant)\n  multiplier: \(multiplier)\n  priority: \(priority)\n)"
+        return "\(self.dynamicType)(\n  item1: \(unwrap(firstItem)), firstAttribute: \(toString(firstAttribute))\n  relation: \(toString(relation))\n  secondItem: \(unwrap(secondItem)), secondAttribute: \(toString(secondAttribute))\n  constant: \(constant)\n  multiplier: \(multiplier)\n  priority: \(priority)\n identifier: \(identifier ?? "")\n)"
     }
     
     private func unwrap(object: AnyObject?) -> String {
