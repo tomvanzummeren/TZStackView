@@ -13,16 +13,16 @@ class ExplicitIntrinsicContentSizeView: UIView {
     init(intrinsicContentSize: CGSize, name: String) {
         self.name = name
         self.contentSize = intrinsicContentSize
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
 
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ExplicitIntrinsicContentSizeView.tap))
         addGestureRecognizer(gestureRecognizer)
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
     }
 
     func tap() {
-        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: {
-            self.hidden = true
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
+            self.isHidden = true
         }, completion: nil)
     }
 
@@ -30,7 +30,7 @@ class ExplicitIntrinsicContentSizeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize : CGSize {
         return contentSize
     }
 
