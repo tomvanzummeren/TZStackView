@@ -37,8 +37,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .fill
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .fill
 
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -51,8 +51,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .fill
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -65,8 +65,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .fill
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .fill
 
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -79,8 +79,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .fill
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -93,8 +93,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .fill
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -107,8 +107,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .fill
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -121,8 +121,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .fill
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -135,8 +135,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .fill
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -149,8 +149,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .fill
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -163,8 +163,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .fill
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Fill
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .fill
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -177,8 +177,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .center
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -191,8 +191,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .center
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -205,8 +205,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .center
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -219,8 +219,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .center
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -233,8 +233,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .center
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -247,8 +247,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .center
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -261,8 +261,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .center
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -275,8 +275,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .center
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -289,8 +289,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .center
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -303,8 +303,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .center
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Center
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .center
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -317,8 +317,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .leading
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -331,8 +331,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .leading
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -345,8 +345,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .leading
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -359,8 +359,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .leading
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -373,8 +373,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .leading
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -387,8 +387,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .leading
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -401,8 +401,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .leading
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -415,8 +415,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .leading
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -429,8 +429,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .leading
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -443,8 +443,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .leading
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Leading
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .leading
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -457,8 +457,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .top
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -471,8 +471,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .top
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -485,8 +485,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .top
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -499,8 +499,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .top
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -513,8 +513,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .top
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -527,8 +527,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .top
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -541,8 +541,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .top
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -555,8 +555,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .top
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -569,8 +569,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .top
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -583,8 +583,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .top
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Top
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .top
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -597,8 +597,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .trailing
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -611,8 +611,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .trailing
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -625,8 +625,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .trailing
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -639,8 +639,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .trailing
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -653,8 +653,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .trailing
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -667,8 +667,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .trailing
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -681,8 +681,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .trailing
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -695,8 +695,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .trailing
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -709,8 +709,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .trailing
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -723,8 +723,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .trailing
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Trailing
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .trailing
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -737,8 +737,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .bottom
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -751,8 +751,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .bottom
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -765,8 +765,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .bottom
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -779,8 +779,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .bottom
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -793,8 +793,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .bottom
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -807,8 +807,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .bottom
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -821,8 +821,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .bottom
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -835,8 +835,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .bottom
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -849,8 +849,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .bottom
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -863,8 +863,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .bottom
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .Bottom
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .bottom
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -877,8 +877,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -891,8 +891,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -905,8 +905,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -919,8 +919,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -933,8 +933,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .horizontal
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -947,8 +947,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillEqually
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillEqually
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .fillEqually
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -962,8 +962,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fill
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .vertical
-        tzStackView.distribution = .Fill
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .fill
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -976,8 +976,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .fillProportionally
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .vertical
-        tzStackView.distribution = .FillProportionally
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .fillProportionally
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -990,8 +990,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalSpacing
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualSpacing
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .equalSpacing
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
@@ -1004,8 +1004,8 @@ class TZStackViewTests: TZStackViewTestCase {
         uiStackView.distribution = .equalCentering
         uiStackView.alignment = .firstBaseline
         tzStackView.axis = .vertical
-        tzStackView.distribution = .EqualCentering
-        tzStackView.alignment = .FirstBaseline
+        tzStackView.distribution = .equalCentering
+        tzStackView.alignment = .firstBaseline
         
         uiStackView.spacing = 10
         tzStackView.spacing = 10
