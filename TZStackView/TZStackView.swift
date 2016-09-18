@@ -37,25 +37,25 @@ open class TZStackView: UIView {
     
     open var layoutMarginsRelativeArrangement = false
 
-    open fileprivate(set) var arrangedSubviews: [UIView] = [] {
+    open private(set) var arrangedSubviews: [UIView] = [] {
         didSet {
             setNeedsUpdateConstraints()
             registerHiddenListeners(oldValue)
         }
     }
 
-    fileprivate var kvoContext = UInt8()
+    private var kvoContext = UInt8()
 
-    fileprivate var stackViewConstraints = [NSLayoutConstraint]()
-    fileprivate var subviewConstraints = [NSLayoutConstraint]()
+    private var stackViewConstraints = [NSLayoutConstraint]()
+    private var subviewConstraints = [NSLayoutConstraint]()
 
-    fileprivate var spacerViews = [UIView]()
+    private var spacerViews = [UIView]()
     
-    fileprivate var animationDidStopQueueEntries = [TZAnimationDidStopQueueEntry]()
+    private var animationDidStopQueueEntries = [TZAnimationDidStopQueueEntry]()
     
-    fileprivate var registeredKvoSubviews = [UIView]()
+    private var registeredKvoSubviews = [UIView]()
     
-    fileprivate var animatingToHiddenViews = [UIView]()
+    private var animatingToHiddenViews = [UIView]()
 
     public init(arrangedSubviews: [UIView] = []) {
         super.init(frame: CGRect.zero)
@@ -73,7 +73,7 @@ open class TZStackView: UIView {
         { self.arrangedSubviews = [] }()
     }
     
-    fileprivate func registerHiddenListeners(_ previousArrangedSubviews: [UIView]) {
+    private func registerHiddenListeners(_ previousArrangedSubviews: [UIView]) {
         for subview in previousArrangedSubviews {
             self.removeHiddenListener(subview)
         }
@@ -83,12 +83,12 @@ open class TZStackView: UIView {
         }
     }
     
-    fileprivate func addHiddenListener(_ view: UIView) {
+    private func addHiddenListener(_ view: UIView) {
         view.addObserver(self, forKeyPath: "hidden", options: [.old, .new], context: &kvoContext)
         registeredKvoSubviews.append(view)
     }
     
-    fileprivate func removeHiddenListener(_ view: UIView) {
+    private func removeHiddenListener(_ view: UIView) {
         if let index = registeredKvoSubviews.index(of: view) {
             view.removeObserver(self, forKeyPath: "hidden", context: &kvoContext)
             registeredKvoSubviews.remove(at: index)
@@ -123,7 +123,7 @@ open class TZStackView: UIView {
         }
     }
     
-    fileprivate func didFinishSettingHiddenValue(_ arrangedSubview: UIView, hidden: Bool) {
+    private func didFinishSettingHiddenValue(_ arrangedSubview: UIView, hidden: Bool) {
         arrangedSubview.isHidden = hidden
         if let index = animatingToHiddenViews.index(of: arrangedSubview) {
             animatingToHiddenViews.remove(at: index)
@@ -333,7 +333,7 @@ open class TZStackView: UIView {
         super.init(coder: aDecoder)!
     }
     
-    @discardableResult fileprivate func addSpacerView() -> TZSpacerView {
+    @discardableResult private func addSpacerView() -> TZSpacerView {
         let spacerView = TZSpacerView()
         spacerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -342,7 +342,7 @@ open class TZStackView: UIView {
         return spacerView
     }
     
-    fileprivate func createSurroundingSpacerViewConstraints(_ spacerView: UIView, views: [UIView]) -> [NSLayoutConstraint] {
+    private func createSurroundingSpacerViewConstraints(_ spacerView: UIView, views: [UIView]) -> [NSLayoutConstraint] {
         if alignment == .fill {
             return []
         }
@@ -383,7 +383,7 @@ open class TZStackView: UIView {
         return constraints
     }
     
-    fileprivate func createFillProportionallyConstraints(_ views: [UIView]) -> [NSLayoutConstraint] {
+    private func createFillProportionallyConstraints(_ views: [UIView]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var totalSize: CGFloat = 0
@@ -426,7 +426,7 @@ open class TZStackView: UIView {
     }
     
     // Matchs all Width or Height attributes of all given views
-    fileprivate func createFillEquallyConstraints(_ views: [UIView], priority: Float = 1000) -> [NSLayoutConstraint] {
+    private func createFillEquallyConstraints(_ views: [UIView], priority: Float = 1000) -> [NSLayoutConstraint] {
         switch axis {
         case .horizontal:
             return equalAttributes(views: views.filter({ !self.isHidden($0) }), attribute: .width, priority: priority)
@@ -437,7 +437,7 @@ open class TZStackView: UIView {
     }
     
     // Chains together the given views using Leading/Trailing or Top/Bottom
-    fileprivate func createFillConstraints(_ views: [UIView], priority: Float = 1000, relatedBy relation: NSLayoutRelation = .equal, constant: CGFloat) -> [NSLayoutConstraint] {
+    private func createFillConstraints(_ views: [UIView], priority: Float = 1000, relatedBy relation: NSLayoutRelation = .equal, constant: CGFloat) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         var previousView: UIView?
@@ -465,7 +465,7 @@ open class TZStackView: UIView {
     }
     
     // Matches all Bottom/Top or Leading Trailing constraints of te given views and matches those attributes of the first/last view to the container
-    fileprivate func createMatchEdgesContraints(_ views: [UIView]) -> [NSLayoutConstraint] {
+    private func createMatchEdgesContraints(_ views: [UIView]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         switch axis {
@@ -502,7 +502,7 @@ open class TZStackView: UIView {
         return constraints
     }
     
-    fileprivate func createFirstAndLastViewMatchEdgesContraints() -> [NSLayoutConstraint] {
+    private func createFirstAndLastViewMatchEdgesContraints() -> [NSLayoutConstraint] {
         
         var constraints = [NSLayoutConstraint]()
         
@@ -567,7 +567,7 @@ open class TZStackView: UIView {
         return constraints
     }
     
-    fileprivate func equalAttributes(views: [UIView], attribute: NSLayoutAttribute, priority: Float = 1000) -> [NSLayoutConstraint] {
+    private func equalAttributes(views: [UIView], attribute: NSLayoutAttribute, priority: Float = 1000) -> [NSLayoutConstraint] {
         var currentPriority = priority
         var constraints = [NSLayoutConstraint]()
         if views.count > 0 {
@@ -590,7 +590,7 @@ open class TZStackView: UIView {
     }
 
     // Convenience method to help make NSLayoutConstraint in a less verbose way
-    fileprivate func constraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation = .equal, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute? = nil, multiplier: CGFloat = 1, constant c: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
+    private func constraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation = .equal, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute? = nil, multiplier: CGFloat = 1, constant c: CGFloat = 0, priority: Float = 1000) -> NSLayoutConstraint {
 
         let attribute2 = attr2 != nil ? attr2! : attr1
 
@@ -599,7 +599,7 @@ open class TZStackView: UIView {
         return constraint
     }
     
-    fileprivate func isHidden(_ view: UIView) -> Bool {
+    private func isHidden(_ view: UIView) -> Bool {
         if view.isHidden {
             return true
         }
