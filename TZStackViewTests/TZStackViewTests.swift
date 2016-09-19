@@ -27,15 +27,15 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     // Be careful to configure the same thing on the UIStackView as on the TZStackView, otherwise the test is unfair
-    override func configureStackViews(uiStackView: UIStackView, _ tzStackView: TZStackView) {
-        uiStackView.layoutMarginsRelativeArrangement = false
+    override func configureStackViews(_ uiStackView: UIStackView, _ tzStackView: TZStackView) {
+        uiStackView.isLayoutMarginsRelativeArrangement = false
         tzStackView.layoutMarginsRelativeArrangement = false
     }
 
     func testFillHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .fill
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Fill
@@ -47,9 +47,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .fill
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Fill
@@ -61,9 +61,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFillHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .fill
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Fill
@@ -75,9 +75,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .fill
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Fill
@@ -89,9 +89,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .fill
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Fill
@@ -103,9 +103,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFillVerticalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .fill
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Fill
@@ -117,9 +117,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .fill
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Fill
@@ -131,9 +131,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .fill
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Fill
@@ -145,9 +145,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .fill
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Fill
@@ -159,9 +159,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFillVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Fill
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .fill
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Fill
@@ -173,9 +173,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testCenterHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Center
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .center
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Center
@@ -187,9 +187,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testCenterVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Center
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .center
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Center
@@ -201,9 +201,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testCenterHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Center
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .center
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Center
@@ -215,9 +215,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testCenterVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Center
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .center
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Center
@@ -229,9 +229,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testCenterHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Center
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .center
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Center
@@ -243,9 +243,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testCenterVetricalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Center
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .center
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Center
@@ -257,9 +257,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testCenterHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Center
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .center
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Center
@@ -271,9 +271,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testCenterVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Center
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .center
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Center
@@ -285,9 +285,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testCenterHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Center
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .center
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Center
@@ -299,9 +299,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testCenterVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Center
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .center
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Center
@@ -313,9 +313,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .leading
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Leading
@@ -327,9 +327,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testLeadingHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .leading
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Leading
@@ -341,9 +341,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testLeadingHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .leading
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Leading
@@ -355,9 +355,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testLeadingHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .leading
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Leading
@@ -369,9 +369,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .leading
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Leading
@@ -383,9 +383,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .leading
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Leading
@@ -397,9 +397,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .leading
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Leading
@@ -411,9 +411,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingVerticalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .leading
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Leading
@@ -425,9 +425,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .leading
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Leading
@@ -439,9 +439,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testLeadingVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Leading
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .leading
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Leading
@@ -453,9 +453,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testTopHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Top
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .top
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Top
@@ -467,9 +467,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Top
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .top
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Top
@@ -481,9 +481,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Top
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .top
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Top
@@ -495,9 +495,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Top
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .top
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Top
@@ -509,9 +509,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Top
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .top
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Top
@@ -523,9 +523,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopHVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Top
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .top
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Top
@@ -537,9 +537,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Top
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .top
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Top
@@ -551,9 +551,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopVerticalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Top
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .top
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Top
@@ -565,9 +565,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Top
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .top
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Top
@@ -579,9 +579,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTopVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Top
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .top
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Top
@@ -593,9 +593,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Trailing
@@ -607,9 +607,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Trailing
@@ -621,9 +621,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Trailing
@@ -635,9 +635,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Trailing
@@ -649,9 +649,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Trailing
@@ -663,9 +663,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Trailing
@@ -677,9 +677,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Trailing
@@ -691,9 +691,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingVerticalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Trailing
@@ -705,9 +705,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Trailing
@@ -719,9 +719,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testTrailingVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Trailing
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .trailing
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Trailing
@@ -733,9 +733,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Bottom
@@ -747,9 +747,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Bottom
@@ -761,9 +761,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Bottom
@@ -775,9 +775,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Bottom
@@ -789,9 +789,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Bottom
@@ -803,9 +803,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testBottomVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .Bottom
@@ -817,9 +817,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .Bottom
@@ -831,9 +831,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomVerticalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .Bottom
@@ -845,9 +845,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .Bottom
@@ -859,9 +859,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testBottomVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .Bottom
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .bottom
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .Bottom
@@ -873,9 +873,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFirstBaselineHorizontalFillEqually() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .FirstBaseline
@@ -887,9 +887,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFirstBaselineHorizontalFill() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .Fill
         tzStackView.alignment = .FirstBaseline
@@ -901,9 +901,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFirstBaselineHorizontalFillProportionally() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .FirstBaseline
@@ -915,9 +915,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFirstBaselineHorizontalEqualSpacing() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .FirstBaseline
@@ -929,9 +929,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFirstBaselineHorizontalEqualCentering() {
-        uiStackView.axis = .Horizontal
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .horizontal
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Horizontal
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .FirstBaseline
@@ -943,9 +943,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
 
     func testFirstBaselineVerticalFillEqually() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillEqually
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillEqually
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillEqually
         tzStackView.alignment = .FirstBaseline
@@ -958,9 +958,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFirstBaselineVerticalFill() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .Fill
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fill
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Vertical
         tzStackView.distribution = .Fill
         tzStackView.alignment = .FirstBaseline
@@ -972,9 +972,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFirstBaselineVerticalFillProportionally() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .FillProportionally
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .fillProportionally
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Vertical
         tzStackView.distribution = .FillProportionally
         tzStackView.alignment = .FirstBaseline
@@ -986,9 +986,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFirstBaselineVerticalEqualSpacing() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualSpacing
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalSpacing
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualSpacing
         tzStackView.alignment = .FirstBaseline
@@ -1000,9 +1000,9 @@ class TZStackViewTests: TZStackViewTestCase {
     }
     
     func testFirstBaselineVerticalEqualCentering() {
-        uiStackView.axis = .Vertical
-        uiStackView.distribution = .EqualCentering
-        uiStackView.alignment = .FirstBaseline
+        uiStackView.axis = .vertical
+        uiStackView.distribution = .equalCentering
+        uiStackView.alignment = .firstBaseline
         tzStackView.axis = .Vertical
         tzStackView.distribution = .EqualCentering
         tzStackView.alignment = .FirstBaseline
@@ -1027,7 +1027,7 @@ class TZStackViewTests: TZStackViewTestCase {
 
     func testConsistencyWhenInsertingArrangedSubview() {
         let uiTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
-        uiStackView.insertArrangedSubview(uiTestView, atIndex: 0)
+        uiStackView.insertArrangedSubview(uiTestView, at: 0)
 
         let tzTestView = TestView(index: -1, size: CGSize(width: 100, height: 100))
         tzStackView.insertArrangedSubview(tzTestView, atIndex: 0)

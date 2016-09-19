@@ -11,47 +11,47 @@ import UIKit
 extension NSLayoutConstraint {
     
     func readableString() -> String {
-        return "\(self.dynamicType)(\n  item1: \(unwrap(firstItem)), firstAttribute: \(toString(firstAttribute))\n  relation: \(toString(relation))\n  secondItem: \(unwrap(secondItem)), secondAttribute: \(toString(secondAttribute))\n  constant: \(constant)\n  multiplier: \(multiplier)\n  priority: \(priority)\n)"
+        return "\(type(of: self))(\n  item1: \(unwrap(firstItem)), firstAttribute: \(toString(firstAttribute))\n  relation: \(toString(relation))\n  secondItem: \(unwrap(secondItem)), secondAttribute: \(toString(secondAttribute))\n  constant: \(constant)\n  multiplier: \(multiplier)\n  priority: \(priority)\n)"
     }
     
-    private func unwrap(object: AnyObject?) -> String {
+    fileprivate func unwrap(_ object: AnyObject?) -> String {
         if let object = object {
             return "\(object)"
         }
         return "nil"
     }
     
-    private func toString(relation: NSLayoutRelation) -> String {
+    fileprivate func toString(_ relation: NSLayoutRelation) -> String {
         switch relation {
-        case .LessThanOrEqual: return "LessThanOrEqual"
-        case .Equal: return "Equal"
-        case .GreaterThanOrEqual: return "GreaterThanOrEqual"
+        case .lessThanOrEqual: return "LessThanOrEqual"
+        case .equal: return "Equal"
+        case .greaterThanOrEqual: return "GreaterThanOrEqual"
         }
     }
     
-    private func toString(attribute: NSLayoutAttribute) -> String {
+    fileprivate func toString(_ attribute: NSLayoutAttribute) -> String {
         switch attribute {
-        case .Left: return "Left"
-        case .Right: return "Right"
-        case .Top: return "Top"
-        case .Bottom: return "Bottom"
-        case .Leading: return "Leading"
-        case .Trailing: return "Trailing"
-        case .Width: return "Width"
-        case .Height: return "Height"
-        case .CenterX: return "CenterX"
-        case .CenterY: return "CenterY"
-        case .Baseline: return "Baseline"
-        case .FirstBaseline: return "FirstBaseline"
-        case .NotAnAttribute: return "NotAnAttribute"
-        case .LeftMargin: return "LeftMargin"
-        case .RightMargin: return "RightMargin"
-        case .TopMargin: return "TopMargin"
-        case .BottomMargin: return "BottomMargin"
-        case .LeadingMargin: return "LeadingMargin"
-        case .TrailingMargin: return "TrailingMargin"
-        case .CenterXWithinMargins: return "CenterXWithinMargins"
-        case .CenterYWithinMargins: return "CenterYWithinMargins"
+        case .left: return "Left"
+        case .right: return "Right"
+        case .top: return "Top"
+        case .bottom: return "Bottom"
+        case .leading: return "Leading"
+        case .trailing: return "Trailing"
+        case .width: return "Width"
+        case .height: return "Height"
+        case .centerX: return "CenterX"
+        case .centerY: return "CenterY"
+        case .lastBaseline: return "Baseline"
+        case .firstBaseline: return "FirstBaseline"
+        case .notAnAttribute: return "NotAnAttribute"
+        case .leftMargin: return "LeftMargin"
+        case .rightMargin: return "RightMargin"
+        case .topMargin: return "TopMargin"
+        case .bottomMargin: return "BottomMargin"
+        case .leadingMargin: return "LeadingMargin"
+        case .trailingMargin: return "TrailingMargin"
+        case .centerXWithinMargins: return "CenterXWithinMargins"
+        case .centerYWithinMargins: return "CenterYWithinMargins"
         }
     }
 }

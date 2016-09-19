@@ -16,7 +16,7 @@ class TestView: UIView {
     init(index: Int, size: CGSize) {
         self.index = index
         self.size = size
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -27,13 +27,13 @@ class TestView: UIView {
         return "TestView\(index)"
     }
     
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize : CGSize {
         return size
     }
 }
 
  func ==(lhs: NSObject, rhs: NSObject) -> Bool {
-    if let lhs = lhs as? TestView, rhs = rhs as? TestView {
+    if let lhs = lhs as? TestView, let rhs = rhs as? TestView {
         return lhs.index == rhs.index
     }
     return lhs === rhs
