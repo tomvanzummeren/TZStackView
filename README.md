@@ -7,6 +7,7 @@ A wonderful layout component called the [`UIStackView` was introduced with *iOS 
 - ✅ Compatible with **iOS 7.x** and **iOS 8.x**
 - ✅ Supports the complete API of `UIStackView` including **all** *distribution* and *alignment* options
 - ✅ Supports animating the `hidden` property of the *arranged subviews*
+- ✅ Optional [Polyfill](#polyfill) for Objective-C code to use the name UIStackView, while dynamically selecting TZStackView when on earlier iOS versions.
 - ❌ Supports *Storyboard*
 
 So this implementation does **not** support Storyboard. It is meant for iOS developers who, like me, want to use the `UIStackView` in our existing apps and like to layout their components in code as opposed to using *Storyboard*.
@@ -66,6 +67,22 @@ UIView.animateWithDuration(0.5, animations: {
 })
 ```
 ![TZStackView hidden animation example](/assets/TZStackView-hide-animation.gif)
+
+## Polyfill
+(Objective-C only)
+
+If you're writing code with Objective-C, and you want to dynamically select UIStackView over TZStackView when on iOS versions that provide it, check out [UIStackView+TZStackView](./Polyfill/)
+
+If you include these files in your project, and include the header in your Prefix.pch, along with TZStackView [see Setup](#setup) you to will be able to type `UIStackView` and have the code dynamically select the right class to fulfill your needs.
+
+If you go down this route, you don't have to do anything to migrate to UIStackView, but to remove TZStackView.
+
+Example:
+```objc
+UIStackView * stack = [[UIStackView alloc] initWithArrangedSubviews:@[/*…*/]];
+````
+
+More documentation in [UIStackView+TZStackView.h](./Polyfill/TZStackView.h)
 
 ## Migrating to UIStackView
 If at a later point you decide to make *iOS 9* the minimum requirement of your app (it will happen sooner or later), you will want to migrate to the real `UIStackView` instead of using this implementation. Because the `TZStackView` is a drop-in replacement for `UIStackView`, you simply replace:
