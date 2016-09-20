@@ -402,6 +402,11 @@ public class TZStackView: UIView {
         }
         totalSize += (CGFloat(totalCount - 1) * spacing)
         
+        // Prevent ÷0 crash when all arranged subviews have their total size equal to 0
+        if totalSize == 0 {
+            totalSize = 1
+        }
+        
         var priority: Float = 1000
         let countDownPriority = (views.filter({!self.isHidden($0)}).count > 1)
         for arrangedSubview in views {
