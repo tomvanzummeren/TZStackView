@@ -605,4 +605,29 @@ public class TZStackView: UIView {
         }
         return animatingToHiddenViews.index(of: view) != nil
     }
+    
+    // Disables setting the background color to mimic an actual UIStackView which is a non-drawing view.
+    override public class func layerClass() -> AnyClass {
+        return CATransformLayer.self
+    }
+    
+    // Suppress the warning of "changing property backgroundColor in transform-only layer, will have no effect"
+    override public var backgroundColor: UIColor? {
+        get {
+            return nil
+        }
+        set {
+            
+        }
+    }
+    
+    // Suppress the warning of "changing property opaque in transform-only layer, will have no effect"
+    override public var opaque: Bool {
+        get {
+            return true
+        }
+        set {
+            
+        }
+    }
 }
