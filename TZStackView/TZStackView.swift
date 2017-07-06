@@ -17,7 +17,7 @@ func ==(lhs: TZAnimationDidStopQueueEntry, rhs: TZAnimationDidStopQueueEntry) ->
     return lhs.view === rhs.view
 }
 
-public class TZStackView: UIView {
+open class TZStackView: UIView {
 
     public var distribution: TZStackViewDistribution = .fill {
         didSet {
@@ -95,7 +95,7 @@ public class TZStackView: UIView {
         }
     }
 
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let view = object as? UIView, let change = change, keyPath == "hidden" {
             let hidden = view.isHidden
             let previousValue = change[.oldKey] as! Bool
@@ -165,11 +165,11 @@ public class TZStackView: UIView {
         arrangedSubviews.insert(view, at: stackIndex)
     }
 
-    override public func willRemoveSubview(_ subview: UIView) {
+    override open func willRemoveSubview(_ subview: UIView) {
         removeArrangedSubview(subview)
     }
 
-    override public func updateConstraints() {
+    override open func updateConstraints() {
         removeConstraints(stackViewConstraints)
         stackViewConstraints.removeAll()
 
