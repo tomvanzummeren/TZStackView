@@ -20,7 +20,7 @@ class ExplicitIntrinsicContentSizeView: UIView {
         isUserInteractionEnabled = true
     }
 
-    func tap() {
+    @objc func tap() {
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
             self.isHidden = true
         }, completion: nil)
