@@ -119,8 +119,8 @@ class TZStackViewTestCase: XCTestCase {
             return false
         }
         if layoutConstraint1.priority != layoutConstraint2.priority {
-            if layoutConstraint1.priority < 100 || layoutConstraint1.priority > 150
-                || layoutConstraint2.priority < 100 || layoutConstraint2.priority > 150 {
+            if layoutConstraint1.priority.rawValue < 100 || layoutConstraint1.priority.rawValue > 150
+                || layoutConstraint2.priority.rawValue < 100 || layoutConstraint2.priority.rawValue > 150 {
                     return false
             }
         }
