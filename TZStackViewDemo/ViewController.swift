@@ -44,28 +44,28 @@ class ViewController: UIViewController {
         instructionLabel.text = "Tap any of the boxes to set hidden=true"
         instructionLabel.textColor = UIColor.white
         instructionLabel.numberOfLines = 0
-        instructionLabel.setContentCompressionResistancePriority(900, for: .horizontal)
-        instructionLabel.setContentHuggingPriority(1000, for: .vertical)
+        instructionLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 900), for: .horizontal)
+        instructionLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         view.addSubview(instructionLabel)
 
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.setTitle("Reset", for: UIControlState())
         resetButton.addTarget(self, action: #selector(ViewController.reset), for: .touchUpInside)
-        resetButton.setContentCompressionResistancePriority(1000, for: .horizontal)
-        resetButton.setContentHuggingPriority(1000, for: .horizontal)
-        resetButton.setContentHuggingPriority(1000, for: .vertical)
+        resetButton.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
+        resetButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
+        resetButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         view.addSubview(resetButton)
 
         axisSegmentedControl = UISegmentedControl(items: ["Vertical", "Horizontal"])
         axisSegmentedControl.selectedSegmentIndex = 0
         axisSegmentedControl.addTarget(self, action: #selector(ViewController.axisChanged(_:)), for: .valueChanged)
-        axisSegmentedControl.setContentCompressionResistancePriority(900, for: .horizontal)
+        axisSegmentedControl.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 900), for: .horizontal)
         axisSegmentedControl.tintColor = UIColor.lightGray
 
         alignmentSegmentedControl = UISegmentedControl(items: ["Fill", "Center", "Leading", "Top", "Trailing", "Bottom", "FirstBaseline"])
         alignmentSegmentedControl.selectedSegmentIndex = 0
         alignmentSegmentedControl.addTarget(self, action: #selector(ViewController.alignmentChanged(_:)), for: .valueChanged)
-        alignmentSegmentedControl.setContentCompressionResistancePriority(1000, for: .horizontal)
+        alignmentSegmentedControl.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
         alignmentSegmentedControl.tintColor = UIColor.lightGray
 
         distributionSegmentedControl = UISegmentedControl(items: ["Fill", "FillEqually", "FillProportionally", "EqualSpacing", "EqualCentering"])
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         controlsLayoutContainer.axis = .vertical
         controlsLayoutContainer.translatesAutoresizingMaskIntoConstraints = false
         controlsLayoutContainer.spacing = 5
-        controlsLayoutContainer.setContentHuggingPriority(1000, for: .vertical)
+        controlsLayoutContainer.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         view.addSubview(controlsLayoutContainer)
 
         let views: [String:AnyObject] = [
@@ -122,7 +122,7 @@ class ViewController: UIViewController {
 
     //MARK: - Button Actions
     //--------------------------------------------------------------------------
-    func reset() {
+    @objc func reset() {
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
             for view in self.tzStackView.arrangedSubviews {
                 view.isHidden = false
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
 
     //MARK: - Segmented Control Actions
     //--------------------------------------------------------------------------
-    func axisChanged(_ sender: UISegmentedControl) {
+    @objc func axisChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             tzStackView.axis = .vertical
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func alignmentChanged(_ sender: UISegmentedControl) {
+    @objc func alignmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             tzStackView.alignment = .fill
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         tzStackView.setNeedsUpdateConstraints()
     }
 
-    func distributionChanged(_ sender: UISegmentedControl) {
+    @objc func distributionChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             tzStackView.distribution = .fill
