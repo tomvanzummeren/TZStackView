@@ -119,8 +119,8 @@ class TZStackViewTestCase: XCTestCase {
             return false
         }
         if layoutConstraint1.priority != layoutConstraint2.priority {
-            if layoutConstraint1.priority < 100 || layoutConstraint1.priority > 150
-                || layoutConstraint2.priority < 100 || layoutConstraint2.priority > 150 {
+            if layoutConstraint1.priority.rawValue < 100.0 || layoutConstraint1.priority.rawValue > 150.0
+                || layoutConstraint2.priority.rawValue < 100.0 || layoutConstraint2.priority.rawValue > 150.0 {
                     return false
             }
         }
@@ -169,7 +169,7 @@ class TZStackViewTestCase: XCTestCase {
         if object1 == nil && object2 == nil {
             return true
         }
-        if let view1 = object1 as? UIView, let view2 = object2 as? UIView , view1 == view2 {
+        if let view1 = object1 as? UIView, let view2 = object2 as? UIView, view1.frame == view2.frame && view1.description == view2.description {
             return true
         }
         if object1 is UIStackView && object2 is TZStackView {

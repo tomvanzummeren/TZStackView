@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //Appearance proxy for the UISegmentedControl font
         UISegmentedControl.appearance().setTitleTextAttributes(
-        [NSFontAttributeName:UIFont(name: "HelveticaNeue-Light", size:10.0)!],
+            [NSAttributedStringKey.font:UIFont(name: "HelveticaNeue-Light", size:10.0)!],
                 for: UIControlState())
 
         //Launch the application
